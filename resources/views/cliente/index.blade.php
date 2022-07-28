@@ -8,11 +8,12 @@
 
 @section('content')
     
-<a href="clientes/create" class=" far fa-user btn btn-primary "><b> Registrar</b></a>
+<a href="clientes/create" class=" far fa-user btn btn-primary "><b> Crear Nuevo</b></a>
 
 
 <table id="clientes" class="table table-striped table-bordered shadow-lg mt-1"  style="width:100%">
-    
+    <br>
+    <br>
  <thead class="bg-green text-white">
    <tr>
     <th scope="col">ID</th>
@@ -48,6 +49,11 @@
         </td>
     </tr>
 
+
+
+
+
+    
     @endforeach
 </tbody>
 
@@ -56,15 +62,16 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
-   
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    
 @stop
 
 @section('js')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-
+    
 <script>
 $(document).ready(function () {
     $('#clientes').DataTable({
