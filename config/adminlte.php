@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dash',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -259,7 +259,7 @@ return [
         ],
         [
             'text'        => 'Reservas',
-            'url'         => 'admin/pages',
+            'url'         => 'reservas',
             'icon'        => 'fas fa-fw fa-calendar',
             
         ],
@@ -269,12 +269,7 @@ return [
             'icon'        => 'fas fa-bed',
           
         ],
-        [
-            'text'        => 'Hospedaje',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-building',
-           
-        ],
+
         ['header' => 'Configuracion'],
         [
             'text' => 'Perfil',
