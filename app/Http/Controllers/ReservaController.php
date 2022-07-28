@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Reserva;
+use Illuminate\Http\Request;
 
+/**
+ * Class ReservaController
+ * @package App\Http\Controllers
+ */
 class ReservaController extends Controller
 {
     /**
@@ -14,7 +18,10 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        $reservas = Reserva::paginate();
+
+        return view('reserva.index', compact('reservas'))
+            ->with('i', (request()->input('page', 1) - 1) * $reservas->perPage());
     }
 
     /**
@@ -24,62 +31,79 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        $reserva = new Reserva();
+        return view('reserva.create', compact('reserva'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        request()->validate(Reserva::$rules);
+
+        $reserva = Reserva::create($request->all());
+
+        return redirect()->route('reservas.index')
+            ->with('success', 'Reserva created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $reserva = Reserva::find($id);
+
+        return view('reserva.show', compact('reserva'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $reserva = Reserva::find($id);
+
+        return view('reserva.edit', compact('reserva'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  Reserva $reserva
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Reserva $reserva)
     {
-        //
+        request()->validate(Reserva::$rules);
+
+        $reserva->update($request->all());
+
+        return redirect()->route('reservas.index')
+            ->with('success', 'Reserva updated successfully');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        //
+        $reserva = Reserva::find($id)->delete();
+
+        return redirect()->route('reservas.index')
+            ->with('success', 'Reserva deleted successfully');
     }
 }
