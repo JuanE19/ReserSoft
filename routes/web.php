@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 Route::resource('clientes','App\Http\Controllers\ClienteController');
 
-Route::resource('reserva','App\Http\Controllers\ReservaController');
+Route::resource('reservas','App\Http\Controllers\ReservaController');
  
 
 Route::middleware([
