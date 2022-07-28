@@ -13,11 +13,9 @@ class CreateReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('_reservas', function (Blueprint $table) {
+        Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->String("estado");
-            $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->string("estadoDeReserva");
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_reservas');
+        Schema::dropIfExists('reservas');
     }
 }
