@@ -259,7 +259,7 @@ return [
         ],
         [
             'text'        => 'Reservas',
-            'url'         => 'admin/pages',
+            'url'         => 'reservas',
             'icon'        => 'fas fa-fw fa-calendar',
             
         ],
@@ -269,12 +269,7 @@ return [
             'icon'        => 'fas fa-bed',
           
         ],
-        [
-            'text'        => 'Hospedaje',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-building',
-           
-        ],
+
         ['header' => 'Configuracion'],
         [
             'text' => 'Perfil',
