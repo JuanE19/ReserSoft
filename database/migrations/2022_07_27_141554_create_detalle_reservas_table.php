@@ -21,7 +21,7 @@ class CreateDetalleReservasTable extends Migration
             $table->double("precio");
             $table->string("TipoDeHabitacion");
             $table->unsignedBigInteger('reserva_id');
-            $table->foreign('reserva_id')->references('id')->on('_reservas');
+            $table->foreign('reserva_id')->references('id')->on('reservas');
             $table->timestamps();
         });
     }
