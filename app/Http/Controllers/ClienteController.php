@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\TipoDocumento;
 
 class ClienteController extends Controller
 {
@@ -25,7 +26,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view ('cliente.create');
+        $tipodocumento = TipoDocumento::all();
+
+        return view ('cliente.create')->with('tipodocumento', $tipodocumento);
     }
 
     /**
@@ -43,7 +46,7 @@ class ClienteController extends Controller
         $clientes->correo = $request->get('correo');
         $clientes->telefono = $request->get('telefono');
         $clientes->direccion = $request->get('direccion');
-        $clientes->fechanacimiento = $request->get('fechanacimiento');
+        $clientes->documento_id = $request->get('tipodocumento');
         
 
         $clientes->save();

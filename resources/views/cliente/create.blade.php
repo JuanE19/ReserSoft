@@ -36,8 +36,13 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">Fecha de Nacimiento</label>
-                        <input id="fechanacimiento" name="fechanacimiento" type="date" class="form-control" tabindex="1">
+                        <label for="" class="form-label">Tipo de Documento</label>
+                        <select name="tipodocumento" id="tipodocumento">
+                            <option value="">Seleccione</option>
+                            <?php foreach ($tipodocumento as $td) { ?>
+                                <option value="{{$td['id']}}">{{$td['nombre']}}</option>
+                            <?php } ?>
+                        </select>
                         </div>
             
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>
