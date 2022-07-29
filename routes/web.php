@@ -11,9 +11,7 @@ Route::get('/', function () {
 
 
 Route::resource('clientes','App\Http\Controllers\ClienteController');
-
-Route::resource('reservas','App\Http\Controllers\ReservaController');
- 
+Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
 
 Route::middleware([
     'auth:sanctum',

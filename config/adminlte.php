@@ -227,7 +227,7 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'search',
+            'text'         => false,
             'topnav_right' => false,
         ],
         [
@@ -265,7 +265,7 @@ return [
         ],
         [
             'text'        => 'Habitaciones',
-            'url'         => 'admin/pages',
+            'url'         => 'habitaciones',
             'icon'        => 'fas fa-bed',
           
         ],
