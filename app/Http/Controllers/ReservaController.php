@@ -14,7 +14,8 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        $reservas = Reserva::all();
+        return view('reserva.index')->with('reservas', $reservas);
     }
 
     /**
@@ -24,7 +25,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        return view('reserva.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservas = new Reserva();
+
+        $reservas->cantidadDePersonas = $request->get('cantidadDePersonas');
+        $reservas->fechaDeIngreso = $request->get('fechaDeIngreso');
+        $reservas->FechaDeSalida = $request->get('FechaDeSalida');
+        $reservas->precio = $request->get('precio');
+        $reservas->tipoDeHabitacion = $request->get('tipoDeHabitacion');
+
+        $reservas->save();
+
+        return redirect('/reserva');
     }
 
     /**
@@ -57,7 +68,8 @@ class ReservaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reserva = Reserva::find($id);
+        return view('reserva.edit')->with('reserva', $reserva);
     }
 
     /**
@@ -69,7 +81,17 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reserva= Reserva::find($id);
+
+        $reserva->cantidadDePersonas = $request->get('cantidadDePersonas');
+        $reserva->fechaDeIngreso = $request->get('fechaDeIngreso');
+        $reserva->fechaDeSalida = $request->get('FechaDeSalida');
+        $reserva->precio = $request->get('precio');
+        $reserva->tipoDeHabitacion = $request->get('tipoDeHabitacion');
+
+        $reserva->save();
+
+        return redirect('/reserva');
     }
 
     /**
@@ -80,6 +102,8 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reserva = Reserva::find($id);
+        $reserva->delete();
+        return redirect('/reserva');
     }
 }

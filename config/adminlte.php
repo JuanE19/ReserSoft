@@ -259,7 +259,7 @@ return [
         ],
         [
             'text'        => 'Reservas',
-            'url'         => 'reservas',
+            'url'         => 'reserva',
             'icon'        => 'fas fa-fw fa-calendar',
             
         ],
