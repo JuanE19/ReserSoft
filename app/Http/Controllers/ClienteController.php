@@ -75,8 +75,9 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
+        $tipodocumento = TipoDocumento::all();
         $cliente = Cliente::find($id);
-        return view ('cliente.edit')->with('cliente', $cliente);
+        return view ('cliente.edit', compact('cliente','tipodocumento'));
     }
 
     /**
@@ -95,7 +96,7 @@ class ClienteController extends Controller
         $cliente->correo = $request->get('correo');
         $cliente->telefono = $request->get('telefono');
         $cliente->direccion = $request->get('direccion');
-        $cliente->fechanacimiento = $request->get('fechanacimiento');
+        $cliente->tipodocumento = $request->get('tipodocumento');
         
 
         $cliente->save();
