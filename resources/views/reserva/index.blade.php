@@ -1,10 +1,17 @@
-@extends('layouts.plantillareserva')
+@extends('adminlte::page')
 
-@section('contenido')
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Reservas</h1>
+@stop
+
+@section('content')
+
 <a href="reserva/create" class="btn btn-primary">Crear</a>
 
-<table class="table table-dark table-striped mt-4">
-    <thead>
+<table class="table table-striped table-bordered shadow-lg mt-1">
+    <thead class="bg-green text-white">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Cantidad de personas</th>
@@ -20,16 +27,31 @@
         <tr>
             <td>{{ $reserva->id}}</td>
             <td>{{ $reserva->cantidadDePersonas}}</td>
-            <td>{{ $reserva->FechaDeIngreso}}</td>
-            <td>{{ $reserva->FechaDeSalida}}</td>
+            <td>{{ $reserva->fechaDeIngreso}}</td>
+            <td>{{ $reserva->fechaDeSalida}}</td>
             <td>{{ $reserva->precio}}</td>
-            <td>{{ $reserva->TipoDeHabitacion}}</td>
+            <td>{{ $reserva->tipoDeHabitacion}}</td>
             <td>
-                <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-info">Editar</a>
-                <button class="btn btn-danger">Eliminar</button>
+            <form action="{{ route  ('reserva.destroy', $reserva->id)}}" method="POST">
+            <a href="/reserva/{{ $reserva->id}}/edit"  class="btn btn-info fas fa-edit"></a>
+
+            @csrf 
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+            </button>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-@endsection
+
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

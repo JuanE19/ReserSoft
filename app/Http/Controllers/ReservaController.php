@@ -81,7 +81,17 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reserva= Reserva::find($id);
+
+        $reserva->cantidadDePersonas = $request->get('cantidadDePersonas');
+        $reserva->fechaDeIngreso = $request->get('fechaDeIngreso');
+        $reserva->fechaDeSalida = $request->get('FechaDeSalida');
+        $reserva->precio = $request->get('precio');
+        $reserva->tipoDeHabitacion = $request->get('tipoDeHabitacion');
+
+        $reserva->save();
+
+        return redirect('/reserva');
     }
 
     /**
@@ -92,6 +102,8 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reserva = Reserva::find($id);
+        $reserva->delete();
+        return redirect('/reserva');
     }
 }
