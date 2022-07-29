@@ -8,7 +8,7 @@ class CreateHabitacionesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *git 
      * @return void
      */
     public function up()

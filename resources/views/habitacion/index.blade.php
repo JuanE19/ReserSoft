@@ -8,7 +8,7 @@
 
 @section('content')
 
-<a href="habitaciones/create" class=" far fa-user btn btn-primary mb-3"><b> Registrar</b></a>
+<a href="habitaciones/create" class=" far fa-user btn btn-primary mb-3"><b>Agregar habitación</b></a>
 
 <table id="habitaciones" class="table table-striped table-bordered shadow-lg mt-1"  style="width:100%">
     
