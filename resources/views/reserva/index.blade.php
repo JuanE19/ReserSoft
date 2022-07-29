@@ -10,8 +10,8 @@
 
 <a href="reserva/create" class="btn btn-primary">Crear</a>
 
-<div class="container">
-<table class="table table-striped table-bordered shadow-lg mt-1">
+<div class="container w-80">
+<table class="table table-striped table-bordered shadow-lg mt-4">
     <thead class="bg-green text-white">
         <tr>
             <th scope="col">Id</th>

@@ -21,7 +21,7 @@ class CreateCaracteristicasTable extends Migration
             $table->integer("controles");
             $table->integer("televisores");
             $table->unsignedBigInteger('habitacion_id');
-            $table->foreign('habitacion_id')->references('id')->on('habitaciones');
+            $table->foreign('habitacion_id')->references('id')->on('habitacions');
             $table->timestamps();
         });
     }
