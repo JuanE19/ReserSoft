@@ -14,7 +14,8 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        $reservas = Reserva::all();
+        return view('reserva.index')->with('reservas', $reservas);
     }
 
     /**
@@ -24,7 +25,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        return view('reserva.create');
     }
 
     /**
@@ -35,7 +36,17 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reservas = new Reserva();
+
+        $reservas->cantidadDePersonas = $request->get('cantidadDePersonas');
+        $reservas->fechaDeIngreso = $request->get('fechaDeIngreso');
+        $reservas->FechaDeSalida = $request->get('FechaDeSalida');
+        $reservas->precio = $request->get('precio');
+        $reservas->tipoDeHabitacion = $request->get('tipoDeHabitacion');
+
+        $reservas->save();
+
+        return redirect('/reserva');
     }
 
     /**
@@ -57,7 +68,8 @@ class ReservaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reserva = Reserva::find($id);
+        return view('reserva.edit')->with('reserva', $reserva);
     }
 
     /**
