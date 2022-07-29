@@ -12,32 +12,32 @@
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Nombre Completo</label>
-        <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" tabindex="1">
+        <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" tabindex="1" maxlength="45" required="">
         </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Documento</label>
-            <input id="documento" name="documento" type="text" class="form-control" tabindex="1">
+            <input id="documento" name="documento" type="text" class="form-control" tabindex="1" maxlength="45" required="">
             </div>    
 
             <div class="mb-3">
                 <label for="" class="form-label">Correo</label>
-                <input id="correo" name="correo" type="text" class="form-control" tabindex="1">
+                <input id="correo" name="correo" type="email" class="form-control" tabindex="1" maxlength="45" required="">
                 </div>   
 
             <div class="mb-3">
                 <label for="" class="form-label">Telefono</label>
-                <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1">
+                <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1" maxlength="20"required="">
                 </div>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Direccion</label>
-                    <input id="direccion" name="direccion" type="text" class="form-control" tabindex="1">
+                    <input id="direccion" name="direccion" type="text" class="form-control" tabindex="1" maxlength="20" required="">
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label">Tipo de Documento</label>
-                        <select name="tipodocumento" id="tipodocumento">
+                        <select name="tipodocumento" id="tipodocumento" required="">
                             <option value="">Seleccione</option>
                             <?php foreach ($tipodocumento as $td) { ?>
                                 <option value="{{$td['id']}}">{{$td['nombre']}}</option>
