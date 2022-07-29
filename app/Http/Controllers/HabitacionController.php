@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Habitacion;
 
 class HabitacionController extends Controller
 {
@@ -13,7 +14,9 @@ class HabitacionController extends Controller
      */
     public function index()
     {
-        //
+        //return 'Vista index ()';
+        $habitaciones = Habitacion::all();
+        return view ('habitacion.index')->with('habitaciones', $habitaciones);
     }
 
     /**
@@ -23,7 +26,7 @@ class HabitacionController extends Controller
      */
     public function create()
     {
-        //
+        return view ('habitacion.create');
     }
 
     /**
@@ -34,7 +37,17 @@ class HabitacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $habitaciones = new Habitacion();
+
+        $habitaciones->id = $request->get('id');
+        $habitaciones->numerodehabitacion = $request->get('numerodehabitacion');
+        $habitaciones->precio = $request->get('precio');
+        $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
+
+
+        $habitaciones->save();
+
+        return redirect('/habitaciones');
     }
 
     /**
@@ -56,7 +69,8 @@ class HabitacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $habitacion = Habitacion::find($id);
+        return view('habitacion.edit')->with('habitacion',$habitacion);
     }
 
     /**
@@ -68,8 +82,19 @@ class HabitacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $habitacion = Habitacion::find($id);
+
+        $habitacion->id = $request->get('id');
+        $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
+        $habitacion->precio = $request->get('precio');
+        $habitacion->tipodehabitacion = $request->get('tipoDeHabitacion');
+        
+        $habitacion->save();
+
+        return redirect('/habitaciones');
+    
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +104,8 @@ class HabitacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $habitacion = Habitacion::find($id);        
+        $habitacion->delete();
+        return redirect('/habitaciones');
     }
 }
