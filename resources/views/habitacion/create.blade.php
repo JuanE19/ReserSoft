@@ -4,26 +4,22 @@
 
 @section('content_header')
 
-    <h1>Crear habitacion</h1>
+    <h1>Agregar habitación </h1>
 @stop
 
 @section('content')
 
     <form action ="/habitaciones" method="POST">
     @csrf
-    <div class="mb-3">
-        <label for="" class="form-label">Id</label>
-        <input id="id" name="id" type="text" class="form-control" tabindex="1">
-        </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Numero de la Habitacion</label>
-            <input id="numerodehabitacion" name="numerodehabitacion" type="text" class="form-control" tabindex="1">
+            <input id="numerodehabitacion" name="numerodehabitacion" type="number" class="form-control" tabindex="1">
             </div>    
 
             <div class="mb-3">
                 <label for="" class="form-label">Precio</label>
-                <input id="precio" name="precio" type="text" class="form-control" tabindex="1">
+                <input id="precio" name="precio" type="number" class="form-control" tabindex="1">
                 </div>   
 
             <div class="mb-3">
