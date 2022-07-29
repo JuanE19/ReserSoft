@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\TipoDocumento;
 
 class ClienteController extends Controller
 {
@@ -15,9 +16,11 @@ class ClienteController extends Controller
     public function index()
     {
        $clientes = Cliente::all();
+
         return view ('cliente.index')->with('clientes', $clientes);
     }
 
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +28,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view ('cliente.create');
+        $tipodocumento = TipoDocumento::all();
+
+        return view ('cliente.create')->with('tipodocumento', $tipodocumento);
     }
 
     /**
@@ -43,7 +48,7 @@ class ClienteController extends Controller
         $clientes->correo = $request->get('correo');
         $clientes->telefono = $request->get('telefono');
         $clientes->direccion = $request->get('direccion');
-        $clientes->fechanacimiento = $request->get('fechanacimiento');
+        $clientes->documento_id = $request->get('tipodocumento');
         
 
         $clientes->save();
@@ -70,8 +75,9 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
+        $tipodocumento = TipoDocumento::all();
         $cliente = Cliente::find($id);
-        return view ('cliente.edit')->with('cliente', $cliente);
+        return view ('cliente.edit', compact('cliente','tipodocumento'));
     }
 
     /**
@@ -90,7 +96,7 @@ class ClienteController extends Controller
         $cliente->correo = $request->get('correo');
         $cliente->telefono = $request->get('telefono');
         $cliente->direccion = $request->get('direccion');
-        $cliente->fechanacimiento = $request->get('fechanacimiento');
+        $cliente->tipodocumento = $request->get('tipodocumento');
         
 
         $cliente->save();

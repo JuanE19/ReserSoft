@@ -13,11 +13,9 @@ class CreateTipoDeDocumentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_de_documento', function (Blueprint $table) {
+        Schema::create('tipo_documentos', function (Blueprint $table) {
             $table->id();
             $table->string("nombre");
-            $table->unsignedBigInteger('cliente_id');
-            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateTipoDeDocumentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_de_documento');
+        Schema::dropIfExists('tipo_documentos');
     }
 }
