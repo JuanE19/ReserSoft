@@ -4,20 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHabitacionesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
-     *git 
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('habitacions', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->integer("numeroDeHabitacion");
-            $table->double("precio");
-            $table->string("tipoDeHabitacion");
+            $table->string("nombre");
+            $table->string("permisos");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateHabitacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('habitaciones');
+        Schema::dropIfExists('roles');
     }
 }

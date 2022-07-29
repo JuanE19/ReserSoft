@@ -16,12 +16,12 @@ class CreateDetalleReservasTable extends Migration
         Schema::create('detalle_reservas', function (Blueprint $table) {
             $table->id();
             $table->integer("cantidadDePersonas");
-            $table->datetime("FechaDeIngreso");
-            $table->datetime("FechaDeSalida");
+            $table->dateTime("FechaDeIngreso");
+            $table->dateTime("FechaDeSalida");
             $table->double("precio");
             $table->string("TipoDeHabitacion");
             $table->unsignedBigInteger('reserva_id');
-            $table->foreign('reserva_id')->references('id')->on('_reservas');
+            $table->foreign('reserva_id')->references('id')->on('reservas');
             $table->timestamps();
         });
     }

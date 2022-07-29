@@ -4,20 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHabitacionesTable extends Migration
+class CreateUsuariosTable extends Migration
 {
     /**
      * Run the migrations.
-     *git 
+     *
      * @return void
      */
     public function up()
     {
-        Schema::create('habitacions', function (Blueprint $table) {
+        Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->integer("numeroDeHabitacion");
-            $table->double("precio");
-            $table->string("tipoDeHabitacion");
+            $table->string("descripcion");
+            $table->string("estado");
+            $table->string("nombre");
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateHabitacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('habitaciones');
+        Schema::dropIfExists('usuarios');
     }
 }
