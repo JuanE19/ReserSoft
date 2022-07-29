@@ -10,7 +10,7 @@
 <form action="/reserva/{{$reserva->id}}" method="POST">
     @csrf
     @method('PUT')
-    <div class="container">
+    <div class="container m-4 w-75">
     <div class="mb-3">
         <label for="" class="form-label">Cantidad de personas</label>
         <input id="cantidadDePersonas" name="cantidadDePersonas" type="text" class="form-control" tabindex="1" value="{{$reserva->cantidadDePersonas}}">
