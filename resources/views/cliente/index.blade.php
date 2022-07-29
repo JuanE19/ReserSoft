@@ -8,7 +8,7 @@
 
 @section('content')
     
-<a href="clientes/create" class=" far fa-user btn btn-primary "><b> Crear Nuevo</b></a>
+<a href="clientes/create" class="far fa-user btn btn-success "><b> Crear Nuevo</b></a>
 
 
 <table id="clientes" class="table table-striped table-bordered shadow-lg mt-1"  style="width:100%">
@@ -78,6 +78,7 @@ $(document).ready(function () {
     $('#clientes').DataTable({
     language:{
         "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+        
     }
    
 });
