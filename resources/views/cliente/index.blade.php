@@ -8,7 +8,7 @@
 
 @section('content')
     
-<a href="clientes/create" class="far fa-user btn btn-success "><b> Crear Nuevo</b></a>
+<a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
 
 
 <table id="clientes" class="table table-striped table-bordered shadow-lg mt-1"  style="width:100%">
@@ -65,6 +65,7 @@
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     
 @stop
 
