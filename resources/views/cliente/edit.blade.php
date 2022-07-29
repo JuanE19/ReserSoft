@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Editar Cliente</h1>
+    <h1><b>Editar Cliente</b></h1>
 @stop
 
 @section('content')
@@ -13,6 +13,8 @@
 <form action ="/clientes/{{$cliente->id}}" method="POST">
     @csrf
     @method('PUT')
+
+    <div class="container m-4 w-50">
     <div class="mb-3">
         <label for="" class="form-label">Nombre Completo</label>
         <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" maxlength="45" required="" value="{{$cliente->NombreCompleto}}">
@@ -48,7 +50,7 @@
                             <?php } ?>
                         </select>
                         </div>
-            
+            </div>
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>
                         <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
                         

@@ -3,7 +3,7 @@
 @section('title', 'CRUD CLIENTES')
 
 @section('content_header')
-    <h1>LISTADO DE CLIENTES</h1>
+    <h1><b>LISTADO DE CLIENTES</b></h1>
 @stop
 
 @section('content')
