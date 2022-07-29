@@ -10,6 +10,7 @@
 
 <a href="reserva/create" class="btn btn-primary">Crear</a>
 
+<div class="container">
 <table class="table table-striped table-bordered shadow-lg mt-1">
     <thead class="bg-green text-white">
         <tr>
@@ -45,6 +46,7 @@
         @endforeach
     </tbody>
 </table>
+</div>
 
 @stop
 
