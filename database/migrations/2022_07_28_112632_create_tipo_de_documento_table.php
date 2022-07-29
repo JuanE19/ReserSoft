@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReservasTable extends Migration
+class CreateTipoDeDocumentoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('_reservas', function (Blueprint $table) {
+        Schema::create('tipo_de_documento', function (Blueprint $table) {
             $table->id();
-            $table->String("estado");
+            $table->string("nombre");
             $table->unsignedBigInteger('cliente_id');
             $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_reservas');
+        Schema::dropIfExists('tipo_de_documento');
     }
 }
