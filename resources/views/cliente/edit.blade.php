@@ -42,8 +42,8 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Tipo de Documento</label>
-                        <select name="tipodocumento" id="tipodocumento">
-                    </div> required="">
+                        <select name="tipodocumento" id="tipodocumento" required="">
+                    </div> 
                             <option value="">Seleccione</option>
                             <?php foreach ($tipodocumento as $td) { ?>
                                 <option value="{{$td['id']}}">{{$td['nombre']}}</option>

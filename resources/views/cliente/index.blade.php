@@ -7,6 +7,9 @@
 @stop
 
 @section('content')
+
+<!--Alertas Personalizadas-->
+@include('components.flash_alerts')
     
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
 
@@ -35,11 +38,11 @@
         <td>{{ $cliente->Correo }}</td>
         <td>{{ $cliente->Telefono }}</td>
         <td>{{ $cliente->Direccion }}</td>
-        <td>{{ $cliente->documento_id}}</td>
+        <td>{{ $cliente->datosdocumento->nombre}}</td>
         
         <td>  
+            <form action="{{ route ('clientes.destroy', $cliente->id)}}" method="POST">
 
-            <form action="{{ route  ('clientes.destroy', $cliente->id)}}" method="POST">
             <a href="/clientes/{{ $cliente->id}}/edit"  class="btn btn-info fas fa-edit"></a>
 
             @csrf 
@@ -47,15 +50,11 @@
             <button type="submit" class="btn btn-danger">
                 <i class="fas fa-trash"></i>
             </button>
+            </form>
         </td>
     </tr>
-
-
-
-
-
-    
     @endforeach
+
 </tbody>
 
 </table>
