@@ -41,9 +41,16 @@
         <td>{{ $cliente->datosdocumento->nombre}}</td>
         
         <td>  
+            
+
             <form action="{{ route ('clientes.destroy', $cliente->id)}}" method="POST">
 
+            <button type="submit" class="btn btn-success">
+                 <i class="bi bi-eye-fill"></i>
+            </button>  
+
             <a href="/clientes/{{ $cliente->id}}/edit"  class="btn btn-info fas fa-edit"></a>
+ 
 
             @csrf 
             @method('DELETE')
