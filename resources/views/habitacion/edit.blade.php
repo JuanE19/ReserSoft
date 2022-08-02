@@ -8,7 +8,7 @@
   
 @section('content')
 
-<form action="/habitaciones/{{$habitacion->id}}" method="POST">
+<form action="actializaHabitacion" method="POST">
     @csrf    
     @method('PUT')
   <div class="mb-3">
