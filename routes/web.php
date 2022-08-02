@@ -13,7 +13,6 @@ Route::get('/', function () {
 Route::resource('clientes','App\Http\Controllers\ClienteController');
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
 Route::resource('reserva','App\Http\Controllers\ReservaController');
-route::put('actualizar','App\Http\Controllers\HabitacionController');
  
 
 Route::middleware([
