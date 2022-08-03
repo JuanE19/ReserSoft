@@ -10,6 +10,7 @@
     
 <form action ="/clientes" method="POST">
     @csrf
+    <div class="container m-4 w-50">
     <div class="mb-3">
         <label for="" class="form-label">Nombre Completo</label>
         <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" tabindex="1" maxlength="45" required="">
@@ -44,7 +45,7 @@
                             <?php } ?>
                         </select>
                         </div>
-            
+            </div>
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>
                         <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
                         

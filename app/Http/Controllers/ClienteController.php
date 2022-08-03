@@ -16,7 +16,6 @@ class ClienteController extends Controller
     public function index()
     {
        $clientes = Cliente::all();
-
         return view ('cliente.index')->with('clientes', $clientes);
     }
 
@@ -53,7 +52,7 @@ class ClienteController extends Controller
 
         $clientes->save();
 
-        return redirect('/clientes');
+        return redirect('/clientes')->with('info','El cliente se ha Creado correctamente');
     }
 
     /**
@@ -64,7 +63,8 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        
     }
 
     /**
@@ -90,18 +90,19 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $cliente= Cliente::find($id);
+        $tipodocumento = TipoDocumento::all();
 
         $cliente->nombrecompleto = $request->get('nombrecompleto');
         $cliente->documento = $request->get('documento');
         $cliente->correo = $request->get('correo');
         $cliente->telefono = $request->get('telefono');
         $cliente->direccion = $request->get('direccion');
-        $cliente->tipodocumento = $request->get('tipodocumento');
+        $cliente->documento_id = $request->get('tipodocumento');
         
 
         $cliente->save();
 
-        return redirect('/clientes');
+        return redirect('/clientes')->with('info','El cliente se ha Actualizado correctamente');
     }
 
     /**
@@ -115,7 +116,7 @@ class ClienteController extends Controller
         
      $cliente = Cliente::find($id);
      $cliente->delete();
-     return redirect ('/clientes');
+     return redirect ('/clientes')->with('info','El cliente se ha Eliminado correctamente');
 
     }
 }
