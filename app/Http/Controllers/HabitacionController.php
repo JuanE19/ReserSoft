@@ -44,11 +44,10 @@ class HabitacionController extends Controller
         $habitaciones->precio = $request->get('precio');
         $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
 
-        with('message','se ha creado el registro correctamente.');
         $habitaciones->save();
         
 
-        return redirect('/habitaciones');
+        return redirect('/habitaciones')->with('info','El cliente se ha Creado correctamente');
     }
 
     /**
@@ -59,7 +58,7 @@ class HabitacionController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -92,7 +91,7 @@ class HabitacionController extends Controller
         
         $habitacion->save();
 
-        return redirect('/habitaciones');
+        return redirect('/habitaciones')->with('info','El cliente se ha Actualizado correctamente');
     
     }
 
@@ -107,6 +106,16 @@ class HabitacionController extends Controller
     {
         $habitacion = Habitacion::find($id);        
         $habitacion->delete();
-        return redirect('/habitaciones');
+        return redirect ('/habitaciones')->with('info','La habitación se ha Eliminado correctamente');
     }
+    public function actualizarestado(Habitacion $habitacion){ 
+
+        if($habitacion->estado==1)
+            $habitacion->estado=0;
+        else        
+            $habitacion->estado=1;
+        $habitacion->update();
+        return redirect()->route('habitaciones.index')->with('estado Actualizado', 'estado cambiado');
+    }
+   
 }

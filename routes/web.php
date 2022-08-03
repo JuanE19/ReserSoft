@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HabitacionController;
 
 
 
@@ -12,6 +13,8 @@ Route::get('/', function () {
 
 Route::resource('clientes','App\Http\Controllers\ClienteController');
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
+Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarestado"])->name('habitacionestado');
+
 Route::resource('reserva','App\Http\Controllers\ReservaController');
  
 
