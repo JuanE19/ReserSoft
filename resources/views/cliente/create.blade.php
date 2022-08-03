@@ -38,7 +38,7 @@
 
                     <div class="mb-3">
                         <label for="" class="form-label">Tipo de Documento</label>
-                        <select name="tipodocumento" id="tipodocumento" required="">
+                        <select class="form-select" name="tipodocumento" id="tipodocumento" required="">
                             <option value="">Seleccione</option>
                             <?php foreach ($tipodocumento as $td) { ?>
                                 <option value="{{$td['id']}}">{{$td['nombre']}}</option>
@@ -49,7 +49,7 @@
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>
                         <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
                         
-</form>
+</form><br><br>
                 
 
 
@@ -57,6 +57,7 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 @stop
 
 @section('js')
