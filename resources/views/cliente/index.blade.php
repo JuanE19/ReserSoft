@@ -18,11 +18,11 @@
     <thead class="bg-green text-white">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nombre completo</th>
+            <th scope="col">Nombre Completo</th>
             <th scope="col">Documento</th>
             <th scope="col">Correo</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Direccion</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Dirección</th>
             <th scope="col">Tipo de Documento</th>
             <th scope="col">Acciones</th>
         </tr>
@@ -42,33 +42,34 @@
 
                 <form action="{{ route ('clientes.destroy', $cliente->id)}}" method="POST">
 
-                    <!-- Boton Modal Detalle -->
-                    <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    </button>
-                    <!-- Modal Detalle -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Detalle</h5>
+                     
+                            <!-- Boton Modal Detalle -->
+                            <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente">
+                            </button>
+                            <!-- Modal Detalle -->
+                            <div class="modal fade" id="cliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-green text-white">
+                                            <h5 class="modal-title" id="exampleModalLabel"><strong>Información del Cliente</strong></h5>
 
-                             </div>
-                                <div class="modal-body">
-                            
-                                <strong>ID:</strong><br>
-                                <strong>Nombre completo:</strong> <br>                        
-                                <strong>Correo:</strong><br>
-                                <strong>Telefono:</strong><br>
-                                <strong>Direccion:</strong><br>     
-                                <strong>Tipo de Documento:</strong>
+                                    </div>
+                                        <div class="modal-body">
+                                    
+                                        <strong>ID:</strong> <br>
+                                        <strong>Nombre Completo:</strong> <br>                        
+                                        <strong>Correo:</strong><br>
+                                        <strong>Teléfono:</strong><br>
+                                        <strong>Dirección:</strong><br>     
+                                        <strong>Tipo de Documento:</strong>
 
-                            </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-        </div>
-        </div>
-        </div>
+                                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+            </div>
+            </div> 
 
 
         <a href="/clientes/{{ $cliente->id}}/edit" class="btn btn-info fas fa-edit"></a>
