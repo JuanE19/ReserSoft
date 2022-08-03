@@ -44,8 +44,9 @@ class HabitacionController extends Controller
         $habitaciones->precio = $request->get('precio');
         $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
 
-
+        with('message','se ha creado el registro correctamente.');
         $habitaciones->save();
+        
 
         return redirect('/habitaciones');
     }
