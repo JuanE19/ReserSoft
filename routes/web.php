@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
 
 
 
@@ -11,8 +12,14 @@ Route::get('/', function () {
 
 
 Route::resource('clientes','App\Http\Controllers\ClienteController');
+Route::post('clientes/{cliente?}', [ClienteController::class, "actualizarEstado"])->name('clienteEstado');
+
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
+
 Route::resource('reserva','App\Http\Controllers\ReservaController');
+
+
+
  
 
 Route::middleware([

@@ -24,65 +24,89 @@
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>
             <th scope="col">Tipo de Documento</th>
+            <th scope="col">Estado </th>
+
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
         @foreach($clientes as $cliente)
         <tr>
+
+
             <td>{{ $cliente->id }}</td>
             <td>{{ $cliente->NombreCompleto }}</td>
             <td>{{ $cliente->Documento }}</td>
             <td>{{ $cliente->Correo }}</td>
             <td>{{ $cliente->Telefono }}</td>
             <td>{{ $cliente->Direccion }}</td>
+
+
             <td>{{ $cliente->datosdocumento->nombre}}</td>
 
+            <td> @if ($cliente->Estado == 1)
+                <h6 style="color: green"><strong style="color: black"></strong>Activo</h6>
+                @else
+                <h6 style="color: red"><strong style="color: black"></strong>Inactivo</h6>
+                @endif
+
+                <form class="custom-control custom-switch" action="{{ route('clienteEstado', $cliente) }}" method="post">
+                    @csrf
+                    @if ($cliente->Estado == 1)
+                    <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                    @else
+                    <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                    @endif
+                </form>
+
+            </td>
             <td>
 
                 <form action="{{ route ('clientes.destroy', $cliente->id)}}" method="POST">
 
-                     
-                            <!-- Boton Modal Detalle -->
-                            <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente">
-                            </button>
-                            <!-- Modal Detalle -->
-                            <div class="modal fade" id="cliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header bg-green text-white">
-                                            <h5 class="modal-title" id="exampleModalLabel"><strong>Información del Cliente</strong></h5>
 
-                                    </div>
-                                        <div class="modal-body">
-                                    
-                                        <strong>ID:</strong> <br>
-                                        <strong>Nombre Completo:</strong> <br>                        
-                                        <strong>Correo:</strong><br>
-                                        <strong>Teléfono:</strong><br>
-                                        <strong>Dirección:</strong><br>     
-                                        <strong>Tipo de Documento:</strong>
+                    <!-- Boton Modal Detalle -->
+                    <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente">
+                    </button>
+                    <!-- Modal Detalle -->
+                    <div class="modal fade" id="cliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-green text-white">
+                                    <h5 class="modal-title" id="exampleModalLabel"><strong>Información del Cliente</strong></h5>
 
-                                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-            </div>
-            </div>
-            </div> 
+                                </div>
+                                <div class="modal-body">
+
+                                    <strong>ID:</strong> <br>
+                                    <strong>Nombre Completo:</strong> <br>
+                                    <strong>Correo:</strong><br>
+                                    <strong>Teléfono:</strong><br>
+                                    <strong>Dirección:</strong><br>
+                                    <strong>Tipo de Documento:</strong>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-        <a href="/clientes/{{ $cliente->id}}/edit" class="btn btn-info fas fa-edit"></a>
+                    <a href="/clientes/{{ $cliente->id}}/edit" class="btn btn-info fas fa-edit"></a>
 
-        @csrf
+                    <!-- @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">
             <i class="fas fa-trash"></i>
-        </button>
-        </form>
-        </td>
+        </button> -->
+                </form>
+            </td>
         </tr>
-        
+
         @endforeach
 
     </tbody>
