@@ -32,16 +32,13 @@
     <tbody>
         @foreach($clientes as $cliente)
         <tr>
-
-
+            
             <td>{{ $cliente->id }}</td>
             <td>{{ $cliente->NombreCompleto }}</td>
             <td>{{ $cliente->Documento }}</td>
             <td>{{ $cliente->Correo }}</td>
             <td>{{ $cliente->Telefono }}</td>
             <td>{{ $cliente->Direccion }}</td>
-
-
             <td>{{ $cliente->datosdocumento->nombre}}</td>
 
             <td> @if ($cliente->Estado == 1)
@@ -53,11 +50,11 @@
                 <form class="custom-control custom-switch" action="{{ route('clienteEstado', $cliente) }}" method="post">
                     @csrf
                     @if ($cliente->Estado == 1)
-                    <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch1" checked>
-                    <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch{{$cliente->id}}" checked>
+                    <label class="custom-control-label" for="customSwitch{{$cliente->id}}"></label>
                     @else
-                    <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch1">
-                    <label class="custom-control-label" for="customSwitch1"></label>
+                    <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch{{$cliente->id}}">
+                    <label class="custom-control-label" for="customSwitch{{$cliente->id}}"></label>
                     @endif
                 </form>
 
@@ -68,10 +65,10 @@
 
 
                     <!-- Boton Modal Detalle -->
-                    <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente">
+                    <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente{{$cliente->id}}">
                     </button>
                     <!-- Modal Detalle -->
-                    <div class="modal fade" id="cliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="cliente{{$cliente->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header bg-green text-white">
@@ -80,12 +77,12 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <strong>ID:</strong> <br>
-                                    <strong>Nombre Completo:</strong> <br>
-                                    <strong>Correo:</strong><br>
-                                    <strong>Teléfono:</strong><br>
-                                    <strong>Dirección:</strong><br>
-                                    <strong>Tipo de Documento:</strong>
+                                    <strong>ID:</strong> {{ $cliente->id }} <br>
+                                    <strong>Nombre Completo:</strong>  {{ $cliente->NombreCompleto }} <br>
+                                    <strong>Correo:</strong> {{ $cliente->Documento }} <br>
+                                    <strong>Teléfono:</strong> {{ $cliente->Correo }} <br>
+                                    <strong>Dirección:</strong> {{ $cliente->Direccion }} <br>
+                                    <strong>Tipo de Documento:</strong> {{ $cliente->datosdocumento->nombre}}
 
                                 </div>
                                 <div class="modal-footer">
