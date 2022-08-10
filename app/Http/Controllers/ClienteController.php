@@ -43,6 +43,10 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        
+
         $clientes = new Cliente();
 
         $clientes->nombrecompleto = $request->get('nombrecompleto');

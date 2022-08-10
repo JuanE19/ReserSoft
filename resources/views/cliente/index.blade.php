@@ -20,10 +20,10 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre Completo</th>
             <th scope="col">Documento</th>
+            <th scope="col">Tipo de Documento</th>
             <th scope="col">Correo</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>
-            <th scope="col">Tipo de Documento</th>
             <th scope="col">Estado </th>
 
             <th scope="col">Acciones</th>
@@ -36,10 +36,11 @@
             <td>{{ $cliente->id }}</td>
             <td>{{ $cliente->NombreCompleto }}</td>
             <td>{{ $cliente->Documento }}</td>
+            <td>{{ $cliente->datosdocumento->nombre}}</td>
             <td>{{ $cliente->Correo }}</td>
             <td>{{ $cliente->Telefono }}</td>
             <td>{{ $cliente->Direccion }}</td>
-            <td>{{ $cliente->datosdocumento->nombre}}</td>
+           
 
             <td> @if ($cliente->Estado == 1)
                 <h6 style="color: green"><strong style="color: black"></strong>Activo</h6>
@@ -79,10 +80,12 @@
 
                                     <strong>ID:</strong> {{ $cliente->id }} <br>
                                     <strong>Nombre Completo:</strong>  {{ $cliente->NombreCompleto }} <br>
-                                    <strong>Correo:</strong> {{ $cliente->Documento }} <br>
-                                    <strong>Teléfono:</strong> {{ $cliente->Correo }} <br>
+                                    <strong>Documento:</strong> {{ $cliente->Documento }} <br>
+                                    <strong>Tipo de Documento:</strong> {{ $cliente->datosdocumento->nombre}}<br>
+                                    <strong>Correo:</strong> {{ $cliente->Correo }} <br>
+                                    <strong>Teléfono:</strong> {{ $cliente->Telefono }} <br>
                                     <strong>Dirección:</strong> {{ $cliente->Direccion }} <br>
-                                    <strong>Tipo de Documento:</strong> {{ $cliente->datosdocumento->nombre}}
+                                    
 
                                 </div>
                                 <div class="modal-footer">
