@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\TipoDocumento;
 
+
 class ClienteController extends Controller
 {
     public function __construct(){
@@ -44,8 +45,20 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
 
-
+        $request->validate([
         
+            'documento' => 'unique:clientes',
+            'correo' => 'unique:clientes',
+        ],
+         [
+            'documento.unique' => 'Este documento ya existe',
+            'correo.unique' => 'Este correo ya existe'
+        ]
+           
+        );
+        
+    
+
 
         $clientes = new Cliente();
 

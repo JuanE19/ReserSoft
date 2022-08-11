@@ -43,9 +43,9 @@
            
 
             <td> @if ($cliente->Estado == 1)
-                <h6 style="color: green"><strong style="color: black"></strong>Activo</h6>
+                <h6 style="color: green"><strong style="color: black"></strong><b>Activo</b></h6>
                 @else
-                <h6 style="color: red"><strong style="color: black"></strong>Inactivo</h6>
+                <h6 style="color: red"><strong style="color: black"></strong><b>Inactivo</b></h6>
                 @endif
 
                 <form class="custom-control custom-switch" action="{{ route('clienteEstado', $cliente) }}" method="post">

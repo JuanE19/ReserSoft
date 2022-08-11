@@ -8,32 +8,43 @@
 
 @section('content')
     
+
 <form action ="/clientes" method="POST">
     @csrf
     <div class="container m-4 w-50">
     <div class="mb-3">
         <label for="" class="form-label">Nombre Completo</label>
-        <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" tabindex="1" maxlength="45" required="">
+        <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" value="{{old('nombrecompleto')}}" tabindex="1" maxlength="45" required="">
         </div>
 
         <div class="mb-3">
             <label for="" class="form-label">Documento</label>
-            <input id="documento" name="documento" type="text" class="form-control" tabindex="1" maxlength="45" required="">
+            <input id="documento" name="documento" type="text" class="form-control @error('documento') is-invalid @enderror" value="{{old('documento')}}" tabindex="1" maxlength="45" required="">
+            @error('documento')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{$message}}</strong>
+            </span>
+            @enderror
             </div>    
 
             <div class="mb-3">
                 <label for="" class="form-label">Correo</label>
-                <input id="correo" name="correo" type="email" class="form-control" tabindex="1" maxlength="45" required="">
+                <input id="correo" name="correo" type="email" class="form-control @error('correo') is-invalid @enderror" value="{{old('correo')}}" tabindex="1" maxlength="45" required="">
+                @error('correo')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
                 </div>   
 
             <div class="mb-3">
                 <label for="" class="form-label">Telefono</label>
-                <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1" maxlength="20"required="">
+                <input id="telefono" name="telefono" type="text" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20"required="">
                 </div>
 
                 <div class="mb-3">
                     <label for="" class="form-label">Direccion</label>
-                    <input id="direccion" name="direccion" type="text" class="form-control" tabindex="1" maxlength="20" required="">
+                    <input id="direccion" name="direccion" type="text" class="form-control" value="{{old('direccion')}}" tabindex="1" maxlength="20" required="">
                     </div>
 
                     <div class="mb-3">
@@ -61,5 +72,6 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 @stop
