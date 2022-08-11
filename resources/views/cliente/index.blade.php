@@ -17,7 +17,7 @@
     <br>
     <thead class="bg-green text-white">
         <tr>
-            <th scope="col">ID</th>
+            {{-- <th scope="col">Nro</th> --}}
             <th scope="col">Nombre Completo</th>
             <th scope="col">Documento</th>
             <th scope="col">Tipo de Documento</th>
@@ -33,7 +33,7 @@
         @foreach($clientes as $cliente)
         <tr>
             
-            <td>{{ $cliente->id }}</td>
+            {{-- <td>{{ $cliente->id }}</td> --}}
             <td>{{ $cliente->NombreCompleto }}</td>
             <td>{{ $cliente->Documento }}</td>
             <td>{{ $cliente->datosdocumento->nombre}}</td>
