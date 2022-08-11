@@ -7,6 +7,10 @@ use App\Models\Reserva;
 
 class ReservaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,11 +42,11 @@ class ReservaController extends Controller
     {
         $reservas = new Reserva();
 
+        $reservas->nombre = $request->get('nombre');
+        $reservas->apellido = $request->get('apellido');
         $reservas->cantidadDePersonas = $request->get('cantidadDePersonas');
         $reservas->fechaDeIngreso = $request->get('fechaDeIngreso');
-        $reservas->FechaDeSalida = $request->get('FechaDeSalida');
-        $reservas->precio = $request->get('precio');
-        $reservas->tipoDeHabitacion = $request->get('tipoDeHabitacion');
+        $reservas->fechaDeSalida = $request->get('fechaDeSalida');
 
         $reservas->save();
 
@@ -83,11 +87,11 @@ class ReservaController extends Controller
     {
         $reserva= Reserva::find($id);
 
+        $reserva->nombre = $request->get('nombre');
+        $reserva->apellido = $request->get('apellido');
         $reserva->cantidadDePersonas = $request->get('cantidadDePersonas');
         $reserva->fechaDeIngreso = $request->get('fechaDeIngreso');
-        $reserva->fechaDeSalida = $request->get('FechaDeSalida');
-        $reserva->precio = $request->get('precio');
-        $reserva->tipoDeHabitacion = $request->get('tipoDeHabitacion');
+        $reserva->fechaDeSalida = $request->get('fechaDeSalida');
 
         $reserva->save();
 

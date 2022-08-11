@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Reservas</h1>
+    <h1>Editar Reserva</h1>
 @stop
 
 @section('content')
@@ -11,6 +11,16 @@
     @csrf
     @method('PUT')
     <div class="container m-4 w-25">
+    <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" value="{{$reserva->nombre}}">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Apellido</label>
+        <input id="apellido" name="apellido" type="text" class="form-control" tabindex="1" value="{{$reserva->apellido}}">
+    </div>
+
     <div class="mb-3">
         <label for="" class="form-label">Cantidad de personas</label>
         <input id="cantidadDePersonas" name="cantidadDePersonas" type="text" class="form-control" tabindex="1" value="{{$reserva->cantidadDePersonas}}">
@@ -23,17 +33,7 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Fecha de salida</label>
-        <input id="FechaDeSalida" name="FechaDeSalida" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeSalida}}">
-    </div>
-
-    <div class="mb-3">
-        <label for="" class="form-label">Precio</label>
-        <input id="precio" name="precio" type="text" class="form-control" tabindex="1" value="{{$reserva->precio}}">
-    </div>
-
-    <div class="mb-3">
-        <label for="" class="form-label">Tipo de Habitación</label>
-        <input id="tipoDeHabitacion" name="tipoDeHabitacion" type="text" class="form-control" tabindex="1" value="{{$reserva->tipoDeHabitacion}}">
+        <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeSalida}}">
     </div>
 
     <a href="/reserva" class="btn btn-secondary" tabindex="5">Cancelar</a>
