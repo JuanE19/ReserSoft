@@ -13,12 +13,12 @@
     @csrf
     <div class="container m-4 w-50">
     <div class="mb-3">
-        <label for="" class="form-label">Nombre Completo</label>
+        <label for="" class="form-label">Nombre Completo <span style="color:red">*</span> </label>
         <input id="nombrecompleto" name="nombrecompleto" type="text" class="form-control" value="{{old('nombrecompleto')}}" tabindex="1" maxlength="45" required="">
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Documento</label>
+            <label for="" class="form-label">Documento <span style="color:red">*</span></label>
             <input id="documento" name="documento" type="text" class="form-control @error('documento') is-invalid @enderror" value="{{old('documento')}}" tabindex="1" maxlength="45" required="">
             @error('documento')
             <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
             </div>    
 
             <div class="mb-3">
-                <label for="" class="form-label">Correo</label>
+                <label for="" class="form-label">Correo <span style="color:red">*</span></label>
                 <input id="correo" name="correo" type="email" class="form-control @error('correo') is-invalid @enderror" value="{{old('correo')}}" tabindex="1" maxlength="45" required="">
                 @error('correo')
                 <span class="invalid-feedback" role="alert">
@@ -38,17 +38,17 @@
                 </div>   
 
             <div class="mb-3">
-                <label for="" class="form-label">Telefono</label>
+                <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
                 <input id="telefono" name="telefono" type="text" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20"required="">
                 </div>
 
                 <div class="mb-3">
-                    <label for="" class="form-label">Direccion</label>
+                    <label for="" class="form-label">Direccion <span style="color:red">*</span></label>
                     <input id="direccion" name="direccion" type="text" class="form-control" value="{{old('direccion')}}" tabindex="1" maxlength="20" required="">
                     </div>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">Tipo de Documento</label>
+                        <label for="" class="form-label">Tipo de Documento <span style="color:red">*</span></label>
                         <select class="form-select" name="tipodocumento" id="tipodocumento" required="">
                             <option value="">Seleccione</option>
                             <?php foreach ($tipodocumento as $td) { ?>

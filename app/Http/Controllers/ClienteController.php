@@ -109,7 +109,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        
         $request->validate([
         
             'documento' => 'unique:clientes',
