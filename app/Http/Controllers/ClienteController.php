@@ -109,6 +109,19 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+        
+            'documento' => 'unique:clientes',
+            'correo' => 'unique:clientes',
+        ],
+         [
+            'documento.unique' => 'Este documento ya existe',
+            'correo.unique' => 'Este correo ya existe'
+        ]
+           
+        );
+
         $cliente= Cliente::find($id);
         $tipodocumento = TipoDocumento::all();
 
