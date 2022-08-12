@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\HabitacionController;
 
 
 
@@ -12,14 +12,10 @@ Route::get('/', function () {
 
 
 Route::resource('clientes','App\Http\Controllers\ClienteController');
-Route::post('clientes/{cliente?}', [ClienteController::class, "actualizarEstado"])->name('clienteEstado');
-
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
+Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarestado"])->name('habitacionestado');
 
 Route::resource('reserva','App\Http\Controllers\ReservaController');
-
-
-
  
 
 Route::middleware([
@@ -31,3 +27,4 @@ Route::middleware([
         return view('dash.index');
     })->name('dash');
 });
+
