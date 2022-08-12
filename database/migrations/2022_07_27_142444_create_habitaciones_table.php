@@ -18,6 +18,7 @@ class CreateHabitacionesTable extends Migration
             $table->integer("numeroDeHabitacion");
             $table->double("precio");
             $table->string("tipoDeHabitacion");
+            $table->boolean("estado")->default(1);
             $table->timestamps();
         });
     }

@@ -12,6 +12,7 @@
     <form action ="/habitaciones" method="POST">
     @csrf
 
+        <div class="container m-4 w-50">
         <div class="mb-3">
             <label for="" class="form-label">Numero de la Habitacion</label>
             <input id="numerodehabitacion" name="numerodehabitacion" type="number" class="form-control" tabindex="1">

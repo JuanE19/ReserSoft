@@ -8,53 +8,52 @@
 
 @section('content')
 
-
-<!-- <a href="habitaciones/create" class="btn btn-primary mb-3"><b>Agregar habitación</b></a> -->
+<!--Alertas Personalizadas-->
+@include('components.flash_alerts')
 
 <!-- Button trigger modal -->
-<button type="button" href="habitaciones/create" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" href="habitaciones/create" class="bi bi-person-plus-fill btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Agregar habitación
 </button>
-
+<br><br>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar habitación</h5>
-      </div>
-      <div class="modal-body">
-      <form action ="/habitaciones" method="POST">
+    <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Agregar habitación</h5>
+    </div>
+    <div class="modal-body">
+    <form action ="/habitaciones" method="POST">
     @csrf
 
-        <div class="mb-3">
-            <label for="" class="form-label">Numero de la Habitacion</label>
-            <input id="numerodehabitacion" name="numerodehabitacion" type="number" class="form-control" tabindex="1">
-            </div>    
+    <div class="mb-3">
+    <label for="" class="form-label">Numero de la Habitacion</label>
+    <input id="numerodehabitacion" name="numerodehabitacion" type="number" class="form-control" tabindex="1">
+    </div>    
 
-            <div class="mb-3">
-                <label for="" class="form-label">Precio</label>
-                <input id="precio" name="precio" type="number" class="form-control" tabindex="1">
-                </div>   
+    <div class="mb-3">
+    <label for="" class="form-label">Precio</label>
+    <input id="precio" name="precio" type="number" class="form-control" tabindex="1">
+    </div>   
 
-            <div class="mb-3">
-                <label for="" class="form-label">Tipo de habitacion</label>
-                <input id="tipodehabitacion" name="tipodehabitacion" type="text" class="form-control" tabindex="1">
-                </div>
-            
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
-                        
-</form>
-      </div>
-      <div class="modal-footer">
-      </div>
+    <div class="mb-3">
+    <label for="" class="form-label">Tipo de habitacion</label>
+    <input id="tipodehabitacion" name="tipodehabitacion" type="text" class="form-control" tabindex="1">
     </div>
-  </div>
-</div>
+       
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+                        
+    </form>
+    </div>
+    <div class="modal-footer">
+    </div>
+    </div>
+    </div>
+    </div>
 
-<table id="habitaciones" class="table table-striped table-bordered shadow-lg mt-1"  style="width:90%">
-    
+<table id="habitaciones" class="table table-striped table-bordered shadow-lg mt-1"  style="width:90%">  
  <thead class="bg-green text-white">
 
    <tr>
@@ -70,19 +69,41 @@
 <tbody>
     @foreach($habitaciones as $habitacion)
     <tr>
-        <td>{{ $habitacion->id }}</td>
-        <td>{{ $habitacion->caracteristica}}</td>
-        <td>{{ $habitacion->numeroDeHabitacion }}</td>
-        <td>{{ $habitacion->precio }}</td>
-        <td>{{ $habitacion->tipoDeHabitacion}}</td>
-        <td>{{ $habitacion->estado }}</td>
-        <td>
+    <td>{{ $habitacion->id }}</td>
+    <td>{{ $habitacion->caracteristica}}</td>
+    <td>{{ $habitacion->numeroDeHabitacion }}</td>
+    <td>{{ $habitacion->precio }}</td>
+    <td>{{ $habitacion->tipoDeHabitacion}}</td>
+    <td> @if ($habitacion->estado == 1)
 
+
+            <h6 style="color: green"><strong style="color: black"></strong>Activo</h6>
+        @else
+            <h6 style="color: red"><strong style="color: black"></strong>Inactivo</h6>
+        @endif
+                              
+    <form class="custom-control custom-switch" action="{{ route('habitacionestado', $habitacion) }}" method="post">
+        @csrf
+        @if ($habitacion->estado == 1)
+            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input"id="customSwitch1" checked>
+            <label class="custom-control-label" for="customSwitch1"></label>
+        @else
+            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1"></label>
+        @endif
+    </form>
+</td>
+
+        <td>
         <form action="{{ route ('habitaciones.destroy', $habitacion->id) }}" method="POST">
-          <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-info fas fa-edit"></a>
-                     
-        </td> 
-        
+
+</div>
+</div>
+</div>
+</div> 
+          
+          <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-info fas fa-edit"></a>         
+        </td>      
     </tr>
     @endforeach
 </tbody>
