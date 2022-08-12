@@ -27,3 +27,4 @@ Route::middleware([
         return view('dash.index');
     })->name('dash');
 });
+

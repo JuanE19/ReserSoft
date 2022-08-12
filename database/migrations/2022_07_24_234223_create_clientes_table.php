@@ -20,6 +20,7 @@ class CreateClientesTable extends Migration
             $table->string('Correo', 50);
             $table->string('Telefono', 20);
             $table->string('Direccion', 20);
+            $table->boolean('Estado')->nullable();
             $table->unsignedBigInteger('documento_id');
             $table->foreign('documento_id')->references('id')->on('tipo_documentos');
             $table->timestamps();
