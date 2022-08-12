@@ -16,6 +16,10 @@
     <input id="id" name="id" type="text" class="form-control" value="{{$habitacion->id}}">    
   </div>
   <div class="mb-3">
+    <label for="" class="form-label">Caracteristicas</label>
+    <input id="caracteristicas" name="caracteristicas" type="text" class="form-control" value="{{$habitacion->caracteristicas}}">
+  </div>
+  <div class="mb-3">
     <label for="" class="form-label">Numero de la Habitacion</label>
     <input id="numeroDeHabitacion" name="numeroDeHabitacion" type="text" class="form-control" value="{{$habitacion->numeroDeHabitacion}}">
   </div>
@@ -25,7 +29,7 @@
   </div>
   <div class="mb-3">
     <label for="" class="form-label">Tipo de habitacion</label>
-    <input id="tipoDeHabitacion" name="tipoDeHabitacion" type="text" class="form-control" value="{{$habitacion->tipoDeHabitacion}}">
+    <input id="tipo" name="tipo" type="text" class="form-control" value="{{$habitacion->tipo}}">
   </div>
   <a href="/habitaciones" class= "btn btn-secondary" tabindex="5">Cancelar</a>
   <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>

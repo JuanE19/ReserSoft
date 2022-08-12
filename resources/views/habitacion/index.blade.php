@@ -12,8 +12,8 @@
 @include('components.flash_alerts')
 
 <!-- Button trigger modal -->
-<button type="button" href="habitaciones/create" class="bi bi-person-plus-fill btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Agregar habitación
+<button type="button" href="habitaciones/create" class="bi bi-building - btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  + Agregar habitación
 </button>
 <br><br>
 <!-- Modal -->
@@ -21,27 +21,117 @@
     <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Agregar habitación</h5>
+    <h5 class="modal-title" id="exampleModalLabel"> Agregar habitación</h5>
     </div>
     <div class="modal-body">
     <form action ="/habitaciones" method="POST">
     @csrf
 
+
+    <div class="mb-3">
+    <label for="" class="form-label">Caracteristicas</label>
+    <label for="" class="form-label"></label>
+    <input id="caracteristicas" name="caracteristicas" type="text" class="form-control" tabindex="1" maxlength="45" required="">
+    </div>
+
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-bed"></i> Cama individual estandar </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-bed"></i> Cama doble estandar </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-bed"></i> Cama doble - 2 camas </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-tv"></i> 1 TV</span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-tv"></i> 2 TV</span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-tint"></i> Agua Caliente </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-water"></i> Aire acondicionado </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-water"></i> Ventilador </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value="">
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-toilet"></i> Baño privado </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-couch"></i> Armario </span>
+    </label>
+    </div>
+
+    <div class="form-check">
+    <label class="form-check-label">
+    <input class="checkbox" type="checkbox" class="ml-3" value=""> 
+    <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-wifi"></i> Servicio Wifi </span>
+    </label>
+    </div>
+
+    <br>
+
+<input type="hidden" name="caracteristicasCategoria">         
+
+
     <div class="mb-3">
     <label for="" class="form-label">Numero de la Habitacion</label>
-    <input id="numerodehabitacion" name="numerodehabitacion" type="number" class="form-control" tabindex="1">
+    <input id="numerodehabitacion" name="numerodehabitacion" placeholder="Ingresa el numero de la habitación" type="number" class="form-control" tabindex="1" maxlength="45" required="">
     </div>    
 
     <div class="mb-3">
     <label for="" class="form-label">Precio</label>
-    <input id="precio" name="precio" type="number" class="form-control" tabindex="1">
+    <input id="precio" name="precio" placeholder="Ingresa el precio de la habitación" type="number" class="form-control" tabindex="1" maxlength="20"required="">
     </div>   
 
     <div class="mb-3">
     <label for="" class="form-label">Tipo de habitacion</label>
-    <input id="tipodehabitacion" name="tipodehabitacion" type="text" class="form-control" tabindex="1">
+    <input id="tipodehabitacion" name="tipodehabitacion" placeholder="Ingresa el tipo de habitación" type="text" class="form-control" tabindex="1" maxlength="20"required="">
     </div>
-       
+              
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
                         
@@ -58,7 +148,7 @@
 
    <tr>
     <th scope="col">Código</th>
-    <th scope="col">Caracteristica</th>
+    <th scope="col">Caracteristicas</th>
     <th scope="col">Numero de habitación</th>
     <th scope="col">Precio</th>
     <th scope="col">Tipo de habitación</th>
@@ -67,15 +157,16 @@
   </tr>
  </thead>
 <tbody>
+
     @foreach($habitaciones as $habitacion)
     <tr>
     <td>{{ $habitacion->id }}</td>
-    <td>{{ $habitacion->caracteristica}}</td>
+    <td>{{ $habitacion->caracteristicas}}</td>
     <td>{{ $habitacion->numeroDeHabitacion }}</td>
     <td>{{ $habitacion->precio }}</td>
     <td>{{ $habitacion->tipoDeHabitacion}}</td>
-    <td> @if ($habitacion->estado == 1)
 
+    <td> @if ($habitacion->estado == 1)
 
             <h6 style="color: green"><strong style="color: black"></strong>Activo</h6>
         @else
@@ -85,11 +176,13 @@
     <form class="custom-control custom-switch" action="{{ route('habitacionestado', $habitacion) }}" method="post">
         @csrf
         @if ($habitacion->estado == 1)
-            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input"id="customSwitch1" checked>
-            <label class="custom-control-label" for="customSwitch1"></label>
+            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" 
+            id="customSwitch{{$habitacion->id}}" checked>
+            <label class="custom-control-label" for="customSwitch{{$habitacion->id}}"></label>
         @else
-            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1"></label>
+            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" 
+            id="customSwitch{{$habitacion->id}}">
+            <label class="custom-control-label" for="customSwitch{{$habitacion->id}}"></label>
         @endif
     </form>
 </td>
@@ -101,10 +194,21 @@
 </div>
 </div>
 </div> 
+
           
-          <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-info fas fa-edit"></a>         
+          <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-info fas fa-edit"></a>  
+
+          @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">
+            <i class="fas fa-trash"></i>
+        </button>
+        </form>
+        </td>
+        </tr>    
         </td>      
     </tr>
+
     @endforeach
 </tbody>
 </table>
