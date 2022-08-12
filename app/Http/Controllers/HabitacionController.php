@@ -7,6 +7,10 @@ use App\Models\Habitacion;
 
 class HabitacionController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +44,7 @@ class HabitacionController extends Controller
         $habitaciones = new Habitacion();
 
         $habitaciones->id = $request->get('id');
+        $habitaciones->caracteristicas = $request->get('caracteristicas');
         $habitaciones->numerodehabitacion = $request->get('numerodehabitacion');
         $habitaciones->precio = $request->get('precio');
         $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
@@ -47,7 +52,7 @@ class HabitacionController extends Controller
         $habitaciones->save();
         
 
-        return redirect('/habitaciones')->with('info','El cliente se ha Creado correctamente');
+        return redirect('/habitaciones')->with('info','La habitación se ha agregado correctamente');
     }
 
     /**
@@ -85,13 +90,14 @@ class HabitacionController extends Controller
         $habitacion = Habitacion::find($id);
 
         $habitacion->id = $request->get('id');
+        $habitacion->caracteristicas = $request->get('caracteristicas');
         $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
         $habitacion->precio = $request->get('precio');
         $habitacion->tipodehabitacion = $request->get('tipoDeHabitacion');
         
         $habitacion->save();
 
-        return redirect('/habitaciones')->with('info','El cliente se ha Actualizado correctamente');
+        return redirect('/habitaciones')->with('info','La habitacion se ha actualizado correctamente');
     
     }
 
@@ -115,7 +121,8 @@ class HabitacionController extends Controller
         else        
             $habitacion->estado=1;
         $habitacion->update();
-        return redirect()->route('habitaciones.index')->with('estado Actualizado', 'estado cambiado');
+
+        return redirect('/habitaciones')->with('estado Actualizado', 'estado cambiado');
     }
    
 }
