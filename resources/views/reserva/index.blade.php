@@ -75,6 +75,8 @@
 @stop
 
 @section('js')
+<script src="https://code.jsquery.com/jquery-3.2.1.js"></script>
+<script type="text/javascript"></script>
 <script>
     console.log('Hi!');
 </script>
