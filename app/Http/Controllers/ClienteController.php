@@ -112,11 +112,11 @@ class ClienteController extends Controller
         
         $request->validate([
         
-            'documento' => 'unique:clientes',
-            'correo' => 'unique:clientes',
+            'documento' => 'unique:clientes,documento,',
+            'correo' => 'unique:clientes,correo,'
         ],
          [
-            'documento.unique' => 'Este documento ya existe',
+            'documento.unique' => 'Este documento ya existe', 
             'correo.unique' => 'Este correo ya existe'
         ]
            
