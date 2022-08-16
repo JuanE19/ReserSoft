@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+
+<!-- Crear reserva -->
 <div class="container">
     <form action="/reserva" method="POST">
         @csrf
@@ -33,6 +35,8 @@
     </form>
 </div>
 
+
+<!-- tabla -->
 <div class="container w-80">
     <table id="dataTableReserva" class="table table-striped table-bordered shadow-lg mt-4">
         <thead class="bg-green text-white">
@@ -57,12 +61,33 @@
                 <td>{{ $reserva->fechaDeSalida}}</td>
                 <td>
                     <form action="{{ route  ('reserva.destroy', $reserva->id)}}" method="POST">
-                        <a href="/reserva/{{ $reserva->id}}/edit" class="bi bi-pencil-square">Editar</a>
+                        <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-primary bi bi-pencil-square"></a>
+                        <button type="button" class="btn btn-primary bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        </button>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle Reserva</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+        </div>
+    </div>
 </div>
 
 @stop
