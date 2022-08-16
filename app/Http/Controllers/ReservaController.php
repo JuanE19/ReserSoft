@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
+use App\Models\Habitacion;
 
 class ReservaController extends Controller
 {
@@ -19,7 +20,8 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
-        return view('reserva.index')->with('reservas', $reservas);
+        $habitacion_id = Habitacion::all();
+        return view('reserva.index', compact('reservas', 'habitacion_id'));
     }
 
     /**
@@ -29,7 +31,8 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        return view('reserva.create');
+        $habitacion_id = Habitacion::all();
+        return view('reserva.create')->with('habitacion_id', $habitacion_id);
     }
 
     /**
@@ -47,6 +50,7 @@ class ReservaController extends Controller
         $reservas->cantidadDePersonas = $request->get('cantidadDePersonas');
         $reservas->fechaDeIngreso = $request->get('fechaDeIngreso');
         $reservas->fechaDeSalida = $request->get('fechaDeSalida');
+        $reservas->habitacion_id = $request->get('habitacion_id');
 
         $reservas->save();
 
@@ -72,8 +76,9 @@ class ReservaController extends Controller
      */
     public function edit($id)
     {
+        $habitacion_id = Habitacion::all();
         $reserva = Reserva::find($id);
-        return view('reserva.edit')->with('reserva', $reserva);
+        return view('reserva.edit', compact('reserva','habitacion_id'));
     }
 
     /**
@@ -85,6 +90,7 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $habitacion_id = Habitacion::all();
         $reserva= Reserva::find($id);
 
         $reserva->nombre = $request->get('nombre');
@@ -92,6 +98,7 @@ class ReservaController extends Controller
         $reserva->cantidadDePersonas = $request->get('cantidadDePersonas');
         $reserva->fechaDeIngreso = $request->get('fechaDeIngreso');
         $reserva->fechaDeSalida = $request->get('fechaDeSalida');
+        $reserva->habitacion_id = $request->get('habitacion_id');
 
         $reserva->save();
 

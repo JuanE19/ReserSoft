@@ -29,9 +29,17 @@
             <span class="input-group-text">Salida</span>
             <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2">
             <input id="cantidadDePersonas" name="cantidadDePersonas" type="text" class="form-control mx-2" placeholder="Cantidad de personas" aria-label="Cantidad de personas" aria-describedby="basic-addon2">
-            <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
         </div>
-
+        <div class="mb-3">
+            <label for="" class="form-label">Tipo de habitacion<span style="color:red">*</span></label>
+            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+                <option value="">Seleccione</option>
+                <?php foreach ($habitacion_id as $td) { ?>
+                    <option value="{{$td['id']}}">{{$td['tipoDeHabitacion']}}</option>
+                <?php } ?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
     </form>
 </div>
 
@@ -61,12 +69,12 @@
                 <td>{{ $reserva->fechaDeSalida}}</td>
                 <td>
                     <form action="{{ route  ('reserva.destroy', $reserva->id)}}" method="POST">
-                        <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-primary bi bi-pencil-square"></a>
-                        <button type="button" class="btn btn-primary bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-light bi bi-pencil-square"></a>
+                        <button type="button" class="btn btn-light bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         </button>
                 </td>
             </tr>
-            @endforeach
+
         </tbody>
     </table>
 </div>
@@ -80,16 +88,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <strong>Id:</strong> {{ $reserva->id }} <br>
+                <strong>Nombre:</strong> {{ $reserva->nombre }} <br>
+                <strong>Apellido:</strong> {{ $reserva->apellido }} <br>
+                <strong>Cantidad de personas:</strong> {{ $reserva->cantidadDePersonas }} <br>
+                <strong>Tipo de habitacion:</strong> {{ $reserva->habitacion_id->tipoDeHabitacion}}<br>
+                <strong>Precio:</strong> {{ $reserva->habitacion_id->precio}}<br>
+                <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
+                <strong>Fecha de salida:</strong> {{ $reserva->fechaDeSalida }} <br>
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
         </div>
     </div>
 </div>
-
+@endforeach
 @stop
 
 @section('css')

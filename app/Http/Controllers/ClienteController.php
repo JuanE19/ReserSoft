@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\TipoDocumento;
 
+
 class ClienteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +44,22 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+        
+            'documento' => 'unique:clientes',
+            'correo' => 'unique:clientes',
+        ],
+         [
+            'documento.unique' => 'Este documento ya existe',
+            'correo.unique' => 'Este correo ya existe'
+        ]
+           
+        );
+        
+    
+
+
         $clientes = new Cliente();
 
         $clientes->nombrecompleto = $request->get('nombrecompleto');
@@ -89,6 +109,19 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
+        $request->validate([
+        
+            'documento' => 'unique:clientes,documento,',
+            'correo' => 'unique:clientes,correo,'
+        ],
+         [
+            'documento.unique' => 'Este documento ya existe', 
+            'correo.unique' => 'Este correo ya existe'
+        ]
+           
+        );
+
         $cliente= Cliente::find($id);
         $tipodocumento = TipoDocumento::all();
 
