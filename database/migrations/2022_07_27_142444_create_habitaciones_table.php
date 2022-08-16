@@ -18,7 +18,8 @@ class CreateHabitacionesTable extends Migration
             $table->string("caracteristicas");
             $table->integer("numeroDeHabitacion");
             $table->double("precio");
-            $table->string("tipoDeHabitacion");
+            $table->unsignedBigInteger("tipoDeHabitacion");
+            $table->foreign('tipoDeHabitacion')->references('id')->on('tipos');
             $table->boolean("estado")->nullable();
             $table->timestamps();
         });

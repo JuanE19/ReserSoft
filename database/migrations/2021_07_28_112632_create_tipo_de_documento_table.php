@@ -15,14 +15,14 @@ class CreateTipoDeDocumentoTable extends Migration
     {
         Schema::create('tipo_documentos', function (Blueprint $table) {
             $table->id();
-            $table->string("tipodehabitacion");
+            $table->string("nombre");
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
+     *ñ
      * @return void
      */
     public function down()
