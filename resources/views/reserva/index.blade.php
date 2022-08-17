@@ -65,8 +65,8 @@
                 <td>{{ $reserva->fechaDeIngreso}}</td>
                 <td>
                     <form action="{{ route  ('reserva.destroy', $reserva->id)}}" method="POST">
-                        <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-light bi bi-pencil-square"></a>
-                        <button type="button" class="btn btn-light bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
+                        <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-light bi bi-pencil-square border"></a>
+                        <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
                         </button>
                 </td>
             </tr>
@@ -74,7 +74,7 @@
             <div class="modal fade" id="reserva{{$reserva->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-success">
                             <h5 class="modal-title" id="exampleModalLabel">Detalle Reserva</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
