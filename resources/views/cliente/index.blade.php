@@ -12,7 +12,7 @@
 @include('components.flash_alerts')
 
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
-<table id="clientes" class="table table-striped table-bordered shadow-lg mt-1" style="width:100%">
+<table id="clientes" class="table  shadow-lg mt-1" style="width:100%">
     <br>
     <br>
     <thead class="bg-green text-white">
@@ -66,7 +66,7 @@
 
 
                     <!-- Boton Modal Detalle -->
-                    <button type="button" class="btn btn-success bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente{{$cliente->id}}">
+                    <button type="button" class="btn btn-light border bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#cliente{{$cliente->id}}">
                     </button>
                     <!-- Modal Detalle -->
                     <div class="modal fade" id="cliente{{$cliente->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,7 +96,7 @@
                     </div>
 
 
-                    <a href="/clientes/{{ $cliente->id}}/edit" class="btn btn-info fas fa-edit"></a>
+                    <a href="/clientes/{{ $cliente->id}}/edit" class="btn btn-light border fas fa-edit"></a>
 
                     <!-- @csrf
         @method('DELETE')
