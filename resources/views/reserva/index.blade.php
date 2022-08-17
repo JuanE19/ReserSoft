@@ -46,7 +46,7 @@
 
 <!-- tabla -->
 <div class="container w-80">
-    <table id="dataTableReserva" class="table table-bordered shadow-lg mt-4">
+    <table id="dataTableReserva" class="table shadow-lg mt-4">
         <thead class="bg-success">
             <tr>
                 <th scope="col">Id</th>
