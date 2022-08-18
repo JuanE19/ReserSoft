@@ -12,10 +12,10 @@
 @include('components.flash_alerts')
 
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
-<table id="clientes" class="table  shadow-lg mt-1" style="width:100%">
+<table id="clientes" class="table table-hover shadow-lg mt-1" style="width:100%">
     <br>
     <br>
-    <thead class="bg-green text-white">
+    <thead class="bg-green text-white ">
         <tr>
             {{-- <th scope="col">Nro</th> --}}
             <th scope="col">Nombre Completo</th>
