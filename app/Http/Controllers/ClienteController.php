@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\TipoDocumento;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ClienteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +44,22 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+        
+            'documento' => 'unique:clientes',
+            'correo' => 'unique:clientes',
+        ],
+         [
+            'documento.unique' => 'Este documento ya existe',
+            'correo.unique' => 'Este correo ya existe'
+        ]
+           
+        );
+        
+    
+
+
         $clientes = new Cliente();
 
         $clientes->nombrecompleto = $request->get('nombrecompleto');
@@ -89,8 +109,9 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $cliente= Cliente::find($id);
-        $tipodocumento = TipoDocumento::all();
+        $infoClienteActual = Cliente::find($id);
 
         $cliente->nombrecompleto = $request->get('nombrecompleto');
         $cliente->documento = $request->get('documento');
@@ -98,11 +119,43 @@ class ClienteController extends Controller
         $cliente->telefono = $request->get('telefono');
         $cliente->direccion = $request->get('direccion');
         $cliente->documento_id = $request->get('tipodocumento');
+
+         
+        try {
+            $cliente->save();
+
+            return redirect('/clientes')->with('info','El cliente se ha Actualizado correctamente');
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+
+                if ($cliente->Documento != $infoClienteActual->Documento) {
+                    $request->validate([
         
+                        'documento' => 'unique:clientes,documento,'
 
-        $cliente->save();
+                    ],
+                    [
+                        'documento.unique' => 'Este documento ya existe'
+                    ]
+                    
+                    );
+                }else {
+                    $request->validate([
+        
+                        'correo' => 'unique:clientes,correo,'
+                    ],
+                    [ 
+                        'correo.unique' => 'Este correo ya existe'
+                    ]
+                    
+                    );
+                }
+                 
+            }
+            
+        }
 
-        return redirect('/clientes')->with('info','El cliente se ha Actualizado correctamente');
+
     }
 
     /**
