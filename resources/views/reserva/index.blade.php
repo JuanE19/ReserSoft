@@ -7,42 +7,54 @@
 @stop
 
 @section('content')
+
+<!-- Crear reserva -->
 <div class="container">
     <form action="/reserva" method="POST">
         @csrf
-        <div class="input-group mb-3">
-            <input id="nombre" name="nombre" class="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1">
-        </div>
 
         <div class="input-group mb-3">
-            <input id="apellido" name="apellido" class="form-control" placeholder="apellido" aria-label="apellido" aria-describedby="basic-addon2">
-
+            <span class="input-group-text mx-2">Documento del cliente</span>
+            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+                <option value="">Seleccione</option>
+                <?php foreach ($cliente_id as $td) { ?>
+                    <option value="{{$td['id']}}">{{$td['documento']}}</option>
+                <?php } ?>
+            </select>
         </div>
 
         <label for="basic-url" class="form-label">Fechas</label>
 
         <div class="input-group mb-3">
-            <span class="input-group-text">Llegada</span>
+            <span class="input-group-text">Ingreso</span>
             <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control mx-2">
             <span class="input-group-text">Salida</span>
             <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2">
-            <input id="cantidadDePersonas" name="cantidadDePersonas" type="text" class="form-control mx-2" placeholder="Cantidad de personas" aria-label="Cantidad de personas" aria-describedby="basic-addon2">
-            <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
         </div>
 
+        <div class="input-group mb-3">
+            <span class="input-group-text mx-2">Tipo de habitación</span>
+            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+                <option value="">Seleccione</option>
+                <?php foreach ($habitacion_id as $td) { ?>
+                    <option value="{{$td['id']}}">{{$td['tipoDeHabitacion']}}</option>
+                <?php } ?>
+            </select>
+            <button type="submit" class="btn btn-success mx-2" tabindex="4">Guardar</button>
+        </div>
     </form>
 </div>
 
+
+<!-- tabla -->
 <div class="container w-80">
-    <table id="dataTableReserva" class="table table-striped table-bordered shadow-lg mt-4">
-        <thead class="bg-green text-white">
+    <table id="dataTableReserva" class="table shadow-lg mt-4">
+        <thead class="bg-success">
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Cantidad de personas</th>
+                <th scope="col">Documento</th>
                 <th scope="col">Fecha de ingreso</th>
-                <th scope="col">Fecha de salida</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -50,16 +62,38 @@
             @foreach ($reservas as $reserva)
             <tr>
                 <td>{{ $reserva->id}}</td>
-                <td>{{ $reserva->nombre}}</td>
-                <td>{{ $reserva->apellido}}</td>
-                <td>{{ $reserva->cantidadDePersonas}}</td>
+                <td>{{ $reserva->traerCliente->NombreCompleto}}</td>
+                <td>{{ $reserva->traerCliente->Documento}}</td>
                 <td>{{ $reserva->fechaDeIngreso}}</td>
-                <td>{{ $reserva->fechaDeSalida}}</td>
                 <td>
                     <form action="{{ route  ('reserva.destroy', $reserva->id)}}" method="POST">
-                        <a href="/reserva/{{ $reserva->id}}/edit" class="bi bi-pencil-square">Editar</a>
+                        <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-light bi bi-pencil-square border"></a>
+                        <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
+                        </button>
                 </td>
             </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="reserva{{$reserva->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success">
+                            <h5 class="modal-title" id="exampleModalLabel">Detalle Reserva</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <strong>Id:</strong> {{ $reserva->id }} <br>
+                            <strong>Nombre:</strong> {{ $reserva->traerCliente->NombreCompleto }} <br>
+                            <strong>Documento:</strong> {{ $reserva->traerCliente->Documento }} <br>
+                            <strong>Telefono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
+                            <strong>Cantidad de personas:</strong> {{ $reserva->cantidadDePersonas }} <br>
+                            <strong>Tipo de habitacion:</strong> {{ $reserva->traerHabitacion->tipoDeHabitacion}}<br>
+                            <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
+                            <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
+                            <strong>Fecha de salida:</strong> {{ $reserva->fechaDeSalida }} <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
         </tbody>
     </table>
