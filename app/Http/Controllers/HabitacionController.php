@@ -32,7 +32,7 @@ class HabitacionController extends Controller
      */
     public function create()
     {
-        $tipod = Tipo::all();
+        $tipo = Tipo::all();
         return view ('habitacion.create')->with('tipo', $tipo);
     }
 

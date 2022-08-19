@@ -128,8 +128,8 @@ class ReservaController extends Controller
             $reserva->estado = 1;
         else
             $reserva->estado = 2;
-
         $reserva->update();
-        return redirect('/reserva')->with('EstadoActualizado', 'Estado cambiado');
+         
+        return redirect('/reserva')->with('Estado Actualizado', 'Estado cambiado');
     }
 }

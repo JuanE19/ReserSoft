@@ -15,7 +15,7 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text mx-2">Documento del cliente</span>
-            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+            <select class="form-select" name="cliente_id" id="cliente_id" required="">
                 <option value="">Seleccione</option>
                 <?php foreach ($cliente_id as $td) { ?>
                     <option value="{{$td['id']}}">{{$td['Documento']}}</option>
@@ -107,7 +107,6 @@
                             <strong>Nombre:</strong> {{ $reserva->traerCliente->NombreCompleto }} <br>
                             <strong>Documento:</strong> {{ $reserva->traerCliente->Documento }} <br>
                             <strong>Telefono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
-                            <strong>Cantidad de personas:</strong> {{ $reserva->cantidadDePersonas }} <br>
                             <strong>Tipo de habitacion:</strong> {{ $reserva->traerHabitacion->tipoDeHabitacion}}<br>
                             <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
                             <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
