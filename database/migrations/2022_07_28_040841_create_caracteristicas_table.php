@@ -15,11 +15,7 @@ class CreateCaracteristicasTable extends Migration
     {
         Schema::create('caracteristicas', function (Blueprint $table) {
             $table->id();
-            $table->integer("aire_acondicionado");
-            $table->integer("baños");
-            $table->integer("camas");
-            $table->integer("controles");
-            $table->integer("televisores");
+            $table->integer("descripcion");
             $table->unsignedBigInteger('habitacion_id');
             $table->foreign('habitacion_id')->references('id')->on('habitacions');
             $table->timestamps();
