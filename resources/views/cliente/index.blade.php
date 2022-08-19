@@ -17,7 +17,7 @@
     <br>
     <thead class="bg-green text-white ">
         <tr>
-            {{-- <th scope="col">Nro</th> --}}
+            <th scope="col">Nro</th>
             <th scope="col">Nombre Completo</th>
             <th scope="col">Documento</th>
             <th scope="col">Tipo de Documento</th>

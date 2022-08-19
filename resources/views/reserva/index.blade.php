@@ -18,7 +18,7 @@
             <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
                 <option value="">Seleccione</option>
                 <?php foreach ($cliente_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['documento']}}</option>
+                    <option value="{{$td['id']}}">{{$td['Documento']}}</option>
                 <?php } ?>
             </select>
         </div>

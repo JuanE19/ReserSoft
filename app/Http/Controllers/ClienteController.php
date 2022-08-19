@@ -9,7 +9,8 @@ use PhpParser\Node\Stmt\TryCatch;
 
 class ClienteController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -19,11 +20,11 @@ class ClienteController extends Controller
      */
     public function index()
     {
-       $clientes = Cliente::all();
-        return view ('cliente.index')->with('clientes', $clientes);
+        $clientes = Cliente::all();
+        return view('cliente.index')->with('clientes', $clientes);
     }
 
-   
+
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +34,7 @@ class ClienteController extends Controller
     {
         $tipodocumento = TipoDocumento::all();
 
-        return view ('cliente.create')->with('tipodocumento', $tipodocumento);
+        return view('cliente.create')->with('tipodocumento', $tipodocumento);
     }
 
     /**
@@ -45,19 +46,20 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-        
-            'documento' => 'unique:clientes',
-            'correo' => 'unique:clientes',
-        ],
-         [
-            'documento.unique' => 'Este documento ya existe',
-            'correo.unique' => 'Este correo ya existe'
-        ]
-           
+        $request->validate(
+            [
+
+                'documento' => 'unique:clientes',
+                'correo' => 'unique:clientes',
+            ],
+            [
+                'documento.unique' => 'Este documento ya existe',
+                'correo.unique' => 'Este correo ya existe'
+            ]
+
         );
-        
-    
+
+
 
 
         $clientes = new Cliente();
@@ -68,11 +70,11 @@ class ClienteController extends Controller
         $clientes->telefono = $request->get('telefono');
         $clientes->direccion = $request->get('direccion');
         $clientes->documento_id = $request->get('tipodocumento');
-        
+
 
         $clientes->save();
 
-        return redirect('/clientes')->with('info','El cliente se ha Creado correctamente');
+        return redirect('/clientes')->with('info', 'El cliente se ha Creado correctamente');
     }
 
     /**
@@ -83,8 +85,6 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        
-        
     }
 
     /**
@@ -97,7 +97,7 @@ class ClienteController extends Controller
     {
         $tipodocumento = TipoDocumento::all();
         $cliente = Cliente::find($id);
-        return view ('cliente.edit', compact('cliente','tipodocumento'));
+        return view('cliente.edit', compact('cliente', 'tipodocumento'));
     }
 
     /**
@@ -109,8 +109,8 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $cliente= Cliente::find($id);
+
+        $cliente = Cliente::find($id);
         $infoClienteActual = Cliente::find($id);
 
         $cliente->nombrecompleto = $request->get('nombrecompleto');
@@ -120,42 +120,40 @@ class ClienteController extends Controller
         $cliente->direccion = $request->get('direccion');
         $cliente->documento_id = $request->get('tipodocumento');
 
-         
+
         try {
             $cliente->save();
 
-            return redirect('/clientes')->with('info','El cliente se ha Actualizado correctamente');
+            return redirect('/clientes')->with('info', 'El cliente se ha Actualizado correctamente');
         } catch (\Throwable $th) {
             if ($th->getCode() == 23000) {
 
                 if ($cliente->Documento != $infoClienteActual->Documento) {
-                    $request->validate([
-        
-                        'documento' => 'unique:clientes,documento,'
+                    $request->validate(
+                        [
 
-                    ],
-                    [
-                        'documento.unique' => 'Este documento ya existe'
-                    ]
-                    
+                            'documento' => 'unique:clientes,documento,'
+
+                        ],
+                        [
+                            'documento.unique' => 'Este documento ya existe'
+                        ]
+
                     );
-                }else {
-                    $request->validate([
-        
-                        'correo' => 'unique:clientes,correo,'
-                    ],
-                    [ 
-                        'correo.unique' => 'Este correo ya existe'
-                    ]
-                    
+                } else {
+                    $request->validate(
+                        [
+
+                            'correo' => 'unique:clientes,correo,'
+                        ],
+                        [
+                            'correo.unique' => 'Este correo ya existe'
+                        ]
+
                     );
                 }
-                 
             }
-            
         }
-
-
     }
 
     /**
@@ -166,18 +164,16 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        
-
     }
 
-    public function actualizarEstado(Cliente $cliente){ 
+    public function actualizarEstado(Cliente $cliente)
+    {
 
-        if($cliente->Estado==1)
-            $cliente->Estado=0;
-        else        
-            $cliente->Estado=1;
+        if ($cliente->Estado == 1)
+            $cliente->Estado = 0;
+        else
+            $cliente->Estado = 1;
         $cliente->update();
         return redirect('/clientes')->with('EstadoActualizado', 'Estado cambiado');
     }
-   
 }
