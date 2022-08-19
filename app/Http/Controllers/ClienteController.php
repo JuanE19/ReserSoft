@@ -74,7 +74,7 @@ class ClienteController extends Controller
 
         $clientes->save();
 
-        return redirect('/clientes')->with('info', 'El cliente se ha Creado correctamente');
+        return redirect('/clientes')->with('message', 'exitoso');
     }
 
     /**
