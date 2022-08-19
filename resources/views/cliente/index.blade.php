@@ -8,8 +8,7 @@
 
 @section('content')
 
-<!--Alertas Personalizadas-->
-@include('components.flash_alerts')
+
 
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
 <table id="clientes" class="table table-striped table-bordered shadow-lg mt-1" style="width:100%">
