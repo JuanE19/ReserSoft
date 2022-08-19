@@ -55,7 +55,7 @@
                         <select class="form-select" name="tipodocumento" id="tipodocumento" required="">
                     </div> 
                     
-                            <option value="" >Seleccione </option>
+                            <option value="{{$cliente->tipodocumento}}" >{{$cliente->datosdocumento->nombre}} </option>
                             <?php foreach ($tipodocumento as $td) { ?>
                                 <option value="{{$td['id']}}">{{$td['nombre']}}</option>
                             <?php } ?>
