@@ -10,11 +10,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
+// rutas clientes
 Route::resource('clientes','App\Http\Controllers\ClienteController');
+Route::post('clientes/{cliente?}', [ClienteController::class, "actualizarEstado"])->name('clienteEstado');
+
+// rutas habitaciones
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
 Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarestado"])->name('habitacionestado');
 
+// rutas reservas
 Route::resource('reserva','App\Http\Controllers\ReservaController');
  
 
