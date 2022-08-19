@@ -247,7 +247,7 @@ return [
         ],
         [
             'text'        => 'Usuarios',
-            'url'         => 'admin/pages',
+            'url'         => 'usuario',
             'icon'        => 'fas fa-fw fa-user',
             
         ],
