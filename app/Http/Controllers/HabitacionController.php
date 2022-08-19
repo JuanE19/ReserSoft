@@ -44,10 +44,28 @@ class HabitacionController extends Controller
      */
     public function store(Request $request)
     {
+
+        //$caracteristica = array("1" => $_POST["1"],
+        //"2" => $_POST["2"],
+        //"3" => $_POST["3"],
+        //"4" => $_POST["4"],
+        //"5" => $_POST["5"],
+        //"6" => $_POST["6"],
+        //"7" => $_POST["7"],
+        //"8" => $_POST["8"]);
+
+        $caracteristicas = "";
+
+        for ($i=1; $i < 8; $i++) { 
+            if (isset($_POST[$i])) {
+                $caracteristicas = $caracteristicas."".$_POST[$i].", ";
+               }
+        }
+
         $habitaciones = new Habitacion();
 
         $habitaciones->id = $request->get('id');
-        $habitaciones->caracteristicas = $request->get('caracteristicas');
+        $habitaciones->caracteristicas = $caracteristicas;
         $habitaciones->numerodehabitacion = $request->get('numerodehabitacion');
         $habitaciones->precio = $request->get('precio');
         $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
@@ -77,6 +95,7 @@ class HabitacionController extends Controller
      */
     public function edit($id)
     {
+        $tipo = Tipo::all();
         $habitacion = Habitacion::find($id);
         return view('habitacion.edit')->with('habitacion',$habitacion);
     }
@@ -93,10 +112,10 @@ class HabitacionController extends Controller
         $habitacion = Habitacion::find($id);
 
         $habitacion->id = $request->get('id');
-        $habitacion->caracteristicas = $request->get('caracteristicas');
+        $habitacion->caracteristicas = $request->get('caracteristicasCategoria');
         $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
         $habitacion->precio = $request->get('precio');
-        $habitacion->tipodehabitacion = $request->get('tipoDeHabitacion');
+        $habitacion->tipodehabitacion = $request->get('tipo');
         
         $habitacion->save();
 
@@ -115,7 +134,7 @@ class HabitacionController extends Controller
     {
         $habitacion = Habitacion::find($id);        
         $habitacion->delete();
-        return redirect ('/habitaciones')->with('info','La habitación se ha Eliminado correctamente');
+        return redirect ('/habitaciones')->with('info','La habitación se ha eliminado correctamente');
     }
     public function actualizarestado(Habitacion $habitacion){ 
 
