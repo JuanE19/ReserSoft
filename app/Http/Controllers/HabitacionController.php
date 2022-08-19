@@ -56,7 +56,7 @@ class HabitacionController extends Controller
 
         $caracteristicas = "";
 
-        for ($i=1; $i < 8; $i++) { 
+        for ($i=1; $i < 10; $i++) { 
             if (isset($_POST[$i])) {
                 $caracteristicas = $caracteristicas."".$_POST[$i].", ";
                }

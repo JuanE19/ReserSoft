@@ -12,6 +12,8 @@ Route::get('/', function () {
 
 
 Route::resource('clientes','App\Http\Controllers\ClienteController');
+Route::post('clientes/{cliente?}', [ClienteController::class, "actualizarEstado"])->name('clienteEstado');
+
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
 Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarestado"])->name('habitacionestado');
 

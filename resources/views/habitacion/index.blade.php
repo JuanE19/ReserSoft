@@ -31,56 +31,70 @@
 
    <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama 2 x 2"> 
-            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Cama 2 x 2 </span>
+            <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama individual"> 
+            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Cama individual </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="2" type="checkbox" class="ml-3" value="TV de 42 Pulg"> 
-            <span class="badge badge-secondary"><i class="fas fa-tv"></i> TV de 42 Pulg </span>
+            <input class="checkbox" name="2" type="checkbox" class="ml-3" value="Cama doble"> 
+            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Cama doble </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="3" type="checkbox" class="ml-3" value="Agua Caliente"> 
+            <input class="checkbox" name="3" type="checkbox" class="ml-3" value="Quad"> 
+            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Quad</span>
+            </label>
+          </div>
+
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="checkbox" name="4" type="checkbox" class="ml-3" value="1 TV"> 
+            <span class="badge badge-secondary"><i class="fas fa-tv"></i> 1 TV </span>
+            </label>
+          </div>
+
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="checkbox" name="5" type="checkbox" class="ml-3" value="2 TV"> 
+            <span class="badge badge-secondary"><i class="fas fa-tv"></i> 2 TV </span>
+            </label>
+          </div>
+
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="checkbox" name="6" type="checkbox" class="ml-3" value="Agua Caliente"> 
             <span class="badge badge-secondary"><i class="fas fa-tint"></i> Agua Caliente </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="4" type="checkbox" class="ml-3" value="Jacuzzi"> 
-            <span class="badge badge-secondary"><i class="fas fa-water"></i> Jacuzzi </span>
+            <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Vista Montaña"> 
+            <span class="badge badge-secondary"><i class="fas fa-water"></i> Vista Montaña </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="5" type="checkbox" class="ml-3" value="Baño privado">
+            <input class="checkbox" name="8" type="checkbox" class="ml-3" value="Baño privado">
             <span class="badge badge-secondary"><i class="fas fa-toilet"></i> Baño privado </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="6" type="checkbox" class="ml-3" value="Sofá"> 
+            <input class="checkbox" name="9" type="checkbox" class="ml-3" value="Sofá"> 
             <span class="badge badge-secondary"><i class="fas fa-couch"></i> Sofá </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Balcón"> 
-            <span class="badge badge-secondary"><i class="far fa-image"></i> Balcón </span>
-            </label>
-          </div>
-
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="checkbox" name="8" type="checkbox" class="ml-3" value="Servicio Wifi"> 
+            <input class="checkbox" name="10" type="checkbox" class="ml-3" value="Servicio Wifi"> 
             <span class="badge badge-secondary"><i class="fas fa-wifi"></i> Servicio Wifi </span>
             </label>
           </div>
