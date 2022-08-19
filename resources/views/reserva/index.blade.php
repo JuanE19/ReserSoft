@@ -117,9 +117,9 @@
                 </div>
             </div>
         </tbody>
+        @endforeach
     </table>
 </div>
-@endforeach
 @stop
 
 @section('css')
