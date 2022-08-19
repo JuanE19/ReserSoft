@@ -97,7 +97,7 @@ class ReservaController extends Controller
     {
         $cliente_id = Cliente::all();
         $habitacion_id = Habitacion::all();
-        $reserva= Reserva::find($id);
+        $reserva = Reserva::find($id);
 
         $reserva->nombre = $request->get('nombre');
         $reserva->apellido = $request->get('apellido');
@@ -123,5 +123,19 @@ class ReservaController extends Controller
         $reserva = Reserva::find($id);
         $reserva->delete();
         return redirect('/reserva');
+    }
+
+    public function actualizarEstadoReserva(Reserva $reserva)
+    {
+
+        if ($reserva->estado == 1)
+            $reserva->estado = 0;
+        else if ($reserva->estado == 1)
+            $reserva->estado = 1;
+        else
+            $reserva->estado = 2;
+
+        $reserva->update();
+        return redirect('/reserva')->with('EstadoActualizado', 'Estado cambiado');
     }
 }

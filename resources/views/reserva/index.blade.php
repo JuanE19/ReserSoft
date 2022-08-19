@@ -23,8 +23,6 @@
             </select>
         </div>
 
-        <label for="basic-url" class="form-label">Fechas</label>
-
         <div class="input-group mb-3">
             <span class="input-group-text">Ingreso</span>
             <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control mx-2">
@@ -56,6 +54,7 @@
                 <th scope="col">Documento</th>
                 <th scope="col">Fecha de ingreso</th>
                 <th scope="col">Acciones</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -71,7 +70,30 @@
                         <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
                         </button>
                 </td>
+                <td>
+                    <form class="custom-control custom-switch" action="{{ route('estadoReserva', $reserva) }}" method="post">
+                        @csrf
+                        @if ($reserva->estado == 0)
+                        <select style="color:red; " onChange="this.form.submit()" name="estado" aria-label="Default select example">
+                            <option style="color:red;" selected value="0">Activo</option>
+                            <option style="color:orange;" value="1">Inactivo</option>
+                            <option style="color:green;" value="2">Ocupada</option>
+                        </select>
+                        @else @if ($reserva->estado == 1)
+                        <select style="color:orange;" onChange="this.form.submit()" name="Estado" aria-label="Default select example">
+                            <option style="color: orange" selected value="1">Inactivo</option>
+                            <option style="color: green" value="2">Ocupada</option>
+                        </select>
+                        @else
+                        <select style="color:green;" onChange="this.form.submit()" name="estado" aria-label="Default select example">
+                            <option style="color: green" selected value="2">Ocupada</option>
+                        </select>
+                        @endif
+                        @endif
+                    </form>
+                </td>
             </tr>
+
             <!-- Modal -->
             <div class="modal fade" id="reserva{{$reserva->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -94,11 +116,10 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </tbody>
     </table>
 </div>
-
+@endforeach
 @stop
 
 @section('css')
