@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="" class="form-label">Correo <span style="color:red">*</span></label>
-                <input id="correo" name="correo" type="text" class="form-control @error('correo') is-invalid @enderror" maxlength="45" required="" value="{{ old('correo', $cliente->Correo)}}">
+                <input id="correo" name="correo" type="email" class="form-control @error('correo') is-invalid @enderror" maxlength="45" required="" value="{{ old('correo', $cliente->Correo)}}">
                 @error('correo')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{$message}}</strong>
