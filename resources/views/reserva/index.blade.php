@@ -108,6 +108,7 @@
                             <strong>Documento:</strong> {{ $reserva->traerCliente->Documento }} <br>
                             <strong>Telefono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
                             <strong>Tipo de habitacion:</strong> {{ $reserva->traerHabitacion->tipoDeHabitacion}}<br>
+                            <strong>Caracteristicas:</strong> {{ $reserva->traerHabitacion->caracteristicas}}<br>
                             <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
                             <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
                             <strong>Fecha de salida:</strong> {{ $reserva->fechaDeSalida }} <br>
