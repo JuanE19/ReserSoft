@@ -22,7 +22,7 @@ class CreateTipoDeDocumentoTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *ñ
      * @return void
      */
     public function down()

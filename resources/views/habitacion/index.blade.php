@@ -16,6 +16,7 @@
   + Agregar habitación
 </button>
 <br><br>
+
 <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -128,9 +129,15 @@
     </div>   
 
     <div class="mb-3">
-    <label for="" class="form-label">Tipo de habitacion</label>
-    <input id="tipodehabitacion" name="tipodehabitacion" placeholder="Ingresa el tipo de habitación" type="text" class="form-control" tabindex="1" maxlength="20"required="">
-    </div>
+                    <label for="" class="form-label">Tipo de habitación </label>
+                    <select class="form-select" name="tipodehabitacion" id="tipodehabitacion" required="">
+                        <option value="">Seleccione</option>
+                        <?php foreach ($tipo as $th) { ?>
+                            <option value="{{$th['id']}}">{{$th['tipohabitacion']}}</option>
+                        <?php } ?>
+                    </select>
+                    </div>
+            </div>
               
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
@@ -164,7 +171,7 @@
     <td>{{ $habitacion->caracteristicas}}</td>
     <td>{{ $habitacion->numeroDeHabitacion }}</td>
     <td>{{ $habitacion->precio }}</td>
-    <td>{{ $habitacion->tipoDeHabitacion}}</td>
+    <td>{{$habitacion->datostipohabitacion->tipohabitacion}}</td>
 
     <td> @if ($habitacion->estado == 1)
 

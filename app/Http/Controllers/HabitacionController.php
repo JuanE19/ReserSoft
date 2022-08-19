@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Habitacion;
+use App\Models\Tipo;
 
 class HabitacionController extends Controller
 {
@@ -20,7 +21,8 @@ class HabitacionController extends Controller
     {
         //return 'Vista index ()';
         $habitaciones = Habitacion::all();
-        return view ('habitacion.index')->with('habitaciones', $habitaciones);
+        $tipo = Tipo::all();
+        return view ('habitacion.index', compact('habitaciones', 'tipo'));
     }
 
     /**
@@ -30,7 +32,8 @@ class HabitacionController extends Controller
      */
     public function create()
     {
-        return view ('habitacion.create');
+        $tipod = Tipo::all();
+        return view ('habitacion.create')->with('tipo', $tipo);
     }
 
     /**
