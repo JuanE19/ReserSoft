@@ -25,9 +25,20 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text">Ingreso</span>
-            <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control mx-2">
+            <input
+             id="fechaDeIngreso" 
+             name="fechaDeIngreso" 
+             type="date" 
+             class="form-control mx-2" 
+             required="">
+
             <span class="input-group-text">Salida</span>
-            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2">
+            <input 
+            id="fechaDeSalida" 
+            name="fechaDeSalida" 
+            type="date" 
+            class="form-control mx-2" 
+            required="">
         </div>
 
         <div class="input-group mb-3">
