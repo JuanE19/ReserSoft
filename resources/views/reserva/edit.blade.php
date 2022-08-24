@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Editar Reserva</h1>
+<h1>Editar Reserva</h1>
 @stop
 
 @section('content')
@@ -12,18 +12,28 @@
     @method('PUT')
     <div class="container m-4 w-50">
 
-    <div class="mb-3">
-        <label for="" class="form-label">Fecha de ingreso</label>
-        <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeIngreso}}">
-    </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Fecha de ingreso</label>
+            <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeIngreso}}">
+        </div>
 
-    <div class="mb-3">
-        <label for="" class="form-label">Fecha de salida</label>
-        <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeSalida}}">
-    </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Fecha de salida</label>
+            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeSalida}}">
+        </div>
 
-    <a href="/reserva" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
+        <div class="input-group mb-3">
+            <span class="input-group-text mx-2">Tipo de habitación</span>
+            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+                <option value="">{{$reserva->traerHabitacion->tipoDeHabitacion}}</option>
+                <?php foreach ($habitacion_id as $td) { ?>
+                    <option value="{{$td['id']}}">{{$td['tipoDeHabitacion']}}</option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <a href="/reserva" class="btn btn-secondary" tabindex="5">Cancelar</a>
+        <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
     </div>
 
 </form>
