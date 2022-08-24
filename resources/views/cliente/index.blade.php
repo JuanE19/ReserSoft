@@ -122,6 +122,22 @@
                                 @endif
 
 
+                                @if(session('estate'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Estado actualizado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+
 
                             </div>
                         </div>

@@ -174,6 +174,6 @@ class ClienteController extends Controller
         else
             $cliente->Estado = 1;
         $cliente->update();
-        return redirect('/clientes')->with('EstadoActualizado', 'Estado cambiado');
+        return redirect('/clientes')->with('estate', 'Estado cambiado');
     }
 }
