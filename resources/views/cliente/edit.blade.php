@@ -32,7 +32,7 @@
 
             <div class="mb-3">
                 <label for="" class="form-label">Correo <span style="color:red">*</span></label>
-                <input id="correo" name="correo" type="text" class="form-control @error('correo') is-invalid @enderror" maxlength="45" required="" value="{{ old('correo', $cliente->Correo)}}">
+                <input id="correo" name="correo" type="email" class="form-control @error('correo') is-invalid @enderror" maxlength="45" required="" value="{{ old('correo', $cliente->Correo)}}">
                 @error('correo')
                 <span class="invalid-feedback" role="alert">
                         <strong>{{$message}}</strong>
@@ -53,13 +53,12 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Tipo de Documento <span style="color:red">*</span></label>
                         <select class="form-select" name="tipodocumento" id="tipodocumento" required="">
-                    </div> 
-                    
-                            <option value="">Seleccione </option>
-                            <?php foreach ($tipodocumento as $td) { ?>
-                                <option value="{{$td['id']}}">{{$td['nombre']}}</option>
-                            <?php } ?>
-                        </select>
+                                <option value="{{$cliente->datosdocumento->id}}" >{{$cliente->datosdocumento->nombre}} </option>
+                                <?php foreach ($tipodocumento as $td) { ?>
+                                    <option value="{{$td['id']}}">{{$td['nombre']}}</option>
+                                <?php } ?>
+                            </select>
+                    </div>
                         </div>
             </div>
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>

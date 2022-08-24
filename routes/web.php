@@ -1,9 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\HabitacionesController;
+
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HabitacionController;
+<<<<<<< HEAD
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ReservaController;
+=======
+use App\Http\Controllers\ReservaController;
+
+>>>>>>> 9f4b84249018a0eeb76271ef74ce0c10346de29c
 
 
 
@@ -11,15 +23,24 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::resource('usuario','App\Http\Controllers\UsuarioController');
+Route::post('usuarios/{usuario?}', [UsuarioController::class, "actualizarEstado"])->name('usuarioEstado');
 
+// rutas clientes
 Route::resource('clientes','App\Http\Controllers\ClienteController');
 Route::post('clientes/{cliente?}', [ClienteController::class, "actualizarEstado"])->name('clienteEstado');
 
+<<<<<<< HEAD
+=======
+// rutas habitaciones
+>>>>>>> 9f4b84249018a0eeb76271ef74ce0c10346de29c
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
 Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarestado"])->name('habitacionestado');
 
+// rutas reservas
 Route::resource('reserva','App\Http\Controllers\ReservaController');
- 
+
+Route::post('reserva/{reserva?}', [ReservaController::class, "actualizarEstadoReserva"])->name('estadoReserva');
 
 Route::middleware([
     'auth:sanctum',

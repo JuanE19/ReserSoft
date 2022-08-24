@@ -22,8 +22,100 @@
 
   
   <div class="mb-3">
+<<<<<<< HEAD
   <label for="" class="form-label">Caracteristicas</label><span style="color:red">*</span></label>
   <input id="caracteristicas" name="caracteristicas" type="text" class="form-control" maxlength="100" required="" value="{{$habitacion->caracteristicas}}">
+=======
+   <label for="" class="form-label">Caracteristicas</label>
+   <input id="caracteristicas" name="caracteristicas" type="text" class="form-control" value="{{$habitacion->caracteristicas}}" tabindex="1" maxlength="200" required="">
+   </div>
+
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="cama1" name="caracteristicas" type="checkbox" class="ml-3" value="cama1"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-bed"></i> Cama individual estandar </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="cama2" name="caracteristicas" type="checkbox" class="ml-3" value="cama2"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-bed"></i> Cama doble estandar </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="cama3" name="caracteristicas" type="checkbox" class="ml-3" value="cama3"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-bed"></i> Cama doble - 2 camas </span> 
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="tv1" name="caracteristicas" type="checkbox" class="ml-3" value="tv1"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-tv"></i> 1 TV</span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="tv2" name="caracteristicas" type="checkbox" class="ml-3" value="tv2"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-tv"></i> 2 TV</span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="agua" name="caracteristicas" type="checkbox" class="ml-3" value="agua"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-tint"></i> Agua Caliente </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="aire" name="caracteristicas" type="checkbox" class="ml-3" value="aire"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-water"></i> Aire acondicionado </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="ventilador" name="caracteristicas" type="checkbox" class="ml-3" value="ventilador"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-water"></i> Ventilador </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="baño" name="caracteristicas" type="checkbox" class="ml-3" value="baño">
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-toilet"></i> Baño privado </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="armario" name="caracteristicas" type="checkbox" class="ml-3" value="armario"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-couch"></i> Armario </span>
+   </label>
+   </div>
+
+   <div class="form-check caracteristicas">
+   <label class="form-check-label">
+   <input class="form-check-input" id="wifi" name="caracteristicas" type="checkbox" class="ml-3" value="wifi"> 
+   <span class="badge badge-secondary-fill btn btn-success"><i class="fas fa-wifi"></i> Servicio Wifi </span>
+   </label>
+   </div>
+
+   <br>
+
+<input type="hidden" name="caracteristicas">         
+
+  <div class="mb-3">
+    <label for="" class="form-label">Numero de la Habitacion</label>
+    <input id="numeroDeHabitacion" name="numeroDeHabitacion" type="text" class="form-control" value="{{$habitacion->numeroDeHabitacion}}">
+>>>>>>> 9f4b84249018a0eeb76271ef74ce0c10346de29c
   </div>
 
 
