@@ -122,14 +122,14 @@ class ReservaController extends Controller
     public function actualizarEstadoReserva(Reserva $reserva)
     {
 
-        if ($reserva->estado == 1)
-            $reserva->estado = 0;
-        else if ($reserva->estado == 1)
+        if ($reserva->estado == 0)
             $reserva->estado = 1;
+        else if ($reserva->estado == 1)
+            $reserva->estado = 2;
         else
             $reserva->estado = 2;
         $reserva->update();
-         
+        
         return redirect('/reserva')->with('Estado Actualizado', 'Estado cambiado');
     }
 }

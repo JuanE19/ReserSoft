@@ -70,23 +70,25 @@
                         <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
                         </button>
                 </td>
+
+            <!-- Estado -->
                 <td>
                     <form class="custom-control custom-switch" action="{{ route('estadoReserva', $reserva) }}" method="post">
                         @csrf
                         @if ($reserva->estado == 0)
                         <select style="color:red; " onChange="this.form.submit()" name="estado" aria-label="Default select example">
-                            <option style="color:red;" selected value="0">Activo</option>
-                            <option style="color:orange;" value="1">Inactivo</option>
-                            <option style="color:green;" value="2">Ocupada</option>
+                            <option style="color:red;" selected value="0">En proceso</option>
+                            <option style="color:orange;" value="1">Tomada</option>
+                            <option style="color:green;" value="2">Finalizada</option>
                         </select>
                         @else @if ($reserva->estado == 1)
                         <select style="color:orange;" onChange="this.form.submit()" name="Estado" aria-label="Default select example">
-                            <option style="color: orange" selected value="1">Inactivo</option>
-                            <option style="color: green" value="2">Ocupada</option>
+                            <option style="color: orange" selected value="1">Tomada</option>
+                            <option style="color: green" value="2">Finalizada</option>
                         </select>
                         @else
                         <select style="color:green;" onChange="this.form.submit()" name="estado" aria-label="Default select example">
-                            <option style="color: green" selected value="2">Ocupada</option>
+                            <option style="color: green" selected value="2">Finalizada</option>
                         </select>
                         @endif
                         @endif
