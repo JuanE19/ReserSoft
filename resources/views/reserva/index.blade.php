@@ -15,15 +15,13 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text mx-2">Documento del cliente</span>
-            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+            <select class="form-select" name="cliente_id" id="cliente_id" required="">
                 <option value="">Seleccione</option>
                 <?php foreach ($cliente_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['documento']}}</option>
+                    <option value="{{$td['id']}}">{{$td['Documento']}}</option>
                 <?php } ?>
             </select>
         </div>
-
-        <label for="basic-url" class="form-label">Fechas</label>
 
         <div class="input-group mb-3">
             <span class="input-group-text">Ingreso</span>
@@ -56,6 +54,7 @@
                 <th scope="col">Documento</th>
                 <th scope="col">Fecha de ingreso</th>
                 <th scope="col">Acciones</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -71,7 +70,30 @@
                         <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
                         </button>
                 </td>
+                <td>
+                    <form class="custom-control custom-switch" action="{{ route('estadoReserva', $reserva) }}" method="post">
+                        @csrf
+                        @if ($reserva->estado == 0)
+                        <select style="color:red; " onChange="this.form.submit()" name="estado" aria-label="Default select example">
+                            <option style="color:red;" selected value="0">Activo</option>
+                            <option style="color:orange;" value="1">Inactivo</option>
+                            <option style="color:green;" value="2">Ocupada</option>
+                        </select>
+                        @else @if ($reserva->estado == 1)
+                        <select style="color:orange;" onChange="this.form.submit()" name="Estado" aria-label="Default select example">
+                            <option style="color: orange" selected value="1">Inactivo</option>
+                            <option style="color: green" value="2">Ocupada</option>
+                        </select>
+                        @else
+                        <select style="color:green;" onChange="this.form.submit()" name="estado" aria-label="Default select example">
+                            <option style="color: green" selected value="2">Ocupada</option>
+                        </select>
+                        @endif
+                        @endif
+                    </form>
+                </td>
             </tr>
+
             <!-- Modal -->
             <div class="modal fade" id="reserva{{$reserva->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -85,8 +107,8 @@
                             <strong>Nombre:</strong> {{ $reserva->traerCliente->NombreCompleto }} <br>
                             <strong>Documento:</strong> {{ $reserva->traerCliente->Documento }} <br>
                             <strong>Telefono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
-                            <strong>Cantidad de personas:</strong> {{ $reserva->cantidadDePersonas }} <br>
                             <strong>Tipo de habitacion:</strong> {{ $reserva->traerHabitacion->tipoDeHabitacion}}<br>
+                            <strong>Caracteristicas:</strong> {{ $reserva->traerHabitacion->caracteristicas}}<br>
                             <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
                             <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
                             <strong>Fecha de salida:</strong> {{ $reserva->fechaDeSalida }} <br>
@@ -94,11 +116,10 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </tbody>
+        @endforeach
     </table>
 </div>
-
 @stop
 
 @section('css')

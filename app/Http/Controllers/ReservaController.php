@@ -48,9 +48,6 @@ class ReservaController extends Controller
     {
         $reservas = new Reserva();
 
-        $reservas->nombre = $request->get('nombre');
-        $reservas->apellido = $request->get('apellido');
-        $reservas->cantidadDePersonas = $request->get('cantidadDePersonas');
         $reservas->fechaDeIngreso = $request->get('fechaDeIngreso');
         $reservas->fechaDeSalida = $request->get('fechaDeSalida');
         $reservas->habitacion_id = $request->get('habitacion_id');
@@ -97,11 +94,8 @@ class ReservaController extends Controller
     {
         $cliente_id = Cliente::all();
         $habitacion_id = Habitacion::all();
-        $reserva= Reserva::find($id);
+        $reserva = Reserva::find($id);
 
-        $reserva->nombre = $request->get('nombre');
-        $reserva->apellido = $request->get('apellido');
-        $reserva->cantidadDePersonas = $request->get('cantidadDePersonas');
         $reserva->fechaDeIngreso = $request->get('fechaDeIngreso');
         $reserva->fechaDeSalida = $request->get('fechaDeSalida');
         $reserva->habitacion_id = $request->get('habitacion_id');
@@ -123,5 +117,19 @@ class ReservaController extends Controller
         $reserva = Reserva::find($id);
         $reserva->delete();
         return redirect('/reserva');
+    }
+
+    public function actualizarEstadoReserva(Reserva $reserva)
+    {
+
+        if ($reserva->estado == 1)
+            $reserva->estado = 0;
+        else if ($reserva->estado == 1)
+            $reserva->estado = 1;
+        else
+            $reserva->estado = 2;
+        $reserva->update();
+         
+        return redirect('/reserva')->with('Estado Actualizado', 'Estado cambiado');
     }
 }

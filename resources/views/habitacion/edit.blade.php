@@ -101,7 +101,7 @@
 
    <br>
 
-<inut type="hidden" name="caracteristicas">         
+<input type="hidden" name="caracteristicas">         
 
   <div class="mb-3">
     <label for="" class="form-label">Numero de la Habitacion</label>
