@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>

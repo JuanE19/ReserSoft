@@ -41,6 +41,5 @@
         @stack('modals')
 
         @livewireScripts
-        @include('components.flash_alerts')
     </body>
 </html>
