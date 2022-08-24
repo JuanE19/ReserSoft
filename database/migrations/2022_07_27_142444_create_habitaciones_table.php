@@ -20,7 +20,7 @@ class CreateHabitacionesTable extends Migration
             $table->double("precio");
             $table->unsignedBigInteger("tipoDeHabitacion");
             $table->foreign('tipoDeHabitacion')->references('id')->on('tipos');
-            $table->boolean("estado")->nullable();
+            $table->boolean("estado")->default(1);
             $table->timestamps();
         });
     }

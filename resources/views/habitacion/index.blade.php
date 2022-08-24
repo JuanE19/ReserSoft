@@ -3,7 +3,7 @@
 @section('title', 'Habitaciones')
 
 @section('content_header')
-    <h1>HABITACIÓNES</h1>
+    <h1><b>HABITACIONES</b></h1>
 @stop
 
 @section('content')
@@ -12,95 +12,111 @@
 @include('components.flash_alerts')
 
 <!-- Button trigger modal -->
-<button type="button" href="habitaciones/create" class="bi bi-building - btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  + Agregar habitación
+<button type="button" href="habitaciones/create" class="bi bi-person-plus-fill btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  + Agregar habitacion
 </button>
-<br><br>
+<br><br>  
+
 <!-- Modal -->
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-   <div class="modal-content">
-   <div class="modal-header">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
    <h5 class="modal-title" id="exampleModalLabel"> Agregar habitación</h5>
    </div>
+
+
    <div class="modal-body">
    <form action ="/habitaciones" method="POST">
    @csrf
 
 
-
-   <div class="form-check">
+   <label for="" class="form-label">Caracteristicas mi fafa</label>
+          <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama individual"> 
-            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Cama individual </span>
+            <span class="badge badge-secondary-btn btn-success"></i> Cama individual </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="2" type="checkbox" class="ml-3" value="Cama doble"> 
-            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Cama doble </span>
+            <span class="badge badge-secondary-btn btn-success"></i> Cama doble </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="3" type="checkbox" class="ml-3" value="Quad"> 
-            <span class="badge badge-secondary"><i class="fas fa-bed"></i> Quad</span>
+            <span class="badge badge-secondary-btn btn-success"></i> Quad</span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="4" type="checkbox" class="ml-3" value="1 TV"> 
-            <span class="badge badge-secondary"><i class="fas fa-tv"></i> 1 TV </span>
+            <span class="badge badge-secondary-btn btn-success"></i> 1 TV </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="5" type="checkbox" class="ml-3" value="2 TV"> 
-            <span class="badge badge-secondary"><i class="fas fa-tv"></i> 2 TV </span>
+            <span class="badge badge-secondary-btn btn-success"></i> 2 TV </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="6" type="checkbox" class="ml-3" value="Agua Caliente"> 
-            <span class="badge badge-secondary"><i class="fas fa-tint"></i> Agua Caliente </span>
+            <span class="badge badge-secondary-btn btn-success"></i> Agua Caliente </span>
+            </label>
+          </div>
+
+          <div class="form-check">
+          <label class="form-check-label">
+          <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Aire acondicionado"> 
+          <span class="badge badge-secondary- btn btn-success"></i> Aire acondicionado </span>
+          </label>
+          </div>
+
+          <div class="form-check">
+          <label class="form-check-label">
+          <input class="checkbox" name="8" type="checkbox" class="ml-3" value="Ventilador"> 
+          <span class="badge badge-secondary- btn btn-success"></i> Ventilador </span>
+          </label>
+          </div>
+
+          <div class="form-check">
+            <label class="form-check-label">
+            <input class="checkbox" name="9" type="checkbox" class="ml-3" value="Vista Montaña"> 
+            <span class="badge badge-secondary-btn btn-success"></i> Vista Montaña </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Vista Montaña"> 
-            <span class="badge badge-secondary"><i class="fas fa-water"></i> Vista Montaña </span>
+            <input class="checkbox" name="10" type="checkbox" class="ml-3" value="Baño privado">
+            <span class="badge badge-secondary-btn btn-success"></i> Baño privado </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="8" type="checkbox" class="ml-3" value="Baño privado">
-            <span class="badge badge-secondary"><i class="fas fa-toilet"></i> Baño privado </span>
+            <input class="checkbox" name="11" type="checkbox" class="ml-3" value="Sofá"> 
+            <span class="badge badge-secondary-btn btn-success"></i> Sofá </span>
             </label>
           </div>
 
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="9" type="checkbox" class="ml-3" value="Sofá"> 
-            <span class="badge badge-secondary"><i class="fas fa-couch"></i> Sofá </span>
-            </label>
-          </div>
-
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="checkbox" name="10" type="checkbox" class="ml-3" value="Servicio Wifi"> 
-            <span class="badge badge-secondary"><i class="fas fa-wifi"></i> Servicio Wifi </span>
+            <input class="checkbox" name="12" type="checkbox" class="ml-3" value="Servicio Wifi"> 
+            <span class="badge badge-secondary-btn btn-success"></i> Servicio Wifi </span>
             </label>
           </div>
 
    <br>
-
 
    <div class="mb-3">
    <label for="" class="form-label">Numero de la Habitacion</label>
@@ -135,7 +151,7 @@
    </div>
    </div>
 
-<table id="habitaciones" class="table table-striped table-bordered shadow-lg mt-1"  style="width:90%">  
+<table id="habitaciones" class="table table-hover shadow-lg mt-1"  style="width:90%">  
  <thead class="bg-green text-white">
 
    <tr>
@@ -153,28 +169,28 @@
     @foreach($habitaciones as $habitacion)
     <tr>
     <td>{{ $habitacion->id }}</td>
-    <td>{{ $habitacion->caracteristicas}}</td>
+    <td>{{ $habitacion->caracteristicas }}</td>
     <td>{{ $habitacion->numeroDeHabitacion }}</td>
     <td>{{ $habitacion->precio }}</td>
     <td>{{ $habitacion->datostipohabitacion->tipohabitacion}}</td>
 
     <td> @if ($habitacion->estado == 1)
 
-            <h6 style="color: green"><strong style="color: black"></strong>Activo</h6>
+        <h6 style="color: green"><strong style="color: black"></strong><b>Activo</b></h6>
         @else
-            <h6 style="color: red"><strong style="color: black"></strong>Inactivo</h6>
+        <h6 style="color: red"><strong style="color: black"></strong><b>Inactivo</b></h6>
         @endif
                               
     <form class="custom-control custom-switch" action="{{ route('habitacionestado', $habitacion) }}" method="post">
         @csrf
         @if ($habitacion->estado == 1)
-            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" 
-            id="customSwitch{{$habitacion->id}}" checked>
-            <label class="custom-control-label" for="customSwitch{{$habitacion->id}}"></label>
+        <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" 
+        id="customSwitch{{$habitacion->id}}" checked>
+        <label class="custom-control-label" for="customSwitch{{$habitacion->id}}"></label>
         @else
-            <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" 
-            id="customSwitch{{$habitacion->id}}">
-            <label class="custom-control-label" for="customSwitch{{$habitacion->id}}"></label>
+        <input type="checkbox" onChange="this.form.submit()" class="custom-control-input" 
+        id="customSwitch{{$habitacion->id}}">
+        <label class="custom-control-label" for="customSwitch{{$habitacion->id}}"></label>
         @endif
     </form>
 </td>
@@ -186,9 +202,10 @@
 </div>
 </div>
 </div> 
-
-          
-          <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-info fas fa-edit"></a>  
+        <button type="button" class="btn btn-light border bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#habitacion{{$habitacion->id}}">
+        </button>
+                            
+        <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-light border fas fa-edit"></a>  
 
           @csrf
         @method('DELETE')

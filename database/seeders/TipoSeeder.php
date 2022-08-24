@@ -14,15 +14,17 @@ class TipoSeeder extends Seeder
      */
     public function run()
     {
-        $tipo = new Tipo();
 
-        $tipo->tipohabitacion="estandar";
+        $tipo = new Tipo();
+        $tipo->nombre="Estandar";
         $tipo->save();
 
         $tipo2 = new Tipo();
-
-        $tipo2->tipohabitacion="doble";
+        $tipo2->nombre="Doble";
         $tipo2->save();
 
+        $tipo3 = new Tipo();
+        $tipo3->nombre="Cuadruple";
+        $tipo3->save();
     }
 }
