@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Tipo;
 
-class TipoSeeder extends Seeder
+class TiposSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,17 +14,13 @@ class TipoSeeder extends Seeder
      */
     public function run()
     {
-
+        
         $tipo = new Tipo();
-        $tipo->nombre="Estandar";
+        $tipo->tipohabitacion="Estandar";
         $tipo->save();
 
-        $tipo2 = new Tipo();
-        $tipo2->nombre="Doble";
-        $tipo2->save();
-
-        $tipo3 = new Tipo();
-        $tipo3->nombre="Cuadruple";
-        $tipo3->save();
+        $tipo = new Tipo();
+        $tipo->tipohabitacion="Doble";
+        $tipo->save();
     }
 }
