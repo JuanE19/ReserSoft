@@ -8,8 +8,9 @@
 
 @section('content')
 
-<form action ="/usuario" method="POST">
+<form action ="/usuario/{{$usuario->id}}" method="POST">
     @csrf
+    @method('PUT')
     <div class="container m-4 w-50">
     
     <div class="mb-3">
@@ -35,15 +36,21 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Correo</label>
-        <input id="correo" name="correo" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->correo}}">
+        <input id="correo" name="correo" type="text" class="form-control  @error('correo') is-invalid @enderror" tabindex="1" maxlength="45" required="" value="{{old('correo', $usuario->correo)}}">
+        @error('correo')
+
+        <span class="invalid-feedback" role="alert">
+            <strong> {{$message}} </strong>
+        </span>
+    @enderror
+
     </div>
 
 
     <div class="mb-3">
         <label for="" class="form-label">Contraseña</label>
-        <input id="correo" name="password" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->password}}">
+        <input id="password" name="password" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->password}}">
     </div>
-
 
     <a href="/usuario" class= "btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>

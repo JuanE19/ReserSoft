@@ -19,7 +19,7 @@ class CreateUsuariosTable extends Migration
             $table->string("apellido");
             $table->string("telefono");
             $table->string("direccion");
-            $table->string("correo");
+            $table->string("correo")->unique();
             $table->string("estado")->default(1);
             $table->string("password");
             

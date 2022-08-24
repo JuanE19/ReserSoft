@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
-
-
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\HabitacionesController;
 
 
 Route::get('/', function () {

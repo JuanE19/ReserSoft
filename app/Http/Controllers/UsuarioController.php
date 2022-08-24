@@ -41,6 +41,19 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate(
+
+        [
+            'correo'=>'unique:usuarios'
+        ],
+
+        [
+            'correo.unique'=>'El correo ya existe'
+        ]
+
+        );
+
         $usuarios = new Usuario();
 
         $usuarios->nombre = $request->get('nombre');
@@ -76,6 +89,7 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::find($id);
         return view('usuario.edit')->with('usuario',$usuario);
+        
     }
 
     /**
@@ -88,18 +102,36 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
         $usuario = Usuario::find($id);
+        $infousuario = Usuario::find($id);
 
-        $usuarios->nombre = $request->get('nombre');
-        $usuarios->apellido = $request->get('apellido');
-        $usuarios->telefono = $request->get('telefono');
-        $usuarios->direccion = $request->get('direccion');
-        $usuarios->correo = $request->get('correo');
-        $usuarios->password = $request->get('password');;
+        $usuario->nombre = $request->get('nombre');
+        $usuario->apellido = $request->get('apellido');
+        $usuario->telefono = $request->get('telefono');
+        $usuario->direccion = $request->get('direccion');
+        $usuario->correo = $request->get('correo');
+        $usuario->password = $request->get('password');;
 
-        $usuario->save();
+    
+        try{
+            $usuario->save();    
 
-        return redirect('/usuario')->with('info','Exitoso');
-        
+            return redirect('/usuario')->with('info','Exitoso');
+        } catch (\Throwable $th){
+            if($th->getCode()==23000){
+            
+
+                if($usuario->correo != $infousuario->correo){
+                    $request->validate(
+                    [
+                        'correo'=> 'unique:usuarios,correo,'
+                    ],
+                    [
+                        'correo.unique'=>'El correo ya existe'
+                    ]
+                    );
+                }
+            }
+        }
     }
 
     /**
