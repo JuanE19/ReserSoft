@@ -88,7 +88,7 @@ class HabitacionController extends Controller
     {
         $tipo = Tipo::all();
         $habitacion = Habitacion::find($id);
-        return view('habitacion.edit')->with('habitacion','tipo');
+        return view('habitacion.edit', compact("tipo", "habitacion"));
     }
 
     /**
