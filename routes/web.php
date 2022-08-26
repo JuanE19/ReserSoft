@@ -9,8 +9,6 @@ use App\Http\Controllers\HabitacionController;
 
 
 
-
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -24,7 +22,7 @@ Route::post('clientes/{cliente?}', [ClienteController::class, "actualizarEstado"
 
 // rutas habitaciones
 Route::resource('habitaciones','App\Http\Controllers\HabitacionController');
-Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarestado"])->name('habitacionestado');
+Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actualizarEstado"])->name('habitacionestado');
 
 // rutas reservas
 Route::resource('reserva','App\Http\Controllers\ReservaController');
