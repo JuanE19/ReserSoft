@@ -18,107 +18,279 @@
   <label for="" class="form-label">Código</label>
   <input id="id" name="id" type="text" class="form-control" value="{{$habitacion->id}}">    
   </div>
-
-  <?php
-  
-      $caracteristicas = $habitacion->caracteristicas;
-      $array = explode(', ', $caracteristicas);
-      foreach ($array as $a) {
-        echo $a."<br>";
-      }
-  
-  ?>
-
   
   <div class="mb-3">
   <label for="" class="form-label">Caracteristicas</label><span style="color:red">*</span></label>
   </div>
 
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama individual"> 
-            <span class="badge badge-secondary-btn btn-success"></i> Cama individual </span>
-            </label>
-          </div>
+<?php
+$caracteristicas = $habitacion->caracteristicas;
+$array = explode(', ', $caracteristicas);
 
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="checkbox" name="2" type="checkbox" class="ml-3" value="Cama doble"> 
-            <span class="badge badge-secondary-btn btn-success"></i> Cama doble </span>
-            </label>
-          </div>
+  $cama1 = false;
+  for ($i=0; $i < 12; $i++) {
+        if (isset($array[$i])) {
+          if($array[$i] == "Cama individual"){
+            $cama1 = true;
+?>
+            <div class="form-check">
+              <label class="form-check-label">
+              <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama individual" checked> 
+              <span class="badge badge-secondary-btn btn-success"></i> Cama individual </span>
+              </label>
+            </div>
+<?php }}}
+  if($cama1 == false) { ?>
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama individual"> 
+      <span class="badge badge-secondary-btn btn-success"></i> Cama individual </span>
+      </label>
+    </div>
+<?php }
 
+  $cama2 = false;
+  for ($i=0; $i < 12; $i++) {
+    if (isset($array[$i])) {
+      if($array[$i] == "Cama doble"){
+        $cama2 = true;
+?>
+        <div class="form-check">
+          <label class="form-check-label">
+          <input class="checkbox" name="2" type="checkbox" class="ml-3" value="Cama doble" checked> 
+          <span class="badge badge-secondary-btn btn-success"></i> Cama doble </span>
+          </label>
+        </div>
+<?php }}}
+  if($cama2 == false) { ?>
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="2" type="checkbox" class="ml-3" value="Cama doble"> 
+      <span class="badge badge-secondary-btn btn-success"></i> Cama doble </span>
+      </label>
+    </div>
+<?php }
+
+  $quad = false;
+  for ($i=0; $i < 12; $i++) {
+    if (isset($array[$i])) {
+      if($array[$i] == "Quad"){
+        $quad = true;
+?>                 
+        <div class="form-check">
+          <label class="form-check-label">
+          <input class="checkbox" name="3" type="checkbox" class="ml-3" value="Quad" checked> 
+          <span class="badge badge-secondary-btn btn-success"></i> Quad</span>
+          </label>
+        </div>
+<?php }}} 
+        if($quad == false) { ?>
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="3" type="checkbox" class="ml-3" value="Quad"> 
             <span class="badge badge-secondary-btn btn-success"></i> Quad</span>
             </label>
           </div>
-
+<?php }
+  $tv1 = false;
+  for ($i=0; $i < 12; $i++) {
+    if (isset($array[$i])) {
+      if($array[$i] == "1 TV"){
+        $tv1 = true;
+?>         
+        <div class="form-check">
+          <label class="form-check-label">
+          <input class="checkbox" name="4" type="checkbox" class="ml-3" value="1 TV" checked> 
+          <span class="badge badge-secondary-btn btn-success"></i> 1 TV </span>
+          </label>
+        </div>
+<?php }}} 
+  if($tv1 == false) { ?>  
           <div class="form-check">
-            <label class="form-check-label">
-            <input class="checkbox" name="4" type="checkbox" class="ml-3" value="1 TV"> 
-            <span class="badge badge-secondary-btn btn-success"></i> 1 TV </span>
-            </label>
-          </div>
-
-          <div class="form-check">
+          <label class="form-check-label">
+          <input class="checkbox" name="4" type="checkbox" class="ml-3" value="1 TV"> 
+          <span class="badge badge-secondary-btn btn-success"></i> 1 TV </span>
+          </label>
+        </div>
+<?php }
+  $tv2 = false;
+          for ($i=0; $i < 12; $i++) {
+            if (isset($array[$i])) {
+              if($array[$i] == "2 TV"){
+                $tv2 = true;
+?>
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <input class="checkbox" name="5" type="checkbox" class="ml-3" value="2 TV" checked> 
+                  <span class="badge badge-secondary-btn btn-success"></i> 2 TV </span>
+                  </label>
+                </div>
+<?php }}} 
+  if($tv2 == false) { ?>  
+            <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="5" type="checkbox" class="ml-3" value="2 TV"> 
             <span class="badge badge-secondary-btn btn-success"></i> 2 TV </span>
             </label>
-          </div>
+          </div>   
+    
+<?php }
+  $aguacaliente = false;
+          for ($i=0; $i < 12; $i++) {
+            if (isset($array[$i])) {
+              if($array[$i] == "Agua Caliente"){
+                $aguacaliente = true;
+?>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                    <input class="checkbox" name="6" type="checkbox" class="ml-3" value="Agua Caliente" checked> 
+                    <span class="badge badge-secondary-btn btn-success"></i> Agua Caliente </span>
+                    </label>
+                  </div>
+<?php }}} 
+  if($aguacaliente == false) { ?>  
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="6" type="checkbox" class="ml-3" value="Agua Caliente"> 
+      <span class="badge badge-secondary-btn btn-success"></i> Agua Caliente </span>
+      </label>
+    </div> 
+<?php }
 
+  $aireacondicionado = false;
+          for ($i=0; $i < 12; $i++) {
+            if (isset($array[$i])) {
+              if($array[$i] == "Aire acondicionado"){
+                $aireacondicionado = true;
+?>
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="6" type="checkbox" class="ml-3" value="Agua Caliente"> 
-            <span class="badge badge-secondary-btn btn-success"></i> Agua Caliente </span>
+            <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Aire acondicionado" checked> 
+            <span class="badge badge-secondary- btn btn-success"></i> Aire acondicionado </span>
             </label>
           </div>
+<?php }}} 
+  if($aireacondicionado == false) { ?>  
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Aire acondicionado"> 
+      <span class="badge badge-secondary- btn btn-success"></i> Aire acondicionado </span>
+      </label>
+    </div>
+<?php }
 
+  $aireacondicionado = false;
+    for ($i=0; $i < 12; $i++) {
+      if (isset($array[$i])) {
+        if($array[$i] == "Ventilador"){
+          $aireacondicionado = true;
+?>
           <div class="form-check">
-          <label class="form-check-label">
-          <input class="checkbox" name="7" type="checkbox" class="ml-3" value="Aire acondicionado"> 
-          <span class="badge badge-secondary- btn btn-success"></i> Aire acondicionado </span>
-          </label>
+            <label class="form-check-label">
+            <input class="checkbox" name="8" type="checkbox" class="ml-3" value="Ventilador" checked> 
+            <span class="badge badge-secondary- btn btn-success"></i> Ventilador </span>
+            </label>
           </div>
-
+<?php }}} 
+  if($aireacondicionado == false) { ?>  
           <div class="form-check">
           <label class="form-check-label">
           <input class="checkbox" name="8" type="checkbox" class="ml-3" value="Ventilador"> 
           <span class="badge badge-secondary- btn btn-success"></i> Ventilador </span>
           </label>
           </div>
+<?php }
 
+  $vistamontaña = false;
+          for ($i=0; $i < 12; $i++) {
+            if (isset($array[$i])) {
+              if($array[$i] == "Vista Montaña"){
+                $vistamontaña = true;
+?>
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <input class="checkbox" name="9" type="checkbox" class="ml-3" value="Vista Montaña" checked> 
+                  <span class="badge badge-secondary-btn btn-success"></i> Vista Montaña </span>
+                  </label>
+                </div>
+<?php }}} 
+  if($vistamontaña == false) { ?>  
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="9" type="checkbox" class="ml-3" value="Vista Montaña"> 
+      <span class="badge badge-secondary-btn btn-success"></i> Vista Montaña </span>
+      </label>
+    </div>
+<?php }
+
+  $bañoprivado = false;
+    for ($i=0; $i < 12; $i++) {
+      if (isset($array[$i])) {
+        if($array[$i] == "Baño privado"){
+          $bañoprivado = true;
+?>
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="9" type="checkbox" class="ml-3" value="Vista Montaña"> 
-            <span class="badge badge-secondary-btn btn-success"></i> Vista Montaña </span>
+            <input class="checkbox" name="10" type="checkbox" class="ml-3" value="Baño privado"checked>
+            <span class="badge badge-secondary-btn btn-success"></i> Baño privado </span>
             </label>
           </div>
-
-          <div class="form-check">
+<?php }}} 
+  if($bañoprivado == false) { ?>  
+            <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="10" type="checkbox" class="ml-3" value="Baño privado">
             <span class="badge badge-secondary-btn btn-success"></i> Baño privado </span>
             </label>
           </div>
+<?php }
 
+  $sofa = false;
+    for ($i=0; $i < 12; $i++) {
+      if (isset($array[$i])) {
+        if($array[$i] == "Sofá"){
+          $sofa = true;
+?>
           <div class="form-check">
             <label class="form-check-label">
-            <input class="checkbox" name="11" type="checkbox" class="ml-3" value="Sofá"> 
+            <input class="checkbox" name="11" type="checkbox" class="ml-3" value="Sofá" checked> 
             <span class="badge badge-secondary-btn btn-success"></i> Sofá </span>
             </label>
           </div>
+<?php }}} 
+  if($sofa == false) { ?>  
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="11" type="checkbox" class="ml-3" value="Sofá"> 
+      <span class="badge badge-secondary-btn btn-success"></i> Sofá </span>
+      </label>
+    </div>
+<?php }
 
-          <div class="form-check">
-            <label class="form-check-label">
-            <input class="checkbox" name="12" type="checkbox" class="ml-3" value="Servicio Wifi"> 
-            <span class="badge badge-secondary-btn btn-success"></i> Servicio Wifi </span>
-            </label>
-          </div>
+  $serviciowifi = false;
+          for ($i=0; $i < 12; $i++) {
+            if (isset($array[$i])) {
+              if($array[$i] == "Servicio Wifi"){
+                $serviciowifi = true;
+?>
+                <div class="form-check">
+                  <label class="form-check-label">
+                  <input class="checkbox" name="12" type="checkbox" class="ml-3" value="Servicio Wifi" checked> 
+                  <span class="badge badge-secondary-btn btn-success"></i> Servicio Wifi </span>
+                  </label>
+                </div>
+<?php }}} 
+  if($serviciowifi == false) { ?>  
+    <div class="form-check">
+      <label class="form-check-label">
+      <input class="checkbox" name="12" type="checkbox" class="ml-3" value="Servicio Wifi"> 
+      <span class="badge badge-secondary-btn btn-success"></i> Servicio Wifi </span>
+      </label>
+    </div>
+<?php
+        }
+?>
 
-          
 
       <br>    
 

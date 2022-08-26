@@ -8,6 +8,8 @@
 
 @section('content')
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- Button trigger modal -->
 <button type="button" href="habitaciones/create" class="bi bi-person-plus-fill btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
   + Agregar habitacion
@@ -195,20 +197,79 @@
         <td>
         <form action="{{ route ('habitaciones.destroy', $habitacion->id) }}" method="POST">
 
+         <!-- Boton Modal Detalle -->
+         <button type="button" class="btn btn-light border bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#habitacion{{$habitacion->id}}">
+         </button>
+         <!-- Modal Detalle -->
+         <div class="modal fade" id="habitacion{{$habitacion->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header bg-green text-white">
+                         <h5 class="modal-title" id="exampleModalLabel"><strong>Información de la habitación</strong></h5>
+                     </div>
+                     <div class="modal-body">
+                         <strong>Código:</strong> {{ $habitacion->id }} <br>
+                         <strong>Caracteristicas:</strong>  {{ $habitacion->caracteristicas }} <br>
+                         <strong>Numero de la habitación:</strong> {{ $habitacion->numeroDeHabitacion }} <br>
+                         <strong>Precio:</strong> {{ $habitacion->precio }} <br>
+                         <strong>Tipo de habitación:</strong> {{$habitacion->datostipohabitacion->tipohabitacion}} <br>
+
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-secondary btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                     </div>
+                     @if(session('message'))
+                     
+                     <script>
+                     
+                     Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Habitación agregada exitosamente',
+                     showConfirmButton: false,
+                     timer: 1500
+                     })
+                     </script>
+                     @endif
+                     @if(session('info'))
+                     
+                     <script>
+                     
+                     Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Habitación actualizada exitosamente',
+                     showConfirmButton: false,
+                     timer: 1500
+                     })
+                     </script>
+                     @endif
+                     @if(session('estate'))
+                     
+                     <script>
+                     
+                     Swal.fire({
+                     position: 'center',
+                     icon: 'success',
+                     title: 'Estado actualizado exitosamente',
+                     showConfirmButton: false,
+                     timer: 1500
+                     })
+                     </script>
+                     @endif
+                 </div>
+             </div>
+         </div>
+
 </div>
 </div>
 </div>
 </div> 
-        <button type="button" class="btn btn-light border bi bi-eye-fill" data-bs-toggle="modal" data-bs-target="#habitacion{{$habitacion->id}}">
-        </button>
                             
         <a href="/habitaciones/{{$habitacion->id}}/edit" class="btn btn-light border fas fa-edit"></a>  
 
           @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger">
-            <i class="fas fa-trash"></i>
-        </button>
         </form>
         </td>
         </tr>    

@@ -22,5 +22,9 @@ class TiposSeeder extends Seeder
         $tipo = new Tipo();
         $tipo->tipohabitacion="Doble";
         $tipo->save();
+
+        $tipo = new Tipo();
+        $tipo->tipohabitacion="Quad";
+        $tipo->save();
     }
 }
