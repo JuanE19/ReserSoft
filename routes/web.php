@@ -7,8 +7,6 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HabitacionController;
 
-
-
 Route::get('/', function () {
     return view('auth.login');
 });
