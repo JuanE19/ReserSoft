@@ -8,8 +8,6 @@
 
 @section('content')
 
-<!--Alertas Personalizadas-->
-@include('components.flash_alerts')
 
 <!-- Button trigger modal -->
 <button type="button" href="habitaciones/create" class="bi bi-building - btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
