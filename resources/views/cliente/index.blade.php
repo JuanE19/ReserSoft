@@ -8,8 +8,7 @@
 
 @section('content')
 
-<!--Alertas Personalizadas-->
-@include('components.flash_alerts')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
 <table id="clientes" class="table table-hover shadow-lg mt-1" style="width:100%">
@@ -91,6 +90,56 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                 </div>
+
+
+                                @if(session('message'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Cliente registrado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+                                @if(session('info'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Cliente actualizado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+
+                                @if(session('estate'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Estado actualizado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+
+
                             </div>
                         </div>
                     </div>
