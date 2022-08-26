@@ -18,7 +18,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Documento <span style="color:red">*</span></label>
+            <label for="" class="form-label">Documento <span style="color:red">*</span></label>  
             <input id="documento" name="documento" placeholder="ej. 10000000"  type="number" class="form-control @error('documento') is-invalid @enderror" value="{{old('documento')}}" tabindex="1" maxlength="45" required="">
             @error('documento')
             <span class="invalid-feedback" role="alert">
