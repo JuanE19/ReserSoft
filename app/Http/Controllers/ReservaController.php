@@ -55,7 +55,7 @@ class ReservaController extends Controller
 
         $reservas->save();
 
-        return redirect('/reserva');
+        return redirect('/reserva')->with('message','Exitoso');
     }
 
     /**
@@ -103,7 +103,7 @@ class ReservaController extends Controller
 
         $reserva->save();
 
-        return redirect('/reserva');
+        return redirect('/reserva')->with('info','Exitoso');
     }
 
     /**
@@ -130,6 +130,6 @@ class ReservaController extends Controller
             $reserva->estado = 2;
         $reserva->update();
         
-        return redirect('/reserva')->with('Estado Actualizado', 'Estado cambiado');
+        return redirect('/reserva')->with('estate', 'Estado cambiado');
     }
 }

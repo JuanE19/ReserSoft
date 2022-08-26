@@ -5,11 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\HabitacionesController;
-
-use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HabitacionController;
-use App\Http\Controllers\ReservaController;
 
 
 
@@ -31,7 +27,6 @@ Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actuali
 
 // rutas reservas
 Route::resource('reserva','App\Http\Controllers\ReservaController');
-
 Route::post('reserva/{reserva?}', [ReservaController::class, "actualizarEstadoReserva"])->name('estadoReserva');
 
 Route::middleware([

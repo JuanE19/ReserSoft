@@ -7,6 +7,7 @@
 @stop
 
 @section('content')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Crear reserva -->
 <div class="container">
@@ -25,20 +26,10 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text">Ingreso</span>
-            <input
-             id="fechaDeIngreso" 
-             name="fechaDeIngreso" 
-             type="date" 
-             class="form-control mx-2" 
-             required="">
+            <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control mx-2" required="">
 
             <span class="input-group-text">Salida</span>
-            <input 
-            id="fechaDeSalida" 
-            name="fechaDeSalida" 
-            type="date" 
-            class="form-control mx-2" 
-            required="">
+            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2" required="">
         </div>
 
         <div class="input-group mb-3">
@@ -82,7 +73,44 @@
                         </button>
                 </td>
 
-            <!-- Estado -->
+                <!-- Alertas -->
+                @if ( session('message') )
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'La reserva se ha registrado exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                </script>
+                @endif
+
+                @if ( session('info') )
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'La reserva se ha actualizado exitosamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                </script>
+                @endif
+
+                @if ( session('estate') )
+                <script>
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'El estado de la reserva ha sido cambiada con éxito',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                </script>
+                @endif
+
+                <!-- Estado -->
                 <td>
                     <form class="custom-control custom-switch" action="{{ route('estadoReserva', $reserva) }}" method="post">
                         @csrf
@@ -133,6 +161,7 @@
         @endforeach
     </table>
 </div>
+
 @stop
 
 @section('css')
@@ -150,6 +179,7 @@
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function() {
         $('#dataTableReserva').DataTable({
