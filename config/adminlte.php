@@ -270,17 +270,13 @@ return [
           
         ],
 
-        ['header' => 'Configuracion'],
+        ['header' => 'Configuración'],
         [
             'text' => 'Perfil',
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'Cambiar Contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+      
     ],
 
     /*
