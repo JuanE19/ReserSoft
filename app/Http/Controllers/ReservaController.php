@@ -130,6 +130,7 @@ class ReservaController extends Controller
             $reserva->estado = 2;
         $reserva->update();
         
+
         return redirect('/reserva')->with('estate', 'Estado cambiado');
     }
 }
