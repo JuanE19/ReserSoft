@@ -20,7 +20,7 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Documento <span style="color:red">*</span></label>
-            <input id="documento" name="documento" type="text" class="form-control @error('documento') is-invalid @enderror" maxlength="20" required="" value="{{ old('documento', $cliente->Documento)}}">
+            <input id="documento" name="documento" type="text" disabled class="form-control @error('documento') is-invalid @enderror" maxlength="20" required="" value="{{ old('documento', $cliente->Documento)}} ">
             @error('documento')
             <span class="invalid-feedback" role="alert">
                 <strong>{{$message}}</strong>
