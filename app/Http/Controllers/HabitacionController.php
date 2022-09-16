@@ -45,18 +45,9 @@ class HabitacionController extends Controller
     public function store(Request $request)
     {
 
-        //$caracteristica = array("1" => $_POST["1"],
-        //"2" => $_POST["2"],
-        //"3" => $_POST["3"],
-        //"4" => $_POST["4"],
-        //"5" => $_POST["5"],
-        //"6" => $_POST["6"],
-        //"7" => $_POST["7"],
-        //"8" => $_POST["8"]);
-
         $caracteristicas = "";
 
-        for ($i=1; $i < 8; $i++) { 
+        for ($i=1; $i < 12; $i++) { 
             if (isset($_POST[$i])) {
                 $caracteristicas = $caracteristicas."".$_POST[$i].", ";
                }
@@ -73,7 +64,7 @@ class HabitacionController extends Controller
         $habitaciones->save();
         
 
-        return redirect('/habitaciones')->with('info','La habitación se ha agregado correctamente');
+        return redirect('/habitaciones')->with('message', 'exitoso');
     }
 
     /**
@@ -97,7 +88,7 @@ class HabitacionController extends Controller
     {
         $tipo = Tipo::all();
         $habitacion = Habitacion::find($id);
-        return view('habitacion.edit')->with('habitacion',$habitacion);
+        return view('habitacion.edit', compact("tipo", "habitacion"));
     }
 
     /**
@@ -109,13 +100,22 @@ class HabitacionController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $caracteristicas = "";
+
+        for ($i=1; $i < 12; $i++) { 
+            if (isset($_POST[$i])) {
+                $caracteristicas = $caracteristicas."".$_POST[$i].", ";
+               }
+        }
+
         $habitacion = Habitacion::find($id);
 
         $habitacion->id = $request->get('id');
-        $habitacion->caracteristicas = $request->get('caracteristicasCategoria');
+        $habitacion->caracteristicas = $caracteristicas;
         $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
         $habitacion->precio = $request->get('precio');
-        $habitacion->tipodehabitacion = $request->get('tipo');
+        $habitacion->tipodehabitacion = $request->get('tipodehabitacion');
         
         $habitacion->save();
 
@@ -144,7 +144,7 @@ class HabitacionController extends Controller
             $habitacion->estado=1;
         $habitacion->update();
 
-        return redirect('/habitaciones')->with('estado Actualizado', 'estado cambiado');
+        return redirect('/habitaciones')->with('estate', 'Estado cambiado');
     }
    
 }

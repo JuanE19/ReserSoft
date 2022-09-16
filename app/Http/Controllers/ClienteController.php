@@ -74,7 +74,7 @@ class ClienteController extends Controller
 
         $clientes->save();
 
-        return redirect('/clientes')->with('info', 'El cliente se ha Creado correctamente');
+        return redirect('/clientes')->with('message', 'exitoso');
     }
 
     /**
@@ -174,6 +174,6 @@ class ClienteController extends Controller
         else
             $cliente->Estado = 1;
         $cliente->update();
-        return redirect('/clientes')->with('EstadoActualizado', 'Estado cambiado');
+        return redirect('/clientes')->with('estate', 'Estado cambiado');
     }
 }

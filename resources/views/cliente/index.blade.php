@@ -8,8 +8,7 @@
 
 @section('content')
 
-<!--Alertas Personalizadas-->
-@include('components.flash_alerts')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <a href="clientes/create" class="bi bi-person-plus-fill btn btn-success "><b> Crear Nuevo</b></a>
 <table id="clientes" class="table table-hover shadow-lg mt-1" style="width:100%">
@@ -74,6 +73,7 @@
                             <div class="modal-content">
                                 <div class="modal-header bg-green text-white">
                                     <h5 class="modal-title" id="exampleModalLabel"><strong>Información del Cliente</strong></h5>
+                                  
 
                                 </div>
                                 <div class="modal-body">
@@ -86,11 +86,62 @@
                                     <strong>Teléfono:</strong> {{ $cliente->Telefono }} <br>
                                     <strong>Dirección:</strong> {{ $cliente->Direccion }} <br>
                                     
+                                    
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                 </div>
+
+
+                                @if(session('message'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Cliente registrado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+                                @if(session('info'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Cliente actualizado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+
+                                @if(session('estate'))
+                                
+                                <script>
+                                
+                                Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Estado actualizado exitosamente',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                                </script>
+
+                                @endif
+
+
+
                             </div>
                         </div>
                     </div>
@@ -115,10 +166,13 @@
 @stop
 
 @section('css')
+
 <link rel="stylesheet" href="/css/admin_custom.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
 
 @stop
 
@@ -128,6 +182,7 @@
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
 
 <script>
     $(document).ready(function() {

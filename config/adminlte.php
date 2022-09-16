@@ -247,7 +247,7 @@ return [
         ],
         [
             'text'        => 'Usuarios',
-            'url'         => 'admin/pages',
+            'url'         => 'usuario',
             'icon'        => 'fas fa-fw fa-user',
             
         ],
@@ -270,17 +270,13 @@ return [
           
         ],
 
-        ['header' => 'Configuracion'],
+        ['header' => 'Configuración'],
         [
             'text' => 'Perfil',
-            'url'  => 'admin/settings',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'Cambiar Contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+      
     ],
 
     /*

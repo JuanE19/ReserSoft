@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
      
         $this->call(TipoDocumentoSeeder::class);
 
+        $this->call(TiposSeeder::class);
+
+
     }
 }

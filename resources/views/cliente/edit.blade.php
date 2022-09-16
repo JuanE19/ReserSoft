@@ -7,8 +7,6 @@
 @stop
 
 @section('content')
-  
-
 
 <form action ="/clientes/{{$cliente->id}}" method="POST">
     @csrf
@@ -42,7 +40,7 @@
 
             <div class="mb-3">
                 <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
-                <input id="telefono" name="telefono" type="text" class="form-control" maxlength="20"required="" value="{{$cliente->Telefono}}">
+                <input id="telefono" name="telefono" type="text" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
                 </div>
 
                 <div class="mb-3">
@@ -53,13 +51,12 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Tipo de Documento <span style="color:red">*</span></label>
                         <select class="form-select" name="tipodocumento" id="tipodocumento" required="">
-                    </div> 
-                    
-                            <option value="">Seleccione </option>
-                            <?php foreach ($tipodocumento as $td) { ?>
-                                <option value="{{$td['id']}}">{{$td['nombre']}}</option>
-                            <?php } ?>
-                        </select>
+                                <option value="{{$cliente->datosdocumento->id}}" >{{$cliente->datosdocumento->nombre}} </option>
+                                <?php foreach ($tipodocumento as $td) { ?>
+                                    <option value="{{$td['id']}}">{{$td['nombre']}}</option>
+                                <?php } ?>
+                            </select>
+                    </div>
                         </div>
             </div>
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>

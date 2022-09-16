@@ -11,7 +11,7 @@
     @php( $register_url = $register_url ? url($register_url) : '' )
 @endif
 
-@section('auth_header', __('Registro de Nuevo Usuario'))
+@section('auth_header', __('Registro de nuevo usuario'))
 
 @section('auth_body')
     <form action="{{ $register_url }}" method="post">
@@ -102,7 +102,7 @@
 @section('auth_footer')
     <p class="my-0">
         <a href="{{ $login_url }}">
-            {{ __('Ye Tengo Un Usuario') }}
+            {{ __('Ya tengo un usuario') }}
         </a>
     </p>
 @stop
