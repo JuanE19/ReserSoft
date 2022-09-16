@@ -226,6 +226,22 @@
                      <div class="modal-footer">
                          <button type="button" class="btn-block btn btn-success" data-bs-dismiss="modal">Cerrar</button>
                      </div>
+
+                     @if(session('error'))
+                     
+                     <script>
+                     
+                     Swal.fire({
+                     position: 'center',
+                     icon: 'error',
+                     title: '{{session("error")}}',
+                     showConfirmButton: false,
+                     timer: 1500
+                     })
+                     </script>
+                     @endif
+
+
                      @if(session('message'))
                      
                      <script>
@@ -233,38 +249,13 @@
                      Swal.fire({
                      position: 'center',
                      icon: 'success',
-                     title: 'Habitación agregada exitosamente',
+                     title: '{{session("message")}}',
                      showConfirmButton: false,
                      timer: 1500
                      })
                      </script>
                      @endif
-                     @if(session('info'))
                      
-                     <script>
-                     
-                     Swal.fire({
-                     position: 'center',
-                     icon: 'success',
-                     title: 'Habitación actualizada exitosamente',
-                     showConfirmButton: false,
-                     timer: 1500
-                     })
-                     </script>
-                     @endif
-                     @if(session('estate'))
-                     
-                     <script>
-                     
-                     Swal.fire({
-                     position: 'center',
-                     icon: 'success',
-                     title: 'Estado actualizado exitosamente',
-                     showConfirmButton: false,
-                     timer: 1500
-                     })
-                     </script>
-                     @endif
                  </div>
              </div>
          </div>

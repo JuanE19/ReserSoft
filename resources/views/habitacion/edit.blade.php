@@ -313,7 +313,7 @@ $array = explode(', ', $caracteristicas);
     <select class="form-select form-select-sm" name="tipodehabitacion" id="tipodehabitacion" required="">
   </div>
 
-        <option value="">Elegir... </option>
+        <option value="{{$habitacion->id}}">{{$habitacion->datostipohabitacion->tipohabitacion}}</option>
         <?php foreach ($tipo as $th) { ?>
             <option value="{{$th['id']}}">{{$th['tipohabitacion']}}</option>
         <?php } ?>

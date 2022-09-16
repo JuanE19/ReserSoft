@@ -16,7 +16,7 @@ class CreateHabitacionesTable extends Migration
         Schema::create('habitacions', function (Blueprint $table) {
             $table->id();
             $table->string("caracteristicas");
-            $table->integer("numeroDeHabitacion");
+            $table->integer("numeroDeHabitacion")->unique();
             $table->double("precio");
             $table->unsignedBigInteger("tipoDeHabitacion");
             $table->foreign('tipoDeHabitacion')->references('id')->on('tipos');
