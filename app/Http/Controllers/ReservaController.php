@@ -21,8 +21,14 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
-        $habitacion_id = Habitacion::all();
-        $cliente_id = Cliente::all();
+        $habitacion_id = Habitacion::select('id', 'numeroDeHabitacion')
+        ->where('Estado', '1')
+        ->get();
+        $i = 1;
+        $cliente_id = Cliente::select('id', 'Documento')
+        ->where('Estado', '1')
+        ->get();
+        $i = 1;
         return view('reserva.index', compact('reservas', 'habitacion_id', 'cliente_id'));
     }
 
@@ -55,7 +61,7 @@ class ReservaController extends Controller
 
         $reservas->save();
 
-        return redirect('/reserva');
+        return redirect('/reserva')->with('message','Exitoso');
     }
 
     /**
@@ -103,7 +109,7 @@ class ReservaController extends Controller
 
         $reserva->save();
 
-        return redirect('/reserva');
+        return redirect('/reserva')->with('info','Exitoso');
     }
 
     /**
@@ -130,6 +136,7 @@ class ReservaController extends Controller
             $reserva->estado = 2;
         $reserva->update();
         
-        return redirect('/reserva')->with('Estado Actualizado', 'Estado cambiado');
+
+        return redirect('/reserva')->with('estate', 'Estado cambiado');
     }
 }
