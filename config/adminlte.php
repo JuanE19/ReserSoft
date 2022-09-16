@@ -276,7 +276,13 @@ return [
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-      
+
+        ['header' => 'Ayuda En Linea'],
+        [
+            'text' => 'Ayuda en linea',
+            'url'  => 'ayudaenlinea',
+            'icon' => 'fas fa-headset',
+        ],
     ],
 
     /*
