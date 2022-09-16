@@ -16,7 +16,7 @@ class TiposSeeder extends Seeder
     {
         
         $tipo = new Tipo();
-        $tipo->tipohabitacion="Estandar";
+        $tipo->tipohabitacion="Estándar";
         $tipo->save();
 
         $tipo = new Tipo();
