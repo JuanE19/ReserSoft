@@ -45,26 +45,46 @@ class HabitacionController extends Controller
     public function store(Request $request)
     {
 
-        $caracteristicas = "";
+        try { 
+            
+                $caracteristicas = "";
 
-        for ($i=1; $i < 12; $i++) { 
-            if (isset($_POST[$i])) {
-                $caracteristicas = $caracteristicas."".$_POST[$i].", ";
-               }
+            for ($i=1; $i < 12; $i++) { 
+                if (isset($_POST[$i])) {
+                    $caracteristicas = $caracteristicas."".$_POST[$i].", ";
+                   }
+            }
+            $numero=strlen($caracteristicas);
+
+
+            if ($caracteristicas == "") {
+                return redirect('/habitaciones')->with('error', 'Debes agregar alguna característica');
+            }
+
+            else {
+                $habitaciones = new Habitacion();
+    
+            $habitaciones->id = $request->get('id');
+            $habitaciones->caracteristicas = $caracteristicas;
+            $habitaciones->numerodehabitacion = $request->get('numerodehabitacion');
+            $habitaciones->precio = $request->get('precio');
+            $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
+    
+            $habitaciones->save();
+            
+    
+            return redirect('/habitaciones')->with('message', 'La habitación ha sido registrada exitosamente');
+            }
+    
+           
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                return redirect('/habitaciones')->with('error', 'El número de habitación ya existe');
+            } else {
+                throw $th;
+            }
         }
 
-        $habitaciones = new Habitacion();
-
-        $habitaciones->id = $request->get('id');
-        $habitaciones->caracteristicas = $caracteristicas;
-        $habitaciones->numerodehabitacion = $request->get('numerodehabitacion');
-        $habitaciones->precio = $request->get('precio');
-        $habitaciones->tipodehabitacion = $request->get('tipodehabitacion');
-
-        $habitaciones->save();
-        
-
-        return redirect('/habitaciones')->with('message', 'exitoso');
     }
 
     /**
@@ -111,7 +131,7 @@ class HabitacionController extends Controller
 
         $habitacion = Habitacion::find($id);
 
-        $habitacion->id = $request->get('id');
+
         $habitacion->caracteristicas = $caracteristicas;
         $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
         $habitacion->precio = $request->get('precio');
@@ -119,7 +139,7 @@ class HabitacionController extends Controller
         
         $habitacion->save();
 
-        return redirect('/habitaciones')->with('info','La habitacion se ha actualizado correctamente');
+        return redirect('/habitaciones')->with('message','La habitacion se ha actualizado correctamente');
     
     }
 
@@ -134,7 +154,7 @@ class HabitacionController extends Controller
     {
         $habitacion = Habitacion::find($id);        
         $habitacion->delete();
-        return redirect ('/habitaciones')->with('info','La habitación se ha eliminado correctamente');
+        return redirect ('/habitaciones')->with('message','La habitación se ha eliminado correctamente');
     }
     public function actualizarestado(Habitacion $habitacion){ 
 
@@ -144,7 +164,7 @@ class HabitacionController extends Controller
             $habitacion->estado=1;
         $habitacion->update();
 
-        return redirect('/habitaciones')->with('estate', 'Estado cambiado');
+        return redirect('/habitaciones')->with('message', 'Estado cambiado');
     }
    
 }
