@@ -15,12 +15,12 @@
 
   <div class="container m-4 w-50">
   <div class="mb-3">
-  <label for="" class="form-label">Código</label>
-  <input id="id" name="id" type="text" class="form-control" value="{{$habitacion->id}}">    
+  <label for="" class="form-label">Código de la habitación</label>
+  <input id="id" name="id" type="text" class="form-control" disabled="disabled" value="{{$habitacion->id}}">    
   </div>
   
   <div class="mb-3">
-  <label for="" class="form-label">Caracteristicas</label><span style="color:red">*</span></label>
+  <label for="" class="form-label">Características</label><span style="color:red">*</span></label>
   </div>
 
 <?php
@@ -295,7 +295,7 @@ $array = explode(', ', $caracteristicas);
       <br>    
 
   <div class="mb-3">
-  <label for="" class="form-label">Numero de la Habitacion <span style="color:red">*</span></label>
+  <label for="" class="form-label">Número de la Habitación <span style="color:red">*</span></label>
   <input id="numeroDeHabitacion" name="numeroDeHabitacion" type="number" class="form-control" maxlength="3" required="" value="{{$habitacion->numeroDeHabitacion}}">
   </div>
 
@@ -309,11 +309,11 @@ $array = explode(', ', $caracteristicas);
 
 
   <div class="mb-3">
-    <label for="" class="form-label">Tipo de habitacion<span style="color:red">*</span></label>
-    <select class="form-select" name="tipodehabitacion" id="tipodehabitacion" required="">
+    <label for="" class="form-label">Tipo de habitación<span style="color:red">*</span></label>
+    <select class="form-select form-select-sm" name="tipodehabitacion" id="tipodehabitacion" required="">
   </div>
 
-        <option value=""> Seleccione </option>
+        <option value="{{$habitacion->id}}">{{$habitacion->datostipohabitacion->tipohabitacion}}</option>
         <?php foreach ($tipo as $th) { ?>
             <option value="{{$th['id']}}">{{$th['tipohabitacion']}}</option>
         <?php } ?>
@@ -324,7 +324,7 @@ $array = explode(', ', $caracteristicas);
 
 
   <a href="/habitaciones" class= "btn btn-secondary" tabindex="5">Cancelar</a>
-  <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+  <button type="submit" class="btn btn-primary-btn btn-success" tabindex="4">Guardar</button>
 </form>
 
 @stop

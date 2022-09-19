@@ -11,8 +11,8 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Button trigger modal -->
-<button type="button" href="habitaciones/create" class="bi bi-person-plus-fill btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  + Agregar habitacion
+<button type="button" href="habitaciones/create" class="bi bi-fill btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  + Agregar habitación
 </button>
 <br><br>  
 
@@ -30,7 +30,8 @@
    @csrf
 
 
-   <label for="" class="form-label">Caracteristicas mi fafa</label>
+   <label for="" class="form-label"> Caracteristicas <span style="color:red">*</span></label>
+          
           <div class="form-check">
             <label class="form-check-label">
             <input class="checkbox" name="1" type="checkbox" class="ml-3" value="Cama individual"> 
@@ -118,19 +119,25 @@
    <br>
 
    <div class="mb-3">
-   <label for="" class="form-label">Numero de la Habitacion</label>
-   <input id="numerodehabitacion" name="numerodehabitacion" placeholder="Ingresa el numero de la habitación" type="number" class="form-control" tabindex="1" maxlength="45" required="">
+   <label for="" class="form-label"> Número de la Habitación <span style="color:red">*</span></label>
+   <input id="numerodehabitacion" name="numerodehabitacion" placeholder="Ingresa el numero de la habitación" type="number" class="form-control @error('numerodehabitacion') is-invalid @enderror" value="{{old('numerodehabitacion')}}" tabindex="1" maxlength="45" required="">
+            @error('numerodehabitacion')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{$message}}</strong>
+            </span>
+            @enderror
    </div>    
+   
 
    <div class="mb-3">
-   <label for="" class="form-label">Precio</label>
+   <label for="" class="form-label"> Precio <span style="color:red">*</span></label>
    <input id="precio" name="precio" placeholder="Ingresa el precio de la habitación" type="number" class="form-control" tabindex="1" maxlength="20"required="">
    </div>   
 
    <div class="mb-3">
-                       <label for="" class="form-label">Tipo de habitacion</label>
+                       <label for="" class="form-label"> Tipo de habitación <span style="color:red">*</span> </label>
                        <select class="form-select" name="tipodehabitacion" id="tipodehabitacion" required="">
-                           <option value="">Seleccione</option>
+                           <option value="">Elegir...</option>
                            <?php foreach ($tipo as $th) { ?>
                                <option value="{{$th['id']}}">{{$th['tipohabitacion']}}</option>
                            <?php } ?>
@@ -138,8 +145,9 @@
                        </div>
            </div>
              
-   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-   <button type="submit" class="btn btn-primary-btn btn-success" tabindex="4">Guardar</button>
+           <button type="submit" class="btn btn-primary-btn btn-success">Guardar</button>
+           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+   
    
                        
    </form>
@@ -155,8 +163,8 @@
 
    <tr>
     <th scope="col">Código</th>
-    <th scope="col">Caracteristicas</th>
-    <th scope="col">Numero de habitación</th>
+    <th scope="col">Características</th>
+    <th scope="col">Número de habitación</th>
     <th scope="col">Precio</th>
     <th scope="col">Tipo de habitación</th>
     <th scope="col">Estado</th>
@@ -209,15 +217,31 @@
                      </div>
                      <div class="modal-body">
                          <strong>Código:</strong> {{ $habitacion->id }} <br>
-                         <strong>Caracteristicas:</strong>  {{ $habitacion->caracteristicas }} <br>
-                         <strong>Numero de la habitación:</strong> {{ $habitacion->numeroDeHabitacion }} <br>
+                         <strong>Características:</strong>  {{ $habitacion->caracteristicas }} <br>
+                         <strong>Número de la habitación:</strong> {{ $habitacion->numeroDeHabitacion }} <br>
                          <strong>Precio:</strong> {{ $habitacion->precio }} <br>
                          <strong>Tipo de habitación:</strong> {{$habitacion->datostipohabitacion->tipohabitacion}} <br>
 
                      </div>
                      <div class="modal-footer">
-                         <button type="button" class="btn btn-secondary btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                         <button type="button" class="btn-block btn btn-success" data-bs-dismiss="modal">Cerrar</button>
                      </div>
+
+                     @if(session('error'))
+                     
+                     <script>
+                     
+                     Swal.fire({
+                     position: 'center',
+                     icon: 'error',
+                     title: '{{session("error")}}',
+                     showConfirmButton: false,
+                     timer: 1500
+                     })
+                     </script>
+                     @endif
+
+
                      @if(session('message'))
                      
                      <script>
@@ -225,38 +249,13 @@
                      Swal.fire({
                      position: 'center',
                      icon: 'success',
-                     title: 'Habitación agregada exitosamente',
+                     title: '{{session("message")}}',
                      showConfirmButton: false,
                      timer: 1500
                      })
                      </script>
                      @endif
-                     @if(session('info'))
                      
-                     <script>
-                     
-                     Swal.fire({
-                     position: 'center',
-                     icon: 'success',
-                     title: 'Habitación actualizada exitosamente',
-                     showConfirmButton: false,
-                     timer: 1500
-                     })
-                     </script>
-                     @endif
-                     @if(session('estate'))
-                     
-                     <script>
-                     
-                     Swal.fire({
-                     position: 'center',
-                     icon: 'success',
-                     title: 'Estado actualizado exitosamente',
-                     showConfirmButton: false,
-                     timer: 1500
-                     })
-                     </script>
-                     @endif
                  </div>
              </div>
          </div>
@@ -295,6 +294,7 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>                
 
 <script>
 $(document).ready(function () {
