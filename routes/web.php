@@ -26,6 +26,11 @@ Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actuali
 Route::resource('reserva','App\Http\Controllers\ReservaController');
 Route::post('reserva/{reserva?}', [ReservaController::class, "actualizarEstadoReserva"])->name('estadoReserva');
 
+//ruta ayuda en linea
+Route::get('/ayudaenlinea', function() {
+return view ('ayudaenlinea.ayuda');
+});
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
