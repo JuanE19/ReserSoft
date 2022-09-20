@@ -21,8 +21,14 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
-        $habitacion_id = Habitacion::all();
-        $cliente_id = Cliente::all();
+        $habitacion_id = Habitacion::select('id', 'tipoDeHabitacion')
+        ->where('Estado', '1')
+        ->get();
+        $i = 1;
+        $cliente_id = Cliente::select('id', 'Documento')
+        ->where('Estado', '1')
+        ->get();
+        $i = 1;
         return view('reserva.index', compact('reservas', 'habitacion_id', 'cliente_id'));
     }
 

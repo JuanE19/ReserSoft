@@ -16,7 +16,7 @@
 
         <div class="input-group mb-3">
             <span class="input-group-text mx-2">Documento del cliente</span>
-            <select class="form-select" name="cliente_id" id="cliente_id" required="">
+            <select class="js-example-basic-single" style="width: 50%" name="cliente_id" id="cliente_id" required="">
                 <option value="">Seleccione</option>
                 <?php foreach ($cliente_id as $td) { ?>
                     <option value="{{$td['id']}}">{{$td['Documento']}}</option>
@@ -33,8 +33,8 @@
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text mx-2">Tipo de habitación</span>
-            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
+            <span class="input-group-text mx-2"># de habitación</span>
+            <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="">
                 <option value="">Seleccione</option>
                 <?php foreach ($habitacion_id as $td) { ?>
                     <option value="{{$td['id']}}">{{$td['tipoDeHabitacion']}}</option>
@@ -170,9 +170,18 @@
 <link rel="stylesheet" href="/css/admin_custom.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
 
+
+<!-- datatable -->
+<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+<!-- select -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
 {{-- Datatable --}}
 <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 {{-- Fin --}}
+
 @stop
 
 @section('js')
@@ -187,6 +196,9 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
+<!-- datatable -->
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#dataTableReserva').DataTable({
@@ -194,6 +206,14 @@
                 "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
             }
         });
+    });
+</script>
+
+<!-- select -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
     });
 </script>
 @stop
