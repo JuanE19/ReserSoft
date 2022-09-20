@@ -30,7 +30,7 @@
    @csrf
 
 
-   <label for="" class="form-label"> Caracteristicas <span style="color:red">*</span></label>
+   <label for="" class="form-label"> Características <span style="color:red">*</span></label>
           
           <div class="form-check">
             <label class="form-check-label">
