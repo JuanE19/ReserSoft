@@ -21,7 +21,7 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
-        $habitacion_id = Habitacion::select('id', 'numeroDeHabitacion')
+        $habitacion_id = Habitacion::select('id', 'tipoDeHabitacion')
         ->where('Estado', '1')
         ->get();
         $i = 1;
