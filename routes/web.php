@@ -7,7 +7,6 @@ use App\Http\Controllers\ReservaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\HabitacionController;
 
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -25,8 +24,12 @@ Route::post('habitaciones/{habitacion?}', [HabitacionController::class, "actuali
 
 // rutas reservas
 Route::resource('reserva','App\Http\Controllers\ReservaController');
-
 Route::post('reserva/{reserva?}', [ReservaController::class, "actualizarEstadoReserva"])->name('estadoReserva');
+
+//ruta ayuda en linea
+Route::get('/ayudaenlinea', function() {
+return view ('ayudaenlinea.ayuda');
+});
 
 Route::middleware([
     'auth:sanctum',

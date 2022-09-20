@@ -65,27 +65,28 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
 
-            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
+             <!--@ if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
-                    {{ __('Su dirección de correo electrónico no está verificada.') }}
+                    ('Su dirección de correo electrónico no está verificada.') }}
 
                     <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900" wire:click.prevent="sendEmailVerification">
-                        {{ __('Haga clic aquí para volver a enviar el correo electrónico de verificación.') }}
+                         __('Haga clic aquí para volver a enviar el correo electrónico de verificación.') }}
                     </button>
-                </p>
+                </p> 
 
-                @if ($this->verificationLinkSent)
+                @ if ($this->verificationLinkSent)
                     <p v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                        {{ __('Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.') }}
+                        __('Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.') }}
                     </p>
-                @endif
-            @endif
+                @ endif
+            @ endif -->
         </div>
     </x-slot>
+    
 
     <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
+            {{ __('Guardado correctamente.') }}
         </x-jet-action-message>
 
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">

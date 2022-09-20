@@ -191,7 +191,7 @@ return [
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
+    'password_reset_url' => 'forgot-password',
     'password_email_url' => 'password/email',
     'profile_url' => false,
 
@@ -269,16 +269,18 @@ return [
           
         ],
 
-        ['header' => 'Configuracion'],
+        ['header' => 'Configuración'],
         [
             'text' => 'Perfil',
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
+
+        ['header' => 'Ayuda En Linea'],
         [
-            'text' => 'Cambiar Contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Ayuda en linea',
+            'url'  => 'ayudaenlinea',
+            'icon' => 'fas fa-headset',
         ],
     ],
 

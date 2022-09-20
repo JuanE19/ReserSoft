@@ -19,7 +19,7 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Documento <span style="color:red">*</span></label>  
-            <input id="documento" name="documento" placeholder="ej. 10000000"  type="number" class="form-control @error('documento') is-invalid @enderror" value="{{old('documento')}}" tabindex="1" maxlength="45" required="">
+            <input id="documento" name="documento" placeholder="ej. 10000000"  type="text" class="form-control @error('documento') is-invalid @enderror" value="{{old('documento')}}" tabindex="1" maxlength="20" required="">
             @error('documento')
             <span class="invalid-feedback" role="alert">
                 <strong>{{$message}}</strong>
@@ -38,8 +38,13 @@
         </div>
 
         <div class="mb-3">
+<<<<<<< HEAD
             <label for="" class="form-label">Teléfono <span style="color:red">*</span></label>
             <input id="telefono" name="telefono" placeholder="ej. 31271561" type="number" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20" required="">
+=======
+            <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
+            <input id="telefono" name="telefono" placeholder="ej. 31271561" type="text" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20" required="">
+>>>>>>> 9b336ef017628f754e2977cdbc19073f3a50e4f4
         </div>
 
         <div class="mb-3">

@@ -7,8 +7,6 @@
 @stop
 
 @section('content')
-  
-
 
 <form action ="/clientes/{{$cliente->id}}" method="POST">
     @csrf
@@ -22,7 +20,7 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Documento <span style="color:red">*</span></label>
-            <input id="documento" name="documento" type="number" class="form-control @error('documento') is-invalid @enderror" maxlength="20" required="" value="{{ old('documento', $cliente->Documento)}}">
+            <input id="documento" name="documento" type="text" disabled class="form-control @error('documento') is-invalid @enderror" maxlength="20" required="" value="{{ old('documento', $cliente->Documento)}} ">
             @error('documento')
             <span class="invalid-feedback" role="alert">
                 <strong>{{$message}}</strong>
@@ -41,8 +39,13 @@
                 </div>   
 
             <div class="mb-3">
+<<<<<<< HEAD
                 <label for="" class="form-label">Teléfono <span style="color:red">*</span></label>
                 <input id="telefono" name="telefono" type="number" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
+=======
+                <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
+                <input id="telefono" name="telefono" type="text" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
+>>>>>>> 9b336ef017628f754e2977cdbc19073f3a50e4f4
                 </div>
 
                 <div class="mb-3">

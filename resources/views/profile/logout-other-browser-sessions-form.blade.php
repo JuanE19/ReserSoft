@@ -57,7 +57,7 @@
             </x-jet-button>
 
             <x-jet-action-message class="ml-3" on="loggedOut">
-                {{ __('Hecho.') }}
+                {{ __('Se han cerrado las sesiones correctamente.') }}
             </x-jet-action-message>
         </div>
 
