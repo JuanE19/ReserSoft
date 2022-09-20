@@ -1,5 +1,7 @@
 <x-guest-layout>
+    
     <x-jet-authentication-card>
+    
         <x-slot name="logo">
             <img src="{{ asset(config('adminlte.logo_img')) }}"  width= "120" >
         </x-slot>
