@@ -14,28 +14,28 @@
     <div class="container m-4 w-50">
     
     <div class="mb-3">
-        <label for="" class="form-label">Nombre</label>
+        <label for="" class="form-label">Nombre<span style="color:red">*</span></label>
         <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->nombre}}">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Apellido</label>
+        <label for="" class="form-label">Apellido<span style="color:red">*</span></label>
         <input id="apellido" name="apellido" type="text" class="form-control" tabindex="2" maxlength="45" required="" value="{{$usuario->apellido}}">
     </div>   
 
         
     <div class="mb-3">
-        <label for="" class="form-label">Teléfono</label>
+        <label for="" class="form-label">Teléfono<span style="color:red">*</span></label>
         <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->telefono}}">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Dirección</label>
+        <label for="" class="form-label">Dirección<span style="color:red">*</span></label>
         <input id="direccion" name="direccion" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->direccion}}">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Correo</label>
+        <label for="" class="form-label">Correo<span style="color:red">*</span></label>
         <input id="correo" name="correo" type="text" class="form-control  @error('correo') is-invalid @enderror" tabindex="1" maxlength="45" required="" value="{{old('correo', $usuario->correo)}}">
         @error('correo')
 
@@ -48,7 +48,7 @@
 
 
     <div class="mb-3">
-        <label for="" class="form-label">Contraseña</label>
+        <label for="" class="form-label">Contraseña<span style="color:red">*</span></label>
         <input id="password" name="password" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->password}}">
     </div>
 

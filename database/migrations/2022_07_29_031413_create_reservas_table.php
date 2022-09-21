@@ -22,6 +22,8 @@ class CreateReservasTable extends Migration
             $table->foreign('habitacion_id')->references('id')->on('habitacions');
             $table->unsignedBigInteger('cliente_id');
             $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->unsignedBigInteger('tipoHabitacion_id');
+            $table->foreign('tipoHabitacion_id')->references('id')->on('tipos');
             $table->timestamps();
         });
     }

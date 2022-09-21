@@ -33,11 +33,21 @@
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text mx-2"># de habitación</span>
+            <span class="input-group-text mx-2">Tipo de habitación</span>
+            <select class="form-select" style="width: 50%" name="tipoHabitacion_id" id="tipoHabitacion_id" required="">
+                <option value="">Seleccione</option>
+                <?php foreach ($tipoHabitacion_id as $td) { ?>
+                    <option value="{{$td['id']}}">{{$td['tipohabitacion']}}</option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text mx-2">Número de habitación</span>
             <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="">
                 <option value="">Seleccione</option>
                 <?php foreach ($habitacion_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['tipoDeHabitacion']}}</option>
+                    <option value="{{$td['id']}}">{{$td['numeroDeHabitacion']}}</option>
                 <?php } ?>
             </select>
             <button type="submit" class="btn btn-success mx-2" tabindex="4">Guardar</button>
@@ -68,9 +78,14 @@
                 <td>{{ $reserva->fechaDeIngreso}}</td>
                 <td>
                     <form action="{{ route  ('reserva.destroy', $reserva->id)}}" method="POST">
+                        @if ($reserva->estado == 0)
                         <a href="/reserva/{{ $reserva->id}}/edit" class="btn btn-light bi bi-pencil-square border"></a>
                         <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
                         </button>
+                        @else
+                        <button type="button" class="btn btn-light bi bi-eye-fill border" data-bs-toggle="modal" data-bs-target="#reserva{{$reserva->id}}">
+                        </button>
+                        @endif
                 </td>
 
                 <!-- Alertas -->
@@ -115,19 +130,19 @@
                     <form class="custom-control custom-switch" action="{{ route('estadoReserva', $reserva) }}" method="post">
                         @csrf
                         @if ($reserva->estado == 0)
-                        <select style="color:red; " onChange="this.form.submit()" name="estado" aria-label="Default select example">
-                            <option style="color:red;" selected value="0">En proceso</option>
-                            <option style="color:orange;" value="1">Tomada</option>
-                            <option style="color:green;" value="2">Finalizada</option>
+                        <select style="color:orange; " onChange="this.form.submit()" name="estado" aria-label="Default select example">
+                            <option style="color:orange;" selected value="0">En proceso</option>
+                            <option style="color:green;" value="1">Tomada</option>
+                            <option style="color:red;" value="2">Finalizada</option>
                         </select>
                         @else @if ($reserva->estado == 1)
-                        <select style="color:orange;" onChange="this.form.submit()" name="Estado" aria-label="Default select example">
-                            <option style="color: orange" selected value="1">Tomada</option>
-                            <option style="color: green" value="2">Finalizada</option>
+                        <select style="color:green;" onChange="this.form.submit()" name="Estado" aria-label="Default select example">
+                            <option style="color: green" selected value="1">Tomada</option>
+                            <option style="color: red" value="2">Finalizada</option>
                         </select>
                         @else
-                        <select style="color:green;" onChange="this.form.submit()" name="estado" aria-label="Default select example">
-                            <option style="color: green" selected value="2">Finalizada</option>
+                        <select style="color:red;" onChange="this.form.submit()" name="estado" aria-label="Default select example">
+                            <option style="color: red" selected value="2">Finalizada</option>
                         </select>
                         @endif
                         @endif
@@ -147,13 +162,18 @@
                             <strong>Id:</strong> {{ $reserva->id }} <br>
                             <strong>Nombre:</strong> {{ $reserva->traerCliente->NombreCompleto }} <br>
                             <strong>Documento:</strong> {{ $reserva->traerCliente->Documento }} <br>
-                            <strong>Telefono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
-                            <strong>Tipo de habitacion:</strong> {{ $reserva->traerHabitacion->tipoDeHabitacion}}<br>
-                            <strong>Caracteristicas:</strong> {{ $reserva->traerHabitacion->caracteristicas}}<br>
+                            <strong>Teléfono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
+                            <strong>Tipo de habitación:</strong> {{ $reserva->traerTipoDeHabitacion->tipohabitacion}} <br>
+                            <strong>Número de habitacion:</strong> {{ $reserva->traerHabitacion->numeroDeHabitacion}}<br>
+                            <strong>Características:</strong> {{ $reserva->traerHabitacion->caracteristicas}}<br>
                             <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
                             <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
                             <strong>Fecha de salida:</strong> {{ $reserva->fechaDeSalida }} <br>
+                            
                         </div>
+                        <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +186,7 @@
 
 @section('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
 <link rel="stylesheet" href="/css/admin_custom.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
 
@@ -177,21 +197,11 @@
 <!-- select -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-
-{{-- Datatable --}}
-<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-{{-- Fin --}}
-
 @stop
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-{{-- Datatable --}}
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-{{-- Fin --}}
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
