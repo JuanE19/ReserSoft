@@ -39,12 +39,17 @@
                 </div>   
 
             <div class="mb-3">
+<<<<<<< HEAD
                 <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
                 <input id="telefono" name="telefono" type="text" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
+=======
+                <label for="" class="form-label">Teléfono <span style="color:red">*</span></label>
+                <input id="telefono" name="telefono" type="number" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
+>>>>>>> a9bca4918dbc887ec95e69187c1192debcfab58c
                 </div>
 
                 <div class="mb-3">
-                    <label for="" class="form-label">Direccion <span style="color:red">*</span></label>
+                    <label for="" class="form-label">Dirección <span style="color:red">*</span></label>
                     <input id="direccion" name="direccion" type="text" class="form-control" maxlength="20" required="" value="{{$cliente->Direccion}}">
                     </div>
 

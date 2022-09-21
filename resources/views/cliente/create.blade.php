@@ -38,12 +38,17 @@
         </div>
 
         <div class="mb-3">
+<<<<<<< HEAD
             <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
             <input id="telefono" name="telefono" placeholder="ej. 31271561" type="text" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20" required="">
+=======
+            <label for="" class="form-label">Teléfono <span style="color:red">*</span></label>
+            <input id="telefono" name="telefono" placeholder="ej. 31271561" type="number" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20" required="">
+>>>>>>> a9bca4918dbc887ec95e69187c1192debcfab58c
         </div>
 
         <div class="mb-3">
-            <label for="" class="form-label">Direccion <span style="color:red">*</span></label>
+            <label for="" class="form-label">Dirección <span style="color:red">*</span></label>
             <input id="direccion" name="direccion" placeholder="ej. calle 103" type="text" class="form-control" value="{{old('direccion')}}" tabindex="1" maxlength="20" required="">
         </div>
 
