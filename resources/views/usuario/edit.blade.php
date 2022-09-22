@@ -14,24 +14,18 @@
     <div class="container m-4 w-50">
     
     <div class="mb-3">
-        <label for="" class="form-label">Nombre<span style="color:red">*</span></label>
-        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->nombre}}">
+        <label for="" class="form-label">Nombre Completo<span style="color:red">*</span></label>
+        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{old('nombre', $usuario->nombre)}}">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Apellido<span style="color:red">*</span></label>
-        <input id="apellido" name="apellido" type="text" class="form-control" tabindex="2" maxlength="45" required="" value="{{$usuario->apellido}}">
-    </div>   
-
-        
-    <div class="mb-3">
         <label for="" class="form-label">Teléfono<span style="color:red">*</span></label>
-        <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->telefono}}">
+        <input id="telefono" name="telefono" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{old('telefono',$usuario->telefono)}}">
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Dirección<span style="color:red">*</span></label>
-        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{$usuario->direccion}}">
+        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="1" maxlength="45" required="" value="{{old('direccion',$usuario->direccion)}}">
     </div>
 
     <div class="mb-3">
@@ -53,7 +47,7 @@
     </div>
 
     <a href="/usuario" class= "btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+    <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
                         
 </form><br><br>
 

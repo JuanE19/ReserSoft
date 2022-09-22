@@ -10,7 +10,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Crear reserva -->
-<div class="container">
+
     <form action="/reserva" method="POST">
         @csrf
 
@@ -63,7 +63,7 @@
 
 
 <!-- tabla -->
-<div class="container w-80">
+
     <table id="dataTableReserva" class="table shadow-lg mt-4">
         <thead class="bg-success">
             <tr>
@@ -186,7 +186,7 @@
         </tbody>
         @endforeach
     </table>
-</div>
+
 
 @stop
 

@@ -8,7 +8,6 @@
 
 @section('content')
 
-
 <form action="/clientes" method="POST">
     @csrf
     <div class="container m-4 w-50">
@@ -39,7 +38,7 @@
 
         <div class="mb-3">
             <label for="" class="form-label">Teléfono <span style="color:red">*</span></label>
-            <input id="telefono" name="telefono" placeholder="ej. 31271561" type="number" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20" required="">
+            <input id="telefono" name="telefono" placeholder="ej. 31271561" type="text" class="form-control" value="{{old('telefono')}}" tabindex="1" maxlength="20" required="">
         </div>
 
         <div class="mb-3">
@@ -58,11 +57,9 @@
         </div>
     </div>
     <a href="/clientes" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+    <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
 
 </form><br><br>
-
-
 
 @stop
 

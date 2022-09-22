@@ -60,7 +60,7 @@
                         </div>
             </div>
                         <a href="/clientes" class= "btn btn-secondary" tabindex="5">Cancelar</a>
-                        <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+                        <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
                         
 </form><br><br>
                 
