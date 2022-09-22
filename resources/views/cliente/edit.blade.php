@@ -39,13 +39,8 @@
                 </div>   
 
             <div class="mb-3">
-<<<<<<< HEAD
                 <label for="" class="form-label">Teléfono <span style="color:red">*</span></label>
                 <input id="telefono" name="telefono" type="number" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
-=======
-                <label for="" class="form-label">Telefono <span style="color:red">*</span></label>
-                <input id="telefono" name="telefono" type="text" class="form-control" maxlength="20" required="" value="{{$cliente->Telefono}}">
->>>>>>> 9b336ef017628f754e2977cdbc19073f3a50e4f4
                 </div>
 
                 <div class="mb-3">

@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'AYUDA EN LINEA')
+@section('title', 'AYUDA EN LÍNEA')
 
 @section('content_header')
-    <h1><strong> Ayuda en linea</strong></h1>
+    <h1><strong> Ayuda en línea</strong></h1>
     <br>
 
 @stop
@@ -65,11 +65,6 @@
                                     <h2 class="card-header-title text-white pt-1">RESERVAS</h2>
                                 </div>
                               <div class="card-body text-center">
-
-                                <p><a href="#">¿Cómo crear una reserva?</a></p>
-                                <p><a href="#">¿Cómo editar una reserva?</a></p>
-                                <p><a href="#">¿Cómo ver detalle una reserva?</a></p>
-                                <p><a href="#">¿Cómo cambiar el estado de una reserva?</a></p>
 
                                 <p><a href="https://youtu.be/9NszrQLvfzs" target="_blank">¿Cómo crear una reserva?</a></p>
                                 <p><a href="https://youtu.be/D69gFWNMmwI" target="_blank">¿Cómo editar una reserva?</a></p>
