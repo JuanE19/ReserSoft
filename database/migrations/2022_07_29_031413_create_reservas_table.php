@@ -15,8 +15,8 @@ class CreateReservasTable extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->date("fechaDeIngreso");
-            $table->date("fechaDeSalida");
+            $table->string("fechaDeIngreso");
+            $table->string("fechaDeSalida");
             $table->boolean('estado')->default(0);
             $table->unsignedBigInteger('habitacion_id');
             $table->foreign('habitacion_id')->references('id')->on('habitacions');

@@ -25,11 +25,17 @@
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text">Ingreso</span>
+            <label class="input-group-text" for="from">Ingreso</label>
+            <input id="fechaDeIngreso" type="text" name="fechaDeIngreso" autocomplete="off">
+            
+            <label class="input-group-text" for="to">Salida</label>
+            <input id="fechaDeSalida" type="text" name="fechaDeSalida" autocomplete="off"> 
+
+            <!-- <span class="input-group-text">Ingreso</span>
             <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control mx-2" required="">
 
             <span class="input-group-text">Salida</span>
-            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2" required="">
+            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2" required=""> -->
         </div>
 
         <div class="input-group mb-3">
@@ -169,11 +175,11 @@
                             <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
                             <strong>Fecha de ingreso:</strong> {{ $reserva->fechaDeIngreso }} <br>
                             <strong>Fecha de salida:</strong> {{ $reserva->fechaDeSalida }} <br>
-                            
+
                         </div>
                         <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,6 +202,10 @@
 
 <!-- select -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- calendar -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 
 @stop
 
@@ -224,6 +234,43 @@
 <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
+    });
+</script>
+
+<!-- calendar -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $(function() {
+        var dateFormat = "mm/dd/yy",
+            from = $("#fechaDeIngreso")
+            .datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1
+            })
+            .on("change", function() {
+                to.datepicker("option", "minDate", getDate(this));
+            }),
+            to = $("#fechaDeSalida").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1
+            })
+            .on("change", function() {
+                from.datepicker("option", "maxDate", getDate(this));
+            });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
     });
 </script>
 @stop
