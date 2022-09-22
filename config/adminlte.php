@@ -237,8 +237,7 @@ return [
 
         // Sidebar items:
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+
         ],
         [
             'text' => 'blog',
@@ -272,14 +271,14 @@ return [
 
         ['header' => 'Configuración'],
         [
-            'text' => 'Perfil',
+            'text' => 'Perfíl',
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
 
-        ['header' => 'Ayuda En Linea'],
+        ['header' => 'Ayuda En Línea'],
         [
-            'text' => 'Ayuda en linea',
+            'text' => 'Ayuda en línea',
             'url'  => 'ayudaenlinea',
             'icon' => 'fas fa-headset',
         ],

@@ -19,5 +19,10 @@ class Reserva extends Model
         return $this->hasOne('App\Models\Cliente', 'id', 'cliente_id');
     }
 
+    public function traerTipoDeHabitacion()
+    {
+        return $this->hasOne('App\Models\Tipo', 'id', 'tipoHabitacion_id');
+    }
+
 }
 
