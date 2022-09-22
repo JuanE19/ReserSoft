@@ -13,22 +13,22 @@
     <div class="container m-4 w-50">
     
     <div class="mb-3">
-        <label for="" class="form-label">Nombre</label>
+        <label for="" class="form-label">Nombre<span style="color:red">*</span></label>
         <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" maxlength="45" required="">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Apellido</label>
+        <label for="" class="form-label">Apellido<span style="color:red">*</span></label>
         <input id="apellido" name="apellido" type="text" class="form-control" tabindex="2" maxlength="45" required="">
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Teléfono</label>
+        <label for="" class="form-label">Teléfono<span style="color:red">*</span></label>
         <input id="telefono" name="telefono" type="text" class="form-control" tabindex="3" maxlength="45" required="">
     </div>  
 
     <div class="mb-3">
-        <label for="" class="form-label">Dirección</label>
+        <label for="" class="form-label">Dirección<span style="color:red">*</span></label>
         <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4" maxlength="45" required="">
     </div>  
 

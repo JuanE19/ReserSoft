@@ -114,7 +114,6 @@ class ClienteController extends Controller
         $infoClienteActual = Cliente::find($id);
 
         $cliente->nombrecompleto = $request->get('nombrecompleto');
-        $cliente->documento = $request->get('documento');
         $cliente->correo = $request->get('correo');
         $cliente->telefono = $request->get('telefono');
         $cliente->direccion = $request->get('direccion');
@@ -128,19 +127,7 @@ class ClienteController extends Controller
         } catch (\Throwable $th) {
             if ($th->getCode() == 23000) {
 
-                if ($cliente->Documento != $infoClienteActual->Documento) {
-                    $request->validate(
-                        [
-
-                            'documento' => 'unique:clientes,documento,'
-
-                        ],
-                        [
-                            'documento.unique' => 'Este documento ya existe'
-                        ]
-
-                    );
-                } else {
+                if ($cliente->correo != $infoClienteActual->correo) {
                     $request->validate(
                         [
 
@@ -150,7 +137,9 @@ class ClienteController extends Controller
                             'correo.unique' => 'Este correo ya existe'
                         ]
 
+
                     );
+               
                 }
             }
         }

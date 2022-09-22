@@ -99,7 +99,7 @@
                                         
                                         <div class="card-section  border rounded border-dark">
                                           <div class="card-header bg-success  border-dark">
-                                                <h2 class="card-header-title text-white pt-1">PERFIL</h2>
+                                                <h2 class="card-header-title text-white pt-1">PERFÍL</h2>
                                             </div>
                                           <div class="card-body text-center">
                                             <p><a href="#">¿Cómo actualizar información del perfil?</a></p>

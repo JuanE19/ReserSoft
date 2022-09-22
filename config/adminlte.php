@@ -271,7 +271,7 @@ return [
 
         ['header' => 'Configuración'],
         [
-            'text' => 'Perfil',
+            'text' => 'Perfíl',
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],

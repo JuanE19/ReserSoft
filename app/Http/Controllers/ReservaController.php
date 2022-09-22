@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\Habitacion;
 use App\Models\Cliente;
+use App\Models\Tipo;
 
 class ReservaController extends Controller
 {
@@ -21,15 +22,16 @@ class ReservaController extends Controller
     public function index()
     {
         $reservas = Reserva::all();
-        $habitacion_id = Habitacion::select('id', 'tipoDeHabitacion')
-        ->where('Estado', '1')
-        ->get();
+        $habitacion_id = Habitacion::select('id', 'numeroDeHabitacion')
+            ->where('Estado', '1')
+            ->get();
         $i = 1;
         $cliente_id = Cliente::select('id', 'Documento')
-        ->where('Estado', '1')
-        ->get();
+            ->where('Estado', '1')
+            ->get();
         $i = 1;
-        return view('reserva.index', compact('reservas', 'habitacion_id', 'cliente_id'));
+        $tipoHabitacion_id = Tipo::all();
+        return view('reserva.index', compact('reservas', 'habitacion_id', 'cliente_id', 'tipoHabitacion_id'));
     }
 
     /**
@@ -41,7 +43,8 @@ class ReservaController extends Controller
     {
         $cliente_id = Cliente::all();
         $habitacion_id = Habitacion::all();
-        return view('reserva.create', compact('habitacion_id', 'cliente_id'));
+        $tipoHabitacion_id = Tipo::all();
+        return view('reserva.create', compact('habitacion_id', 'cliente_id', 'tipoHabitacion_id'));
     }
 
     /**
@@ -58,10 +61,11 @@ class ReservaController extends Controller
         $reservas->fechaDeSalida = $request->get('fechaDeSalida');
         $reservas->habitacion_id = $request->get('habitacion_id');
         $reservas->cliente_id = $request->get('cliente_id');
+        $reservas->tipoHabitacion_id = $request->get('tipoHabitacion_id');
 
         $reservas->save();
 
-        return redirect('/reserva')->with('message','Exitoso');
+        return redirect('/reserva')->with('message', 'Exitoso');
     }
 
     /**
@@ -85,8 +89,9 @@ class ReservaController extends Controller
     {
         $cliente_id = Cliente::all();
         $habitacion_id = Habitacion::all();
+        $tipoHabitacion_id = Tipo::all();
         $reserva = Reserva::find($id);
-        return view('reserva.edit', compact('reserva', 'habitacion_id', 'cliente_id'));
+        return view('reserva.edit', compact('reserva', 'habitacion_id', 'cliente_id', 'tipoHabitacion_id'));
     }
 
     /**
@@ -100,16 +105,18 @@ class ReservaController extends Controller
     {
         $cliente_id = Cliente::all();
         $habitacion_id = Habitacion::all();
+        $tipoHabitacion_id = Tipo::all();
         $reserva = Reserva::find($id);
 
         $reserva->fechaDeIngreso = $request->get('fechaDeIngreso');
         $reserva->fechaDeSalida = $request->get('fechaDeSalida');
         $reserva->habitacion_id = $request->get('habitacion_id');
         $reserva->cliente_id = $request->get('cliente_id');
+        $reserva->tipoHabitacion_id = $request->get('tipoHabitacion_id');
 
         $reserva->save();
 
-        return redirect('/reserva')->with('info','Exitoso');
+        return redirect('/reserva')->with('info', 'Exitoso');
     }
 
     /**
@@ -135,7 +142,7 @@ class ReservaController extends Controller
         else
             $reserva->estado = 2;
         $reserva->update();
-        
+
 
         return redirect('/reserva')->with('estate', 'Estado cambiado');
     }

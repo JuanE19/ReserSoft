@@ -32,12 +32,23 @@
             <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeSalida}}">
         </div>
 
+
         <div class="input-group mb-3">
             <span class="input-group-text mx-2">Tipo de habitación</span>
-            <select class="form-select" name="habitacion_id" id="habitacion_id" required="">
-                <option value="">{{$reserva->traerHabitacion->tipoDeHabitacion}}</option>
+            <select class="form-select" style="width: 50%" name="tipoHabitacion_id" id="tipoHabitacion_id" required="">
+                <option value="">{{$reserva->traerTipoDeHabitacion->tipohabitacion}}</option>
+                <?php foreach ($tipoHabitacion_id as $td) { ?>
+                    <option value="{{$td['id']}}">{{$td['tipohabitacion']}}</option>
+                <?php } ?>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text mx-2">Número de habitación</span>
+            <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="">
+                <option value="">{{$reserva->traerHabitacion->numeroDeHabitacion}}</option>
                 <?php foreach ($habitacion_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['tipoDeHabitacion']}}</option>
+                    <option value="{{$td['id']}}">{{$td['numeroDeHabitacion']}}</option>
                 <?php } ?>
             </select>
         </div>
