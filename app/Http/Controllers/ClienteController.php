@@ -113,37 +113,25 @@ class ClienteController extends Controller
         $cliente = Cliente::find($id);
         $infoClienteActual = Cliente::find($id);
 
-        $cliente->nombrecompleto = $request->get('nombrecompleto');
-        $cliente->documento = $request->get('documento');
-        $cliente->correo = $request->get('correo');
-        $cliente->telefono = $request->get('telefono');
-        $cliente->direccion = $request->get('direccion');
+        $cliente->NombreCompleto = $request->get('nombrecompleto');
+        $cliente->Correo = $request->get('correo');
+        $cliente->Telefono = $request->get('telefono');
+        $cliente->Direccion = $request->get('direccion');
         $cliente->documento_id = $request->get('tipodocumento');
 
 
         try {
+            //dd($cliente);
             $cliente->save();
 
             return redirect('/clientes')->with('info', 'El cliente se ha Actualizado correctamente');
         } catch (\Throwable $th) {
+            //return $th->getCode();
             if ($th->getCode() == 23000) {
-
-                if ($cliente->Documento != $infoClienteActual->Documento) {
+                //return $th->getCode();
+                if ($cliente->Correo != $infoClienteActual->Correo) {
                     $request->validate(
                         [
-
-                            'documento' => 'unique:clientes,documento,'
-
-                        ],
-                        [
-                            'documento.unique' => 'Este documento ya existe'
-                        ]
-
-                    );
-                } else {
-                    $request->validate(
-                        [
-
                             'correo' => 'unique:clientes,correo,'
                         ],
                         [
@@ -151,7 +139,10 @@ class ClienteController extends Controller
                         ]
 
                     );
-                }
+
+                    
+                } 
+
             }
         }
     }
