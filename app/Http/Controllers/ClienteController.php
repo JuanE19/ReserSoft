@@ -136,10 +136,7 @@ class ClienteController extends Controller
                         [
                             'correo.unique' => 'Este correo ya existe'
                         ]
-
-
                     );
-               
                 }
             }
         }

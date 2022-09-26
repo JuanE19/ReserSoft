@@ -13,28 +13,23 @@
     <div class="container m-4 w-50">
     
     <div class="mb-3">
-        <label for="" class="form-label">Nombre<span style="color:red">*</span></label>
-        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" maxlength="45" required="">
-    </div>
-
-    <div class="mb-3">
-        <label for="" class="form-label">Apellido<span style="color:red">*</span></label>
-        <input id="apellido" name="apellido" type="text" class="form-control" tabindex="2" maxlength="45" required="">
+        <label for="" class="form-label">Nombre Completo<span style="color:red">*</span></label>
+        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="ej. Juan Perez" tabindex="1" maxlength="45" value="{{old('nombre') }}" required="" >
     </div>
 
     <div class="mb-3">
         <label for="" class="form-label">Teléfono<span style="color:red">*</span></label>
-        <input id="telefono" name="telefono" type="text" class="form-control" tabindex="3" maxlength="45" required="">
+        <input id="telefono" name="telefono" type="text" class="form-control" placeholder="ej. 3046501329" tabindex="3" maxlength="45" value="{{old('telefono') }}" required="">
     </div>  
 
     <div class="mb-3">
         <label for="" class="form-label">Dirección<span style="color:red">*</span></label>
-        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4" maxlength="45" required="">
+        <input id="direccion" name="direccion" type="text" class="form-control" placeholder="ej. calle 79 #56-78" tabindex="4" maxlength="45" value="{{old('direccion') }}" required="">
     </div>  
 
     <div class="mb-3">
         <label for="" class="form-label">Correo <span style="color:red">*</span> </label>
-        <input id="correo" name="correo" type="email" class="form-control @error('correo') is-invalid @enderror" value="{{old('correo') }}" tabindex="5" maxlength="45" required="">
+        <input id="correo" name="correo" type="email" class="form-control @error('correo') is-invalid @enderror" placeholder="ej. diego@gmail.com" value="{{old('correo') }}" tabindex="5" maxlength="45" required="">
         @error('correo')
 
         <span class="invalid-feedback" role="alert">
@@ -45,14 +40,13 @@
 
     <div class="mb-3">
         <label for="" class="form-label">Contraseña <span style="color:red">*</span> </label>
-        <input id="password" name="password" type="password" class="form-control" tabindex="6" maxlength="45" required="">
+        <input id="password" name="password" type="password" class="form-control" placeholder="********" tabindex="6" maxlength="45" required="">
     </div>  
 
     <a href="/usuario" class= "btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+    <button type="submit" class="btn btn-success" tabindex="4">Guardar</button>
                         
 </form><br><br>
-
 
 @stop
 

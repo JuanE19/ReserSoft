@@ -21,6 +21,7 @@
 @section('auth_header', __('Inicio de Sesión'))
 
 @section('auth_body')
+
     <form action="{{ $login_url }}" method="post">
         @csrf
 
@@ -34,7 +35,6 @@
                     <span class="fas fa-envelope {{ config('adminlte.classes_auth_icon', '') }}"></span>
                 </div>
             </div>
-
             @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -63,13 +63,7 @@
         {{-- Login field --}}
         <div class="row">
             <div class="col-7">
-                <div class="icheck-primary" title="{{ __('adminlte::adminlte.remember_me_hint') }}">
-                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                    <label for="remember">
-                        {{ __('Recordarme') }}
-                    </label>
-                </div>
             </div>
 
             <div class="col-5">
@@ -92,7 +86,7 @@
             </a>
         </p>
     @endif
-
+<!-- 
     {{-- Register link --}}
     @if($register_url)
         <p class="my-0">
@@ -100,5 +94,5 @@
                 {{ __('Registrar Nuevo Usuario') }}
             </a>
         </p>
-    @endif
+    @endif -->
 @stop

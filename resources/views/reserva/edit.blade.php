@@ -10,45 +10,28 @@
 <form action="/reserva/{{$reserva->id}}" method="POST">
     @csrf
     @method('PUT')
-    <div class="container m-4 w-50">
-        
+    <div class="container">
+
         <div class="input-group mb-3">
             <span class="input-group-text mx-2">Documento del cliente</span>
-            <select class="form-select" name="cliente_id" id="cliente_id" required="">
-                <option value="">Seleccione</option>
-                <?php foreach ($cliente_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['Documento']}}</option>
-                <?php } ?>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="" class="form-label">Fecha de ingreso</label>
-            <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeIngreso}}">
-        </div>
-
-        <div class="mb-3">
-            <label for="" class="form-label">Fecha de salida</label>
-            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control" tabindex="1" value="{{$reserva->fechaDeSalida}}">
-        </div>
-
-
-        <div class="input-group mb-3">
-            <span class="input-group-text mx-2">Tipo de habitación</span>
-            <select class="form-select" style="width: 50%" name="tipoHabitacion_id" id="tipoHabitacion_id" required="">
-                <option value="">{{$reserva->traerTipoDeHabitacion->tipohabitacion}}</option>
-                <?php foreach ($tipoHabitacion_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['tipohabitacion']}}</option>
-                <?php } ?>
-            </select>
+            <input name="cliente_id" id="cliente_id" readonly placeholder="{{ $reserva->traerCliente->Documento }}">
+            </input>
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text mx-2">Número de habitación</span>
-            <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="">
+            <span class="input-group-text mx-2">Fecha de ingreso</span>
+            <input id="fechaDeIngreso" type="text" name="fechaDeIngreso" placeholder="{{ $reserva->fechaDeIngreso }}" autocomplete="off" required="">
+
+            <span class="input-group-text mx-2">Fecha de salida</span>
+            <input id="fechaDeSalida" type="text" name="fechaDeSalida" placeholder="{{ $reserva->fechaDeSalida }}" utocomplete="off" required="">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text mx-2">Habitaciones</span>
+            <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="" autocomplete="off">
                 <option value="">{{$reserva->traerHabitacion->numeroDeHabitacion}}</option>
                 <?php foreach ($habitacion_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['numeroDeHabitacion']}}</option>
+                    <option value="{{$td['id']}}">Habitación #{{$td['numeroDeHabitacion']}}</option>
                 <?php } ?>
             </select>
         </div>
@@ -65,6 +48,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/admin_custom.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+
+<!-- calendar -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
 @stop
 
 @section('js')
@@ -73,4 +60,40 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- calendar -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $(function() {
+        var dateFormat = "mm/dd/yy",
+            from = $("#fechaDeIngreso")
+            .datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1
+            })
+            .on("change", function() {
+                to.datepicker("option", "minDate", getDate(this));
+            }),
+            to = $("#fechaDeSalida").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1
+            })
+            .on("change", function() {
+                from.datepicker("option", "maxDate", getDate(this));
+            });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+    });
+</script>
 @stop

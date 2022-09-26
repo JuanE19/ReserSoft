@@ -49,10 +49,10 @@
                                     <h2 class="card-header-title text-white pt-1">CLIENTES</h2>
                                 </div>
                               <div class="card-body text-center">
-                                <p><a href="#">¿Cómo crear un cliente?</a></p>
-                                <p><a href="#">¿Cómo editar un cliente?</a></p>
-                                <p><a href="#">¿Cómo ver detalle un cliente?</a></p>
-                                <p><a href="#">¿Cómo cambiar el estado de un cliente?</a></p>
+                                <p><a href="https://youtu.be/6o7tesbJTJ0">¿Cómo crear un cliente?</a></p>
+                                <p><a href="https://youtu.be/8ZwIRs8Xiik">¿Cómo editar un cliente?</a></p>
+                                <p><a href="https://youtu.be/nBUjrKh4DCk">¿Cómo ver detalle un cliente?</a></p>
+                                <p><a href="https://youtu.be/XZuDTDrZkX0">¿Cómo cambiar el estado de un cliente?</a></p>
                               </div>
                             </div>
                       </div>
@@ -102,10 +102,10 @@
                                                 <h2 class="card-header-title text-white pt-1">PERFÍL</h2>
                                             </div>
                                           <div class="card-body text-center">
-                                            <p><a href="#">¿Cómo actualizar información del perfil?</a></p>
-                                            <p><a href="#">¿Cómo actualizar contraseña?</a></p>
-                                            <p><a href="#">¿Cómo cerrar sesiónes activas en otros navegadores?</a></p>
-                                            <p><a href="#">¿Cómo eliminar cuenta permanentemente?</a></p>
+                                            <p><a href="https://youtu.be/4cpRITBPjmw">¿Cómo actualizar información del perfil?</a></p>
+                                            <p><a href="https://youtu.be/HUZ9p1AvEHQ">¿Cómo actualizar contraseña?</a></p>
+                                            <p><a href="https://youtu.be/CazRRCUnsn0">¿Cómo cerrar sesiónes activas en otros navegadores?</a></p>
+                                            <p><a href="https://youtu.be/hMErIAG5TB0">¿Cómo eliminar cuenta permanentemente?</a></p>
                                           </div>
                                         </div>
                                   </div>

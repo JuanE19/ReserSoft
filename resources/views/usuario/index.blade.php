@@ -18,7 +18,6 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
             <th scope="col">Teléfono</th>
             <th scope="col">Dirección</th>
             <th scope="col">Correo</th>
@@ -31,7 +30,6 @@
         <tr>
             <td>{{ $usuario->id }}</td>
             <td>{{ $usuario->nombre }}</td>
-            <td>{{ $usuario->apellido }}</td>
             <td>{{ $usuario->telefono }}</td>
             <td>{{ $usuario->direccion }}</td>
             <td>{{ $usuario->correo }}</td>
@@ -74,7 +72,7 @@
                                         <div class="modal-body">
                                     
                                         <strong>ID:</strong> {{$usuario->id}} <br>
-                                        <strong>Nombre Completo:</strong> {{$usuario->nombre}} {{$usuario->apellido}} <br>
+                                        <strong>Nombre Completo:</strong> {{$usuario->nombre}}<br>
                                         <strong>Teléfono:</strong> {{$usuario->telefono}} <br>
                                         <strong>Dirección:</strong> {{$usuario->direccion}} <br>     
                                         <strong>Correo:</strong> {{$usuario->correo}}

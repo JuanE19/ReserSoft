@@ -324,7 +324,7 @@ $array = explode(', ', $caracteristicas);
 
 
   <a href="/habitaciones" class= "btn btn-secondary" tabindex="5">Cancelar</a>
-  <button type="submit" class="btn btn-primary-btn btn-success" tabindex="4">Guardar</button>
+  <button type="submit" class="btn btn-primary-btn btn-success" tabindex="4">Guardar</button><br><br>
 </form>
 
 @stop

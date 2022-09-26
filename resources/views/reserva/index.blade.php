@@ -10,13 +10,13 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Crear reserva -->
-<div class="container">
+
     <form action="/reserva" method="POST">
         @csrf
 
         <div class="input-group mb-3">
             <span class="input-group-text mx-2">Documento del cliente</span>
-            <select class="js-example-basic-single" style="width: 50%" name="cliente_id" id="cliente_id" required="">
+            <select class="js-example-basic-single" style="width: 50%" name="cliente_id" id="cliente_id" required="" autocomplete="off">
                 <option value="">Seleccione</option>
                 <?php foreach ($cliente_id as $td) { ?>
                     <option value="{{$td['id']}}">{{$td['Documento']}}</option>
@@ -25,35 +25,19 @@
         </div>
 
         <div class="input-group mb-3">
-            <label class="input-group-text" for="from">Ingreso</label>
-            <input id="fechaDeIngreso" type="text" name="fechaDeIngreso" autocomplete="off">
-            
-            <label class="input-group-text" for="to">Salida</label>
-            <input id="fechaDeSalida" type="text" name="fechaDeSalida" autocomplete="off"> 
+            <span class="input-group-text mx-2">Fecha de ingreso</span>
+            <input id="fechaDeIngreso" type="text" name="fechaDeIngreso" placeholder="ingreso" autocomplete="off" required="">
 
-            <!-- <span class="input-group-text">Ingreso</span>
-            <input id="fechaDeIngreso" name="fechaDeIngreso" type="date" class="form-control mx-2" required="">
-
-            <span class="input-group-text">Salida</span>
-            <input id="fechaDeSalida" name="fechaDeSalida" type="date" class="form-control mx-2" required=""> -->
+            <span class="input-group-text mx-2">Fecha de salida</span>
+            <input id="fechaDeSalida" type="text" name="fechaDeSalida" placeholder="salida" utocomplete="off" required="">
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text mx-2">Tipo de habitación</span>
-            <select class="form-select" style="width: 50%" name="tipoHabitacion_id" id="tipoHabitacion_id" required="">
-                <option value="">Seleccione</option>
-                <?php foreach ($tipoHabitacion_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['tipohabitacion']}}</option>
-                <?php } ?>
-            </select>
-        </div>
-
-        <div class="input-group mb-3">
-            <span class="input-group-text mx-2">Número de habitación</span>
-            <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="">
+            <span class="input-group-text mx-2">Habitaciones</span>
+            <select class="js-example-basic-single" style="width: 50%" name="habitacion_id" id="habitacion_id" required="" autocomplete="off">
                 <option value="">Seleccione</option>
                 <?php foreach ($habitacion_id as $td) { ?>
-                    <option value="{{$td['id']}}">{{$td['numeroDeHabitacion']}}</option>
+                    <option value="{{$td['id']}}">Habitación #{{$td['numeroDeHabitacion']}} tipo {{$td['tipohabitacion']}}</option>
                 <?php } ?>
             </select>
             <button type="submit" class="btn btn-success mx-2" tabindex="4">Guardar</button>
@@ -61,9 +45,8 @@
     </form>
 </div>
 
-
 <!-- tabla -->
-<div class="container w-80">
+
     <table id="dataTableReserva" class="table shadow-lg mt-4">
         <thead class="bg-success">
             <tr>
@@ -169,7 +152,6 @@
                             <strong>Nombre:</strong> {{ $reserva->traerCliente->NombreCompleto }} <br>
                             <strong>Documento:</strong> {{ $reserva->traerCliente->Documento }} <br>
                             <strong>Teléfono:</strong> {{ $reserva->traerCliente->Telefono }} <br>
-                            <strong>Tipo de habitación:</strong> {{ $reserva->traerTipoDeHabitacion->tipohabitacion}} <br>
                             <strong>Número de habitacion:</strong> {{ $reserva->traerHabitacion->numeroDeHabitacion}}<br>
                             <strong>Características:</strong> {{ $reserva->traerHabitacion->caracteristicas}}<br>
                             <strong>Precio:</strong> {{ $reserva->traerHabitacion->precio}}<br>
@@ -186,7 +168,7 @@
         </tbody>
         @endforeach
     </table>
-</div>
+
 
 @stop
 

@@ -27,8 +27,7 @@ class HabitacionController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     *zy
      */
     public function create()
     {
@@ -121,25 +120,43 @@ class HabitacionController extends Controller
     public function update(Request $request, $id)
     {
 
-        $caracteristicas = "";
+        try {
+            $caracteristicas = "";
 
-        for ($i=1; $i < 12; $i++) { 
-            if (isset($_POST[$i])) {
-                $caracteristicas = $caracteristicas."".$_POST[$i].", ";
-               }
+            for ($i=1; $i < 12; $i++) { 
+                if (isset($_POST[$i])) {
+                    $caracteristicas = $caracteristicas."".$_POST[$i].", ";
+                   }
+            }
+            if ($caracteristicas == "") {
+                return redirect('/habitaciones')->with('error', 'Debes agregar alguna característica');
+            }
+
+            else {
+            
+            $habitacion = Habitacion::find($id);
+    
+    
+            $habitacion->caracteristicas = $caracteristicas;
+            $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
+            $habitacion->precio = $request->get('precio');
+            $habitacion->tipodehabitacion = $request->get('tipodehabitacion');
+            
+            $habitacion->save();
+    
+            return redirect('/habitaciones')->with('message','La habitacion se ha actualizado correctamente');
+
+            }
+            
+            
+        } catch (\Throwable $th) {
+            if ($th->getCode() == 23000) {
+                return redirect('/habitaciones')->with('error', 'El número de habitación ya existe');
+            } else {
+                throw $th;
+            }
         }
 
-        $habitacion = Habitacion::find($id);
-
-
-        $habitacion->caracteristicas = $caracteristicas;
-        $habitacion->numerodehabitacion = $request->get('numeroDeHabitacion');
-        $habitacion->precio = $request->get('precio');
-        $habitacion->tipodehabitacion = $request->get('tipodehabitacion');
-        
-        $habitacion->save();
-
-        return redirect('/habitaciones')->with('message','La habitacion se ha actualizado correctamente');
     
     }
 
